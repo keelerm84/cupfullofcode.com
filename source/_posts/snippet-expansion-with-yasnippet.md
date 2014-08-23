@@ -48,9 +48,9 @@ YASnippet, it's as painless as defining the below snippet and then typing
  Copyright (C) 2007 Free Software Foundation, Inc. http://fsf.org/
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
-
+  
                             Preamble
-
+  
   The GNU General Public License is a free, copyleft license for
 software and other kinds of works.
 [...]
@@ -258,7 +258,7 @@ This final snippet hooks everything up. If I have a project at
 `/var/www/html/`, and I create a file NewUtil.php in say `lib/utils/`, this
 snippet will generate
 
-{% codeblock lang:text %}
+{% codeblock lang:php %}
 <?php
 
 /**
@@ -266,9 +266,9 @@ snippet will generate
  *
  * @author Matthew M. Keeler <keelerm@tortugas-llc.com>
  */
-
+  
 namespace lib\utils;
-
+  
 /**
  * New Util description goes here
  */

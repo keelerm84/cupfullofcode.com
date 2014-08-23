@@ -5,7 +5,7 @@
             <div class="row oneandhalf">
                 <% site.posts.sort('date', -1).limit(4).each(function(post,index){ %>
                     <div class="6u">
-                        <section class="highlight justify">
+                        <section class="section-highlight justify">
                             <h3><a href="<%- post.path %>"><%= post.title %></a></h3>
                             <%- post.excerpt %>
                         </section>
