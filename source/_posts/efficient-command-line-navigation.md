@@ -39,7 +39,7 @@ and hit `TAB`, I am presented with a list of branches and tags that I can
 checkout. Similarly, if I type `kill` I will get a list of running processes
 and their associated PIDs.
 
-![Tab completion](/assets/images/posts/efficient-command-line-navigation/tab-completion.gif)
+![Tab completion](/images/posts/efficient-command-line-navigation/tab-completion.gif)
 
 There are also a lot of great shortcuts for navigation. For example, let us say
 you have typed out the command `sp aux | grep 'vim' | xargs kill -9`. At this
@@ -55,7 +55,7 @@ character to the left, so it simply moves the cursor to the right and then
 performs the swap. Now we can jump back to the end of the line with `C-e`. How
 efficient is that?
 
-![Home, Transpose and End](/assets/images/posts/efficient-command-line-navigation/home-transpose-end.gif)
+![Home, Transpose and End](/images/posts/efficient-command-line-navigation/home-transpose-end.gif)
 
 A quick note about transpose. Vim users beware. This shifting behavior is
 different than what you normally experience when issuing `xp` in command mode,
@@ -80,7 +80,7 @@ does not actually go back to the beginning of the word, and then delete from
 there. If you need to delete a word from the current cursor position going
 backward, you can use `M-backspace`.
 
-![Move, Delete and Transpose](/assets/images/posts/efficient-command-line-navigation/move-delete-transpose.gif)
+![Move, Delete and Transpose](/images/posts/efficient-command-line-navigation/move-delete-transpose.gif)
 
 There are quite a few times I'm crafting a command, and halfway through I
 realize I need bail on the command and check something first. But if I `C-c` to
@@ -99,7 +99,7 @@ times because it is so wicked helpful. But the last thing you cut isn't what
 you want to restore. Use `C-y` to paste back your last cut, and then use `M-y`
 to cycle through your kill-ring until you find the text you want to restore!
 
-![Kill Ring](/assets/images/posts/efficient-command-line-navigation/kill-ring.gif)
+![Kill Ring](/images/posts/efficient-command-line-navigation/kill-ring.gif)
 
 A lot of times in my workflow, I will edit a file, and then issue a `git add
 /path/to/file` to stage it. I can just type `vim /path/to/file`, do my edits,
@@ -123,7 +123,7 @@ As you might have surmised, there is a more efficient solution. `C-n` and `C-p`
 will allow you to navigate through your history going forward and backwards,
 respectively.
 
-![Ctrl N Navigation](/assets/images/posts/efficient-command-line-navigation/ctrl-n-navigation.gif)
+![Ctrl N Navigation](/images/posts/efficient-command-line-navigation/ctrl-n-navigation.gif)
 
 If the command you are looking to recall was executed recently, `C-n` and `C-p`
 are life savers. But if the command is more than a few lines back, they can
@@ -139,7 +139,7 @@ select it and start editing. Or, you can type `C-g` to abort the search, and
 your prompt will be restored with whatever text had originally been specified
 prior to the search.
 
-![Reverse Search](/assets/images/posts/efficient-command-line-navigation/reverse-search.gif)
+![Reverse Search](/images/posts/efficient-command-line-navigation/reverse-search.gif)
 
 I hope you find these commands helpful, and they make working on the command
 line a little more enjoyable!  And remember, there are plenty more shortcuts,
