@@ -259,7 +259,7 @@
 		padding: 15px 15px 5em 15px;
 	}
 
-		.wrapper .title
+		.wrapper .section-title
 		{
 			font-size: 0.9em;
 			width: 18em;
@@ -271,8 +271,8 @@
 			padding-top: 0.5em;
 		}
 
-			.wrapper .title:before,
-			.wrapper .title:after
+			.wrapper .section-title:before,
+			.wrapper .section-title:after
 			{
 				height: 15px;
 				bottom: -15px;

@@ -260,6 +260,10 @@ article > :last-child
     margin-bottom: 0;
 }
 
+.article-header h1 {
+    color: #e97770 !important;
+}
+
 section:last-child,
 article:last-child
 {
@@ -544,7 +548,7 @@ ol.default li
     position: relative;
 }
 
-.wrapper .title
+.wrapper .section-title
 {
     position: absolute;
     top: 0;
@@ -556,7 +560,7 @@ ol.default li
     letter-spacing: 0.25em;
 }
 
-.wrapper .title:before
+.wrapper .section-title:before
 {
     content: '';
     position: absolute;
@@ -567,7 +571,7 @@ ol.default li
     background: url('images/shadow.png');
 }
 
-.wrapper .title:after
+.wrapper .section-title:after
 {
     content: '';
     position: absolute;
@@ -590,7 +594,7 @@ ol.default li
     color: rgba(255,255,255,0.75);
 }
 
-.wrapper.style1 .title
+.wrapper.style1 .section-title
 {
     background: #e97770 url('images/overlay.png');
     color: #fff;
@@ -614,7 +618,7 @@ ol.default li
     background: #fff;
 }
 
-.wrapper.style2 .title
+.wrapper.style2 .section-title
 {
     background: #fff;
     color: #484d55;
@@ -625,7 +629,7 @@ ol.default li
     background: #f3f3f3 url('images/overlay.png');
 }
 
-.wrapper.style3 .title
+.wrapper.style3 .section-title
 {
     background: #f3f3f3 url('images/overlay.png');
     color: #484d55;
@@ -731,7 +735,7 @@ ol.default li
     box-shadow: inset 0px 0px 2px 0px rgba(255,255,255,0.75);
 }
 
-#footer-wrapper .title
+#footer-wrapper .section-title
 {
     background: #282b34 url('images/overlay.png');
     color: #eee;
@@ -866,4 +870,8 @@ ol.default li
 #copyright a:hover
 {
     color: #fff;
+}
+
+#disqus_thread {
+    margin-top: 3em;
 }

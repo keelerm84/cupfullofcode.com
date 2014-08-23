@@ -1,1 +1,8 @@
-<%- partial('_partial/archive', {pagination: config.tag, index: true}) %>
+<div class="wrapper style2">
+    <div class="section-title">
+        <%= page.tag %>
+    </div>
+    <div id="main" class="container">
+        <%- partial('_partial/archive', {pagination: config.tag, index: true}) %>
+    </div>
+</div>

@@ -32,7 +32,7 @@
 		article
 		{
 		}
-		
+
 			section > .last-child,
 			article > .last-child
 			{
@@ -44,7 +44,7 @@
 			{
 				margin-bottom: 0;
 			}
-		
+
 /*********************************************************************************/
 /* Wrappers                                                                      */
 /*********************************************************************************/
@@ -53,17 +53,17 @@
 	{
 	}
 
-		.wrapper .title:before,
-		.wrapper .title:after
+		.wrapper .section-title:before,
+		.wrapper .section-title:after
 		{
 			display: none;
     	}
- 
+
  	#header-wrapper
 	{
 		-ms-behavior: url('css/ie/backgroundsize.min.htc');
 	}
-	
+
 /*********************************************************************************/
 /* Copyright                                                                     */
 /*********************************************************************************/
