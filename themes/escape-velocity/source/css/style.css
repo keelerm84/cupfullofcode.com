@@ -515,6 +515,20 @@ ol.default li
     text-align: center;
 }
 
+#page-nav a {
+    text-decoration: none;
+}
+
+#page-nav .page-number,
+#page-nav .page-extend {
+    padding: 0.3em;
+}
+
+#page-nav .current {
+    background-color: #e97770;
+    color: #fff;
+}
+
 /*********************************************************************************/
 /* Icons                                                                         */
 /*********************************************************************************/
