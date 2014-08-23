@@ -7,17 +7,36 @@ tags:
   - emacs
   - elisp
   - snippets
+markdown:
+    gfm: false
 ---
 
-Any editor worth its salt has some provision for text snippet expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs is certainly no exception. If you're not familiar with the concept of snippets, the basic idea involves defining a keyword, which when followed with some trigger (keyboard shortcut or menu option), replaces that keyword with some predefined text. This functionality is a great boost to productivity as it prevents the developer from having to manually type potentially hundreds or thousands of lines of relatively boilerplate code.<!-- more -->
+Any editor worth its salt has some provision for text snippet
+expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
+is certainly no exception. If you're not familiar with the concept of snippets,
+the basic idea involves defining a keyword, which when followed with some
+trigger (keyboard shortcut or menu option), replaces that keyword with some
+predefined text. This functionality is a great boost to productivity as it
+prevents the developer from having to manually type potentially hundreds or
+thousands of lines of relatively boilerplate code.<!-- more -->
 
 ## YASnippet
 
-Like nearly all things in Emacs, there are a number of available packages that provide this feature. The one I'll be discussing today is [YASnippet (Yet Another Snippet)](https://github.com/capitaomorte/yasnippet). The installation instructions are straightforward and minimal, so I won't bother covering them here. Instead, I'll get right into the meat of the extension.
+Like nearly all things in Emacs, there are a number of available packages that
+provide this feature. The one I'll be discussing today is
+[YASnippet (Yet Another Snippet)](https://github.com/capitaomorte/yasnippet). The
+installation instructions are straightforward and minimal, so I won't bother
+covering them here. Instead, I'll get right into the meat of the extension.
 
 ## Plain Text Expansion
 
-The most basic functionality any snippet expansion package can offer is straight text replacement. At first blush, this doesn't seem terribly helpful, but let's consider an example. Suppose I want to include a copy of the GNU Public License in my project. Copying and pasting such a lengthy license would quickly grow tiresome for each project you work on. But with the help of YASnippet, it's as painless as defining the below snippet and then typing `gpl3` and pressing `TAB` to expand.
+The most basic functionality any snippet expansion package can offer is
+straight text replacement. At first blush, this doesn't seem terribly helpful,
+but let's consider an example. Suppose I want to include a copy of the GNU
+Public License in my project. Copying and pasting such a lengthy license would
+quickly grow tiresome for each project you work on. But with the help of
+YASnippet, it's as painless as defining the below snippet and then typing
+`gpl3` and pressing `TAB` to expand.
 
 {% codeblock lang:text %}
 # name : GPLv3
@@ -37,11 +56,23 @@ software and other kinds of works.
 [...]
 {% endcodeblock %}
 
-You will notice defining this snippet was incredibly easy. The `#name : GPLv3` line defines a common name for the snippet. The keyword we will use to trigger the expansion is defined by `# key: gpl3`. Anything that follows the line `# --` will be the replacement text that is inserted when our snippet is expanded. Phew! That sure saved us a ton of typing. But that's barely scratching the surface.
+You will notice defining this snippet was incredibly easy. The `#name : GPLv3`
+line defines a common name for the snippet. The keyword we will use to trigger
+the expansion is defined by `# key: gpl3`. Anything that follows the line `#
+--` will be the replacement text that is inserted when our snippet is
+expanded. Phew! That sure saved us a ton of typing. But that's barely
+scratching the surface.
 
 ## Tab Stops
 
-While simple text replacement does have its place, it would be more beneficial if we could add a level of interactivity to the expansion process. This is where tab stop fields enter the scene. A lot of the boilerplate code a developer writes is similar, but not quite identical. For example, for loops follow the same structure, but the initial and terminating conditions, increment values, and variable names are likely to differ in some regard, so simple text expansion isn't quite good enough. So let's define the following snippet.
+While simple text replacement does have its place, it would be more beneficial
+if we could add a level of interactivity to the expansion process. This is
+where tab stop fields enter the scene. A lot of the boilerplate code a
+developer writes is similar, but not quite identical. For example, for loops
+follow the same structure, but the initial and terminating conditions,
+increment values, and variable names are likely to differ in some regard, so
+simple text expansion isn't quite good enough. So let's define the following
+snippet.
 
 {% codeblock lang:text %}
 # name : for
@@ -52,13 +83,33 @@ for($1; $2; $3) {
 }
 {% endcodeblock %}
 
-The `$N` values will act as tab stops for your cursor when the snippet is expanded. This means, after expansion, my cursor will stop at `$1`, allowing me to specify a value of my choosing. As I successively hit `TAB`, I will move through the other tab stops, in numerical order. Upon exiting the expansion, my cursor will end at `$0`, which is a special `$N` type marker. It should be noted that each of the tab stops can also be defined with default values, using the syntax `${N:default value}`. If the defined default value is sufficient, you can simply tab past it and continue on your way.
+The `$N` values will act as tab stops for your cursor when the snippet is
+expanded. This means, after expansion, my cursor will stop at `$1`, allowing me
+to specify a value of my choosing. As I successively hit `TAB`, I will move
+through the other tab stops, in numerical order. Upon exiting the expansion, my
+cursor will end at `$0`, which is a special `$N` type marker. It should be
+noted that each of the tab stops can also be defined with default values, using
+the syntax `${N:default value}`. If the defined default value is sufficient,
+you can simply tab past it and continue on your way.
 
 ## Mirrored Fields
 
-While that is pretty awesome, there is a bit of a downside there. In each of the three stops, if I was using the variable `i`, I would have to type that in 3 times. `i` isn't so bad, but if my variable is `anExtremelyLongAndOverlyVerboseVariable`, that is tedious and error prone. Luckily for us, YASnippet has the answer, and it is mirrored fields. Mirrored fields allow you to type something in once, and have it repeated throughout the snippet at other marked placeholders. The initial tab stop should be defined as `${N:enumerate}` and each place you want that information mirrored should use the standard tab notation. Let's see that in action!
+While that is pretty awesome, there is a bit of a downside there. In each of
+the three stops, if I was using the variable `i`, I would have to type that in
+3 times. `i` isn't so bad, but if my variable is
+`anExtremelyLongAndOverlyVerboseVariable`, that is tedious and error
+prone. Luckily for us, YASnippet has the answer, and it is mirrored
+fields. Mirrored fields allow you to type something in once, and have it
+repeated throughout the snippet at other marked placeholders. The initial tab
+stop should be defined as `${N:enumerate}` and each place you want that
+information mirrored should use the standard tab notation. Let's see that in
+action!
 
-A common style you'll see in code is to define an if / while / for block, and then include a comment at the bottom that reminds the reader of the condition we're closing. YASnippet can certainly help us with this. Check out the snippet below. Type in the condition once, have it included twice. Sweet. Converting the `for` snippet is left as an exercise to the reader.
+A common style you'll see in code is to define an if / while / for block, and
+then include a comment at the bottom that reminds the reader of the condition
+we're closing. YASnippet can certainly help us with this. Check out the snippet
+below. Type in the condition once, have it included twice. Sweet. Converting
+the `for` snippet is left as an exercise to the reader.
 
 {% codeblock lang:text %}
 if (${1:enumerate})
@@ -69,9 +120,16 @@ $0
 
 ## Embedded Lisp
 
-While the above examples have been awesome, the real power of YASnippet has yet to be revealed. Not only can you include straight text, simple tab stops and mirrored fields, but you can even include elisp code! The realm of possibility just got ridiculous.
+While the above examples have been awesome, the real power of YASnippet has yet
+to be revealed. Not only can you include straight text, simple tab stops and
+mirrored fields, but you can even include elisp code! The realm of possibility
+just got ridiculous.
 
-Let's look at an example from the C++ [QT](http://qt-project.org/) world. When defining QT UI classes, there is some standard code that must be included each time. Combining the power of mirrored fields with elisp, we can define the following snippets. You can see them in action on [YouTube](http://youtu.be/dlDvDNnsYr4).
+Let's look at an example from the C++ [QT](http://qt-project.org/) world. When
+defining QT UI classes, there is some standard code that must be included each
+time. Combining the power of mirrored fields with elisp, we can define the
+following snippets. You can see them in action on
+[YouTube](http://youtu.be/dlDvDNnsYr4).
 
 {% codeblock lang:text %}
 # name: QT UI class ... { ... }
@@ -113,11 +171,20 @@ $1::~$1() {
 }
 {% endcodeblock %}
 
-As you can see, the syntax for including elisp is similar to providing default values for tab stop fields, except all the power of elisp is unleashed!  YASnippet provides a handy placeholder, `yas/text` which represents the text that is being mirrored in the field. Using this, you can easily camel case certain words, upper or lowercase sections of code, and more. But you're not limited to just built-in functionality. You can define entirely new functions of code and reference them just like anything else.
+As you can see, the syntax for including elisp is similar to providing default
+values for tab stop fields, except all the power of elisp is unleashed!
+YASnippet provides a handy placeholder, `yas/text` which represents the text
+that is being mirrored in the field. Using this, you can easily camel case
+certain words, upper or lowercase sections of code, and more. But you're not
+limited to just built-in functionality. You can define entirely new functions
+of code and reference them just like anything else.
 
 ## Putting It All Together
 
-What follows are a few elisp functions I have defined and a snippet that makes use of them. This snippet will generate the skeleton for a PHP class, including the namespace at the top. As all of the building blocks have been covered earlier in this post, I'll just briefly touch on each portion.
+What follows are a few elisp functions I have defined and a snippet that makes
+use of them. This snippet will generate the skeleton for a PHP class, including
+the namespace at the top. As all of the building blocks have been covered
+earlier in this post, I'll just briefly touch on each portion.
 
 {% codeblock lang:lisp %}
 (defun find-git-repo (dir)
@@ -128,7 +195,11 @@ What follows are a few elisp functions I have defined and a snippet that makes u
       (find-git-repo (expand-file-name "../" dir)))))
 {% endcodeblock %}
 
-This function starts looking within a specified directory for the existing of a .git directory, which would signify we are at the top level of a git repository. If it doesn't find it, it keeps looking up the directory structure until it either succeeds, or reaches the root. If it finds it, we return that directory. Otherwise, we'll return nil.
+This function starts looking within a specified directory for the existing of a
+.git directory, which would signify we are at the top level of a git
+repository. If it doesn't find it, it keeps looking up the directory structure
+until it either succeeds, or reaches the root. If it finds it, we return that
+directory. Otherwise, we'll return nil.
 
 {% codeblock lang:lisp %}
 (defun find-project-root ()
@@ -138,7 +209,11 @@ This function starts looking within a specified directory for the existing of a 
     (or (find-git-repo (buffer-file-name)) (file-name-directory (buffer-file-name)))))
 {% endcodeblock %}
 
-Using our find-git-repo as a spring board, this function will determine any project's root directory. As I use [eproject](https://github.com/jrockway/eproject) for a lot of my work, I first check to see if the `eproject-root` variable is defined. If it isn't, I'll fall back to looking for a git repo.
+Using our find-git-repo as a spring board, this function will determine any
+project's root directory. As I use
+[eproject](https://github.com/jrockway/eproject) for a lot of my work, I first
+check to see if the `eproject-root` variable is defined. If it isn't, I'll fall
+back to looking for a git repo.
 
 {% codeblock lang:lisp %}
 (defun file-path-to-namespace ()
@@ -152,7 +227,9 @@ Using our find-git-repo as a spring board, this function will determine any proj
   )
 {% endcodeblock %}
 
-This function will take the current buffer path, find the project root it is included in, and convert it into a PHP namespace with the portion of the path containing the project root removed.
+This function will take the current buffer path, find the project root it is
+included in, and convert it into a PHP namespace with the portion of the path
+containing the project root removed.
 
 {% codeblock lang:text %}
 # name : php-namespaced-class
@@ -200,4 +277,8 @@ class NewUtil
 }
 {% endcodeblock %}
 
-As you can see, the power of YASnippet is incredible. Be sure to check out the YASnippet repo for more examples of snippets that are included in the default installation. If any of you are currently using it, I'd love to see some of the snippets you use. And of course, if you know of ways to improve my examples, please let me know! Happy coding.
+As you can see, the power of YASnippet is incredible. Be sure to check out the
+YASnippet repo for more examples of snippets that are included in the default
+installation. If any of you are currently using it, I'd love to see some of the
+snippets you use. And of course, if you know of ways to improve my examples,
+please let me know! Happy coding.
