@@ -1,15 +1,5 @@
 <article id="<%= page.layout %>-<%= page.slug %>" class="article article-type-<%= page.layout %>" itemscope itemprop="blogpage">
-  <div class="article-meta">
-    <%- partial('page/date', {class_name: 'article-date', date_format: null}) %>
-    <%- partial('page/category') %>
-  </div>
   <div class="article-inner">
-    <%- partial('page/gallery') %>
-    <% if (page.link || page.title){ %>
-      <header class="article-header">
-        <%- partial('page/title', {class_name: 'article-title'}) %>
-      </header>
-    <% } %>
     <div class="article-entry" itemprop="articleBody">
         <%- page.content %>
         <%- partial('_widget/recent_posts') %>
