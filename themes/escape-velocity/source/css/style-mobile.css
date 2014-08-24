@@ -101,11 +101,6 @@ ul.actions li
 {
 }
 
-.feature-list section
-{
-    border-top: solid 1px #eee;
-}
-
 /* Ugh ... disgusting. */
 .feature-list > div > div:first-child > div:first-child > section
 {
@@ -417,5 +412,9 @@ ul.actions li
 }
 
 .resume h2, .resume h3, .resume h4 {
+    margin-bottom: 0;
+}
+
+.project-title {
     margin-bottom: 0;
 }
