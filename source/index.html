@@ -19,13 +19,13 @@ layout: index
                 <div class="row">
                     <div class="6u">
                         <section class="justify">
-                            <h3 class="icon fa-user"><a href="/about">About Me</a></h3>
+                            <h3 class="icon fa-user"><a href="<%- url_for('/about') %>">About Me</a></h3>
                             <p>I have always prided myself in having a strong work ethic. My commitment to my work has always been a source of great honor, and something my previous employers have always admired.</p>
                         </section>
                     </div>
                     <div class="6u">
                         <section class="justify">
-                            <h3 class="icon fa-suitcase"><a href="/portfolio">Portfolio</a></h3>
+                            <h3 class="icon fa-suitcase"><a href="<%- url_for('/portfolio') %>">Portfolio</a></h3>
                             <p>See examples of my work spanning a variety of languages, including PHP, C++, Node.js, Ruby, and Python, ranging from desktop applications to web applications to command line utilities.</p>
                         </section>
                     </div>
@@ -33,13 +33,13 @@ layout: index
                 <div class="row">
                     <div class="6u">
                         <section class="justify">
-                            <h3 class="icon fa-file-text"><a href="/resume">Resume</a></h3>
+                            <h3 class="icon fa-file-text"><a href="<%- url_for('/resume') %>">Resume</a></h3>
                             <p>My full resume is available for review. Whether you're looking for contract work or full-time employment, my dedication, work ethic, and attention to detail make me a perfect fit for the job.</p>
                         </section>
                     </div>
                     <div class="6u">
                         <section class="justify">
-                            <h3 class="icon fa-pencil"><a href="/archives">Blog</a></h3>
+                            <h3 class="icon fa-pencil"><a href="<%- url_for('/archives') %>">Blog</a></h3>
                             <p>More than anything else, I love learning.  Along with my own personal growth, I enjoy helping others learn.  That's why I occasionally blog about the things I've done or new technologies I have stumbled across.</p>
                         </section>
                     </div>
