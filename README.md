@@ -13,7 +13,7 @@ In order to build this site, you must do the following:
     hexo generate
     hexo server
 
-## Deployemtn
+## Deployment
 
 This site is hosted with github pages.  To deploy:
 
