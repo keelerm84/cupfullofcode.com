@@ -895,6 +895,12 @@ ol.default li
     margin-top: 3em;
 }
 
+code {
+    background: #efefea;
+    color: #282b34;
+    padding: 0.2em;
+}
+
 .article-entry pre,
 .article-entry code {
     font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
