@@ -12,8 +12,8 @@ language: en
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://cupfullofcode.com
-root: /
+url: http://keelerm84.github.io/cupfullofcode.com
+root: /cupfullofcode.com
 permalink: blog/:year/:month/:day/:title/
 tag_dir: tags
 archive_dir: archives
@@ -87,4 +87,6 @@ exclude_generator:
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: github
+  repo: https://github.com/keelerm84/cupfullofcode.com.git
+  branch: gh-pages
