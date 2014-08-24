@@ -71,8 +71,8 @@ strong, b
 
 blockquote
 {
-    border-left: solid 0.5em #ddd;
-    padding: 0 0 0 2em;
+    border-left: solid 0.4em #efefef;
+    padding: 0 0 0 1.3em;
     font-style: italic;
 }
 
@@ -1055,4 +1055,29 @@ figure.highlight {
 .accordion .content h3 a {
     color: #e97770;
     font-size: 2em;
+}
+
+.resume h2 {
+    font-size: 2em;
+    color: #e97770;
+    line-height: 1.5em;
+}
+
+.resume h3 {
+    font-size: 1.2em;
+    color: #282b34;
+    font-weight: normal;
+}
+
+.resume section {
+    margin-bottom: 2em;
+}
+
+.resume blockquote {
+    margin: 2em 0;
+}
+
+.resume ul {
+    list-style-type: disc;
+    list-style-position: inside;
 }
