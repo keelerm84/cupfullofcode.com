@@ -21,6 +21,7 @@ college, I figured it was high time to start the learning process.
 Recently, a friend of mine stumbled upon this cute little code monkey on
 someone's Stackoverflow profile.
 
+{% codeblock lang:text %}
           __
      w  c(..)o  (
       \__(-)   __)
@@ -29,6 +30,7 @@ someone's Stackoverflow profile.
         m /|
          | \
          m  m
+{% endcodeblock %}
 
 Quite naturally I thought, "I should make him dance."  As this seemed
 relatively simple, I decided to tackle this with Elisp.
