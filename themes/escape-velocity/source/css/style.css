@@ -699,6 +699,10 @@ ol.default li
     color: #fff;
 }
 
+#footer-wrapper section + section {
+    margin-top: 1em;
+}
+
 #footer-wrapper hr
 {
     border-top-color: #333;

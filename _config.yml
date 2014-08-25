@@ -90,3 +90,8 @@ deploy:
   type: github
   repo: https://github.com/keelerm84/cupfullofcode.com.git
   branch: gh-pages
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20
