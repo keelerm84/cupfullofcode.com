@@ -12,6 +12,12 @@
 /* Basic                                                                         */
 /*********************************************************************************/
 
+#titleBar .title
+{
+    display: none;
+}
+
+
 body, input, textarea, select
 {
     font-family: 'Source Sans Pro', sans-serif;
