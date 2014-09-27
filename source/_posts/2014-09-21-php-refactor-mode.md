@@ -27,10 +27,10 @@ the behavior of the system.
 
 In Martin Fowler's book,
 [Refactoring: Improving the Design of Existing Code](http://martinfowler.com/books/refactoring.html),
-he outlined a variety of common refactoring patterns, and outlined the
-necessary steps to execute these methods safely and efficiently.  While the
-steps given are excellent, to perform them manually is not only tedious, but
-horribly error prone.
+he discusses a variety of common refactoring patterns, outlining the necessary
+steps to execute these methods safely and efficiently.  While the steps given
+are excellent, to perform them manually is not only tedious, but horribly error
+prone.
 
 While some IDEs provide automated support for such refactorings, text editors
 like vim and emacs do not.  As a long time user of both (with emacs being my
@@ -52,7 +52,7 @@ I tried out this tool for a while and absolutely loved the results.  The
 php-refactoring-browser performed remarkably well and provided me with a
 solution I had desperately been seeking.  But alas, there was a problem.
 
-While I absolutely love the command line, using the php-refactoring-browser
+While I love the command-line, using the php-refactoring-browser
 directly was time consuming and frankly, quite annoying.  Each refactoring
 method requires a decent number of arguments, including the file and associated
 line numbers to operate on.
@@ -73,14 +73,15 @@ apply the patch, and then refresh the file in my editor.
 
 Being an enthusiastic user of emacs, I knew there had to be a better way.  So I
 set out to create a minor mode for working with the php-refactoring-browser.
-php-refactor-mode is the result.
+[php-refactor-mode](https://github.com/keelerm84/php-refactor-mode.el) is the
+result.
 
 This minor mode allows you to quickly perform a variety of the refactoring
 methods available through the php-refactoring-browser with a few short
 keystrokes.  Since emacs already knows the path to the file and any line
 numbers, I was relieved from ever having to think about that again.  And as for
 things emacs doesn't know, such as the new method name I might want to use, it
-can simply prompt it for me.
+can simply prompt me for it.
 
 Furthermore, the minor mode will automatically apply the resulting patch from
 the php-refactoring-browser and re-read the file contents so you can focus on
@@ -88,15 +89,18 @@ the work at hand, never breaking your flow to think about the steps for
 performing these refactorings.
 
 As a final benefit, each refactoring can be undone as one atomic operation.  So
-if you decide you don't like the results, `C-_` and proceed as if it never
+if you decide you don't like the results, press `C-_` and proceed as if it never
 happened.
 
 ## Let's See It In Action
 
-Below is a video demoing all the supported refactoring methods provided by
+Below is a video demoing some of the supported refactoring methods provided by
 php-refactor-mode.  If you're an emacs user who writes PHP, I hope you'll
 consider giving it a try.  The package is available for installation on melpa
 and of course the source code is available on github.
+
+<iframe width="100%" height="500" src="//www.youtube.com/embed/J9lbdtdsPi4"
+frameborder="0" allowfullscreen></iframe>
 
 # vim Users
 
