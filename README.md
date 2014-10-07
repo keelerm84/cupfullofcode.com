@@ -17,4 +17,5 @@ In order to build this site, you must do the following:
 
 This site is hosted with github pages.  To deploy:
 
+    hexo clean
     hexo deploy
