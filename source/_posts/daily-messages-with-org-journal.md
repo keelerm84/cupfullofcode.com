@@ -1,7 +1,7 @@
 title: Generate Daily Messages With Org Journal
 date: 2013-11-17 15:38
 categories:
-  - Utilities
+  - Emacs
 tags:
   - org-mode
   - emacs
