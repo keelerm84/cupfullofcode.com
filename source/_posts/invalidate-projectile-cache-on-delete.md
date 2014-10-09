@@ -57,14 +57,17 @@ The below snippet adds advice before the delete-file function is called.  It
 checks to see if the file is part of a projectile project; if the file is
 cached by projectile, it removes it from the cache.
 
+**NOTE** This defadvice function is no longer necessary.  This functionality has
+ now been incorporated into projectile.
+
 {% codeblock lang:lisp %}
 (defadvice delete-file (before purge-from-projectile-cache (filename &optional trash))
-  (if (projectile-project-p)
-      (progn
-        (let* ((true-filename (file-truename filename))
-               (relative-filename (file-relative-name true-filename (projectile-project-root))))
-          (if (projectile-file-cached-p relative-filename (projectile-project-root))
-              (projectile-purge-file-from-cache relative-filename))))))
+  (if (and (projectile-project-p) projectile-enable-caching)
+      (let* ((project-root (projectile-project-root))
+             (true-filename (file-truename filename))
+             (relative-filename (file-relative-name true-filename project-root)))
+        (if (projectile-file-cached-p relative-filename project-root)
+            (projectile-purge-file-from-cache relative-filename)))))
   
 (ad-activate 'delete-file)
 {% endcodeblock %}
