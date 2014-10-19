@@ -95,3 +95,19 @@ feed:
   type: atom
   path: atom.xml
   limit: 20
+
+alias:
+  a-note-on-recovering-from-innodb-corruption/: http://jacob-walker.com/blog/a-note-on-recovering-from-innodb-corruption.html
+  regular-expressions-101/: http://jacob-walker.com/blog/regular-expressions-101.html
+  spf13-vim-the-ultimate-vim-distribution/: http://jacob-walker.com/blog/spf13-vim.html
+  php-clone-and-shallow-vs-deep-copying/: http://jacob-walker.com/blog/php-clone-and-shallow-vs-deep-copying.html
+  invalidate-projectile-cache-on-delete/: blog/2014/10/06/invalidate-projectile-cache-on-delete/
+  performing-controlled-php-refactorings-in-emacs/: blog/2014/09/21/php-refactor-mode/
+  generate-daily-messages-with-org-journal/: blog/2013/11/17/daily-messages-with-org-journal/
+  embedding-code-snippets-in-org-mode/: blog/2013/11/22/embedding-code-snippets-in-org-mode/
+  efficient-command-line-navigation/: blog/2013/07/03/efficient-command-line-navigation/
+  git-from-init-through-commit/: /
+  snippet-expansion-with-yasnippet/: blog/2013/02/26/snippet-expansion-with-yasnippet/
+  automation-with-gnu-screen-and-ssh/: blog/2013/01/08/automation-with-gnu-screen-and-ssh/
+  dancing-code-monkey/: blog/2013/01/05/dancing-code-monkey/
+
