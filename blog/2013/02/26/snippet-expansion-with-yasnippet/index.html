@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Snippet Expansion with YASnippet | Cup Full of Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="Cup Full of Code" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+
+    <script src="/js/jquery.dropotron.min.js" type="text/javascript"></script>
+
+    <script src="/js/skel.min.js" type="text/javascript"></script>
+
+    <script src="/js/skel-layers.min.js" type="text/javascript"></script>
+
+    <script src="/js/init.js" type="text/javascript"></script>
+
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css" type="text/css">
+
+        <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+        <link rel="stylesheet" href="/css/style-desktop.css" type="text/css">
+
+    </noscript>
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+</head>
+
+<body class="no-sidebar">
+  <div id="container">
+    <div id="wrap">
+      <div id="header-wrapper" class="wrapper">
+    <div id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="index.html">Cup Full of Code</a></h1>
+            <p>The personal site of Matthew M. Keeler</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/resume">Resume</a></li>
+                <li><a href="/archives">Blog</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+      <div class="outer">
+        <section><div class="wrapper style2">
+    <div class="section-title">
+        <a href="/blog/2013/02/26/snippet-expansion-with-yasnippet/" class="article-date">
+  <time datetime="2013-02-26T16:35:00.000Z" itemprop="datePublished">Feb 26 2013</time>
+</a>
+    </div>
+    <div id="main" class="container">
+        <article id="post-snippet-expansion-with-yasnippet" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      Snippet Expansion with YASnippet
+    </h1>
+  
+
+        </header>
+    
+        <div class="article-entry" itemprop="articleBody">
+            
+                <p>Any editor worth its salt has some provision for text snippet
+expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
+is certainly no exception. If you’re not familiar with the concept of snippets,
+the basic idea involves defining a keyword, which when followed with some
+trigger (keyboard shortcut or menu option), replaces that keyword with some
+predefined text. This functionality is a great boost to productivity as it
+prevents the developer from having to manually type potentially hundreds or
+thousands of lines of relatively boilerplate code.<a id="more"></a></p>
+<h2 id="YASnippet">YASnippet</h2>
+<p>Like nearly all things in Emacs, there are a number of available packages that
+provide this feature. The one I’ll be discussing today is
+<a href="https://github.com/capitaomorte/yasnippet" target="_blank" rel="external">YASnippet (Yet Another Snippet)</a>. The
+installation instructions are straightforward and minimal, so I won’t bother
+covering them here. Instead, I’ll get right into the meat of the extension.</p>
+<h2 id="Plain_Text_Expansion">Plain Text Expansion</h2>
+<p>The most basic functionality any snippet expansion package can offer is
+straight text replacement. At first blush, this doesn’t seem terribly helpful,
+but let’s consider an example. Suppose I want to include a copy of the GNU
+Public License in my project. Copying and pasting such a lengthy license would
+quickly grow tiresome for each project you work on. But with the help of
+YASnippet, it’s as painless as defining the below snippet and then typing
+<code>gpl3</code> and pressing <code>TAB</code> to expand.</p>
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name : GPLv3</span></div><div class="line"><span class="comment"># key : gpl3</span></div><div class="line"><span class="comment"># --</span></div><div class="line">                    GNU GENERAL PUBLIC LICENSE</div><div class="line">                       Version <span class="number">3</span>, <span class="number">29</span> June <span class="number">2007</span></div><div class="line"></div><div class="line"> Copyright (C) <span class="number">2007</span> Free Software Foundation, Inc. <span class="attribute">http</span>:<span class="regexp">//</span>fsf.org/</div><div class="line"> Everyone <span class="keyword">is</span> permitted to copy <span class="keyword">and</span> distribute verbatim copies</div><div class="line"> <span class="keyword">of</span> <span class="keyword">this</span> license <span class="built_in">document</span>, but changing it <span class="keyword">is</span> <span class="keyword">not</span> allowed.</div><div class="line">  </div><div class="line">                            Preamble</div><div class="line">  </div><div class="line">  The GNU General Public License <span class="keyword">is</span> a free, copyleft license <span class="keyword">for</span></div><div class="line">software <span class="keyword">and</span> other kinds <span class="keyword">of</span> works.</div><div class="line">[...]</div></pre></figure>
+
+<p>You will notice defining this snippet was incredibly easy. The <code>#name : GPLv3</code>
+line defines a common name for the snippet. The keyword we will use to trigger
+the expansion is defined by <code># key: gpl3</code>. Anything that follows the line <code>#
+--</code> will be the replacement text that is inserted when our snippet is
+expanded. Phew! That sure saved us a ton of typing. But that’s barely
+scratching the surface.</p>
+<h2 id="Tab_Stops">Tab Stops</h2>
+<p>While simple text replacement does have its place, it would be more beneficial
+if we could add a level of interactivity to the expansion process. This is
+where tab stop fields enter the scene. A lot of the boilerplate code a
+developer writes is similar, but not quite identical. For example, for loops
+follow the same structure, but the initial and terminating conditions,
+increment values, and variable names are likely to differ in some regard, so
+simple text expansion isn’t quite good enough. So let’s define the following
+snippet.</p>
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name : for</span></div><div class="line"><span class="comment"># key : for</span></div><div class="line"><span class="comment"># --</span></div><div class="line"><span class="keyword">for</span>(<span class="variable">$1</span>; <span class="variable">$2</span>; <span class="variable">$3</span>) {</div><div class="line">  <span class="variable">$0</span></div><div class="line">}</div></pre></figure>
+
+<p>The <code>$N</code> values will act as tab stops for your cursor when the snippet is
+expanded. This means, after expansion, my cursor will stop at <code>$1</code>, allowing me
+to specify a value of my choosing. As I successively hit <code>TAB</code>, I will move
+through the other tab stops, in numerical order. Upon exiting the expansion, my
+cursor will end at <code>$0</code>, which is a special <code>$N</code> type marker. It should be
+noted that each of the tab stops can also be defined with default values, using
+the syntax <code>${N:default value}</code>. If the defined default value is sufficient,
+you can simply tab past it and continue on your way.</p>
+<h2 id="Mirrored_Fields">Mirrored Fields</h2>
+<p>While that is pretty awesome, there is a bit of a downside there. In each of
+the three stops, if I was using the variable <code>i</code>, I would have to type that in
+3 times. <code>i</code> isn’t so bad, but if my variable is
+<code>anExtremelyLongAndOverlyVerboseVariable</code>, that is tedious and error
+prone. Luckily for us, YASnippet has the answer, and it is mirrored
+fields. Mirrored fields allow you to type something in once, and have it
+repeated throughout the snippet at other marked placeholders. The initial tab
+stop should be defined as <code>${N:enumerate}</code> and each place you want that
+information mirrored should use the standard tab notation. Let’s see that in
+action!</p>
+<p>A common style you’ll see in code is to define an if / while / for block, and
+then include a comment at the bottom that reminds the reader of the condition
+we’re closing. YASnippet can certainly help us with this. Check out the snippet
+below. Type in the condition once, have it included twice. Sweet. Converting
+the <code>for</code> snippet is left as an exercise to the reader.</p>
+<figure class="highlight text"><pre><div class="line"><span class="keyword">if</span> (<span class="variable">${1:enumerate}</span>)</div><div class="line">{</div><div class="line"><span class="variable">$0</span></div><div class="line">} // <span class="variable">$1</span></div></pre></figure>
+
+<h2 id="Embedded_Lisp">Embedded Lisp</h2>
+<p>While the above examples have been awesome, the real power of YASnippet has yet
+to be revealed. Not only can you include straight text, simple tab stops and
+mirrored fields, but you can even include elisp code! The realm of possibility
+just got ridiculous.</p>
+<p>Let’s look at an example from the C++ <a href="http://qt-project.org/" target="_blank" rel="external">QT</a> world. When
+defining QT UI classes, there is some standard code that must be included each
+time. Combining the power of mirrored fields with elisp, we can define the
+following snippets. You can see them in action on
+<a href="http://youtu.be/dlDvDNnsYr4" target="_blank" rel="external">YouTube</a>.</p>
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name: QT UI class ... { ... }</span></div><div class="line"><span class="comment"># key: uiclass</span></div><div class="line"><span class="comment"># --</span></div><div class="line"></div><div class="line"><span class="comment">#include &lt;$3&gt;</span></div><div class="line"></div><div class="line">namespace <span class="constant">Ui </span>{</div><div class="line">    class <span class="variable">$1</span>;</div><div class="line">}</div><div class="line"></div><div class="line">class <span class="variable">${</span><span class="number">1</span><span class="symbol">:Name</span>} <span class="symbol">:</span> public <span class="variable">${</span><span class="number">3</span><span class="symbol">:QWidget</span>}</div><div class="line">{</div><div class="line">    <span class="constant">Q_OBJECT</span></div><div class="line"></div><div class="line"><span class="symbol">public:</span></div><div class="line">    <span class="variable">$1</span>(<span class="variable">${</span><span class="number">2</span><span class="symbol">:QWidget</span> * parent = <span class="number">0</span>});</div><div class="line">    ~<span class="variable">$1</span>();</div><div class="line"></div><div class="line"><span class="symbol">private:</span></div><div class="line">    <span class="constant">Ui:</span><span class="symbol">:</span><span class="variable">$1</span> * ui;</div><div class="line">};</div></pre></figure>
+
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name: QT UI source</span></div><div class="line"><span class="comment"># key: outsource</span></div><div class="line"><span class="comment"># --</span></div><div class="line"><span class="comment">#include "ui_${1:$(downcase yas/text)}.h"</span></div><div class="line"><span class="comment">#include "${1:$(downcase yas/text)}.h"</span></div><div class="line"></div><div class="line"><span class="variable">${</span><span class="number">1</span><span class="symbol">:Name</span>}<span class="symbol">:</span><span class="symbol">:</span><span class="variable">$1</span>(<span class="constant">QWidget </span>* parent) <span class="symbol">:</span> <span class="variable">${</span><span class="number">2</span><span class="symbol">:QWidget</span>}(parent), ui(new <span class="constant">Ui:</span><span class="symbol">:</span><span class="variable">$1</span>) {</div><div class="line">  ui-&gt;setupUi(this);</div><div class="line">  <span class="variable">$0</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="variable">$1</span><span class="symbol">:</span><span class="symbol">:~</span><span class="variable">$1</span>() {</div><div class="line">}</div></pre></figure>
+
+<p>As you can see, the syntax for including elisp is similar to providing default
+values for tab stop fields, except all the power of elisp is unleashed!
+YASnippet provides a handy placeholder, <code>yas/text</code> which represents the text
+that is being mirrored in the field. Using this, you can easily camel case
+certain words, upper or lowercase sections of code, and more. But you’re not
+limited to just built-in functionality. You can define entirely new functions
+of code and reference them just like anything else.</p>
+<h2 id="Putting_It_All_Together">Putting It All Together</h2>
+<p>What follows are a few elisp functions I have defined and a snippet that makes
+use of them. This snippet will generate the skeleton for a PHP class, including
+the namespace at the top. As all of the building blocks have been covered
+earlier in this post, I’ll just briefly touch on each portion.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-git-repo <span class="list">(<span class="title">dir</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">string=</span> <span class="string">"/"</span> dir)</span></span></div><div class="line">      <span class="literal">nil</span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">file-exists-p</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">".git/"</span> dir)</span>)</span></span></div><div class="line">        dir</div><div class="line">      <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">"../"</span> dir)</span>)</span>)))</div></pre></figure>
+
+<p>This function starts looking within a specified directory for the existing of a
+.git directory, which would signify we are at the top level of a git
+repository. If it doesn’t find it, it keeps looking up the directory structure
+until it either succeeds, or reaches the root. If it finds it, we return that
+directory. Otherwise, we’ll return nil.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-project-root <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">ignore-errors</span> <span class="list">(<span class="title">eproject-root</span>)</span>)</span></span></div><div class="line">      <span class="list">(<span class="title">eproject-root</span>)</span></div><div class="line">    <span class="list">(<span class="title">or</span> <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span> <span class="list">(<span class="title">file-name-directory</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span>)</span>))</div></pre></figure>
+
+<p>Using our find-git-repo as a spring board, this function will determine any
+project’s root directory. As I use
+<a href="https://github.com/jrockway/eproject" target="_blank" rel="external">eproject</a> for a lot of my work, I first
+check to see if the <code>eproject-root</code> variable is defined. If it isn’t, I’ll fall
+back to looking for a git repo.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> file-path-to-namespace <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">let</span> <span class="list">(</span></span></div><div class="line">        <span class="list">(<span class="title">root</span> <span class="list">(<span class="title">find-project-root</span>)</span>)</span></div><div class="line">        <span class="list">(<span class="title">base</span> <span class="list">(<span class="title">file-name-nondirectory</span> buffer-file-name)</span>)</span></div><div class="line">        )</div><div class="line">    <span class="list">(<span class="title">substring</span> <span class="list">(<span class="title">replace-regexp-in-string</span> <span class="string">"/"</span> <span class="string">"\\"</span> <span class="list">(<span class="title">substring</span> buffer-file-name <span class="list">(<span class="title">length</span> root)</span> <span class="list">(<span class="title">*</span> <span class="number">-1</span> <span class="list">(<span class="title">length</span> base)</span>)</span>)</span> <span class="literal">t</span> <span class="literal">t</span>)</span> <span class="number">0</span> <span class="number">-1</span>)</span></div><div class="line">    )</div><div class="line">  )</div></pre></figure>
+
+<p>This function will take the current buffer path, find the project root it is
+included in, and convert it into a PHP namespace with the portion of the path
+containing the project root removed.</p>
+<figure class="highlight text"><pre><div class="line"># name : php-namespaced-<span class="keyword">class</span></div><div class="line"># key : <span class="keyword">class</span></div><div class="line"># --</div><div class="line">&lt;?php</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`</div><div class="line"> *</div><div class="line"> * <span class="javadoctag">@author</span> `(user-full-name)` `(if user-mail-address (concat "&lt;" user-mail-address "&gt;") "")`</div><div class="line"> */</div><div class="line"></div><div class="line">namespace `(file-path-to-namespace)`;</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * ${1:Description}</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> `<span class="params">(file-name-nondirectory (file-name-sans-extension (buffer-file-name)</span>))`</span></div><div class="line">{</div><div class="line">    $<span class="number">0</span></div><div class="line">}</div></pre></figure>
+
+<p>This final snippet hooks everything up. If I have a project at
+<code>/var/www/html/</code>, and I create a file NewUtil.php in say <code>lib/utils/</code>, this
+snippet will generate</p>
+<figure class="highlight php"><pre><div class="line"><span class="preprocessor">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * NewUtil</div><div class="line"> *</div><div class="line"> *<span class="phpdoc"> @author</span> Matthew M. Keeler &lt;keelerm@tortugas-llc.com&gt;</div><div class="line"> */</div><div class="line">  </div><div class="line"><span class="keyword">namespace</span> <span class="title">lib</span>\<span class="title">utils</span>;</div><div class="line">  </div><div class="line"><span class="comment">/**</span></div><div class="line"> * New Util description goes here</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewUtil</span></span></div><div class="line">{</div><div class="line">}</div></pre></figure>
+
+<p>As you can see, the power of YASnippet is incredible. Be sure to check out the
+YASnippet repo for more examples of snippets that are included in the default
+installation. If any of you are currently using it, I’d love to see some of the
+snippets you use. And of course, if you know of ways to improve my examples,
+please let me know! Happy coding.</p>
+
+        
+        </div>
+    </div>
+</article>
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+    </div>
+</div>
+</section>
+      </div>
+      <!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+    <div class="section-title">Links of interest</div>
+    <div id="footer" class="container">
+        <div class="row oneandhalf">
+            <div class="12u">
+
+                <section class="feature-list small">
+                    <div class="row">
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-envelope">Email</h3>
+                                <p>
+                                <a href="#">keelerm@tortugas-llc.com</a>
+                                </p>
+                            </section>
+                            <section>
+                                <h3 class="icon fa-rss">Subscribe</h3>
+                                <p>
+                                <a href="/atom.xml">Atom Feed</a>
+                                </p>
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-comment">Social</h3>
+                                <p>
+                                <a href="#">@keelerm84</a><br />
+                                <a href="#">github.com/keelerm84</a><br />
+                                <a href="#">youtube.com/user/keelerm84ify</a>
+                                </p>
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-tag">Tags</h3>
+                                
+  <div class="widget-wrap">
+    <p>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    </p>
+  </div>
+
+
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-folder-open">Categories</h3>
+                                
+    <p>
+    <a class="category-link" href="/categories/Emacs/">Emacs</a>, <a class="category-link" href="/categories/Emacs/PHP/">PHP</a>, <a class="category-link" href="/categories/Programming/">Programming</a>, <a class="category-link" href="/categories/Utilities/">Utilities</a>
+    </p>
+
+
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <hr />
+        <header class="style1">
+            <h2>There is no system but GNU, and Linux is one of its kernels.</h2>
+            <p>&mdash; St. IGNUcius</p>
+        </header>
+    </div>
+</div>
+
+    </div>
+    
+<script>
+  var disqus_shortname = 'cupfullofcode';
+  
+  var disqus_url = 'http://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/';
+  
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55725869-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </div>
+</body>
+</html>

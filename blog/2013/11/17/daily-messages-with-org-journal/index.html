@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Generate Daily Messages With Org Journal | Cup Full of Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="Cup Full of Code" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+
+    <script src="/js/jquery.dropotron.min.js" type="text/javascript"></script>
+
+    <script src="/js/skel.min.js" type="text/javascript"></script>
+
+    <script src="/js/skel-layers.min.js" type="text/javascript"></script>
+
+    <script src="/js/init.js" type="text/javascript"></script>
+
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css" type="text/css">
+
+        <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+        <link rel="stylesheet" href="/css/style-desktop.css" type="text/css">
+
+    </noscript>
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+</head>
+
+<body class="no-sidebar">
+  <div id="container">
+    <div id="wrap">
+      <div id="header-wrapper" class="wrapper">
+    <div id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="index.html">Cup Full of Code</a></h1>
+            <p>The personal site of Matthew M. Keeler</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/resume">Resume</a></li>
+                <li><a href="/archives">Blog</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+      <div class="outer">
+        <section><div class="wrapper style2">
+    <div class="section-title">
+        <a href="/blog/2013/11/17/daily-messages-with-org-journal/" class="article-date">
+  <time datetime="2013-11-17T20:38:00.000Z" itemprop="datePublished">Nov 17 2013</time>
+</a>
+    </div>
+    <div id="main" class="container">
+        <article id="post-daily-messages-with-org-journal" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      Generate Daily Messages With Org Journal
+    </h1>
+  
+
+        </header>
+    
+        <div class="article-entry" itemprop="articleBody">
+            
+                <p>One of the requirements of my job is to send out a daily message. This message
+should summarize what I did the day before, and what I hope to accomplish for
+the current day. At first, I would spend my day jumping from task to task, and
+then the next morning, I would rack my brain to make sure I included all the
+things I worked on.<a id="more"></a></p>
+<p>It didn’t take long to realize that this was no way to live. I definitely
+needed a better solution. So I started looking around.</p>
+<h2 id="Org_Journal">Org Journal</h2>
+<p>After hunting around for a bit, I came across Org Journal. It is a fantastic
+package for, as the name implies, writing journal entries. And since it’s built
+on top of Org Mode, I knew I had to give it a try.</p>
+<p>Once installed and configured, I can press, in my case, C-x j, and this will
+either start a new journal entry if one doesn’t already exist, or open an
+existing one. Each time a new entry is added, org-journal inserts a second
+level heading in the document, and stamps it with the time the entry was added.</p>
+<p>This was definitely a productivity win for me, and so I settled on it as my
+tool of choice.</p>
+<h2 id="Scratching_An_Itch">Scratching An Itch</h2>
+<p>Even though org-journal was assisting me in remembering everything I did on the
+previous day, I still had to format the entries into a suitable format and send
+them off to my boss. Accomplishing this was a multi-step process which I
+quickly grew tired of. I had to:</p>
+<ol>
+<li>Call M-x calendar and navigate to the previous day</li>
+<li>Press j to open that day’s journal entry</li>
+<li>C-x h to copy the entire entry</li>
+<li>C-x b <em>scratch</em> to switch over to my scratch buffer</li>
+<li>C-y to paste the journal contents in</li>
+<li>Remove any additional notes I had, strip out the top level headers and time stamps, and then add my plan for the current day.</li>
+</ol>
+<p>What a bunch of nonsense! I certainly wasn’t going to do that 5 days a week for
+the rest of my career.</p>
+<h2 id="Elisp_to_the_Rescue">Elisp to the Rescue</h2>
+<p>So naturally, I did what any Emacs user would do: I wrote some lisp. Before we
+get into the code, I should warn you about something. I’m still pretty new to
+lisp. If you’re an old hat at this stuff, I’m sure there are better ways to
+accomplish what I’m doing. And I would LOVE to hear about them. Please feel
+free to comment!</p>
+<p>Disclaimer aside, let’s get into the code.</p>
+<h3 id="What_Was_Yesterday">What Was Yesterday</h3>
+<p>The first thing I needed to accomplish was determining the date of the prior
+day. Like most people (I hope), I only work 5 days a week. So simply grabbing
+yesterday’s date wasn’t going to work. Instead, I need to keep subtracting a
+day’s worth of time from the current day, until I reached some time period that
+fell between Monday and Friday.</p>
+<p>That lead me to:</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> my/org-find-previous-workday <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">let*</span> <span class="list">(<span class="list">(<span class="title">time</span> <span class="list">(<span class="title">time-subtract</span> <span class="list">(<span class="title">current-time</span>)</span> <span class="list">(<span class="title">seconds-to-time</span> <span class="number">86400</span>)</span>)</span>)</span></span></span></div><div class="line">         <span class="list">(<span class="title">workdays</span> <span class="quoted">'(<span class="string">"Monday"</span> <span class="string">"Tuesday"</span> <span class="string">"Wednesday"</span> <span class="string">"Thursday"</span> <span class="string">"Friday"</span>)</span>)</span>)</div><div class="line">    <span class="list">(<span class="title">while</span> <span class="list">(<span class="title">not</span> <span class="list">(<span class="title">member</span> <span class="list">(<span class="title">format-time-string</span> <span class="string">"%A"</span> time)</span> workdays)</span>)</span></span></div><div class="line">      <span class="list">(<span class="title">setq</span> time <span class="list">(<span class="title">time-subtract</span> time <span class="list">(<span class="title">seconds-to-time</span> <span class="number">86400</span>)</span>)</span>)</span>)</div><div class="line">    time))</div></pre></figure>
+
+<h3 id="Grab_The_Tasks">Grab The Tasks</h3>
+<p>Once I knew the previous working day’s date, I needed to grab the journal
+entry’s content. Since I include notes and other references for each entry, and
+this email is supposed to be succinct, using the entire journal entry wasn’t
+sufficient. Instead, I needed to strip out just the second level headings,
+which include short summaries of what I’m working on.</p>
+<p>I wrote three functions to handle this, which are included below. The results
+of these three functions is to return a list of all the headers in the org file
+with a level I specified. If I don’t specify a level, it will return all header
+levels.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> my/org-should-include-current <span class="list">(<span class="title">level</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">progn</span></span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">and</span></span></span></div><div class="line">         <span class="list">(<span class="title">outline-on-heading-p</span>)</span></div><div class="line">         <span class="list">(<span class="title">or</span></span></div><div class="line">          <span class="list">(<span class="title">eq</span> <span class="literal">nil</span> level)</span> <span class="list">(<span class="title">eq</span> level <span class="list">(<span class="title">org-outline-level</span>)</span>)</span>))</div><div class="line">        <span class="literal">t</span></div><div class="line">      <span class="literal">nil</span>)))</div><div class="line"></div><div class="line"><span class="list">(<span class="title">defun</span> my/org-get-current-header <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">progn</span></span></div><div class="line">    <span class="list">(<span class="title">setq</span> beg <span class="list">(<span class="title">point</span>)</span>)</span></div><div class="line">    <span class="list">(<span class="title">outline-end-of-heading</span>)</span></div><div class="line">    <span class="list">(<span class="title">buffer-substring-no-properties</span> beg <span class="list">(<span class="title">point</span>)</span>)</span>))</div><div class="line"></div><div class="line"><span class="list">(<span class="title">defun</span> my/org-outline-headings-to-list <span class="list">(<span class="title">level</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">setq</span> headings <span class="quoted">'()</span>)</span></div><div class="line">  <span class="list">(<span class="title">show-all</span>)</span></div><div class="line">  <span class="list">(<span class="title">goto-char</span> <span class="list">(<span class="title">point-min</span>)</span>)</span></div><div class="line"></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">my/org-should-include-current</span> level)</span></span></div><div class="line">      <span class="list">(<span class="title">add-to-list</span> <span class="quoted">'headings</span> <span class="list">(<span class="title">my/org-get-current-header</span>)</span> <span class="literal">t</span>)</span>)</div><div class="line"></div><div class="line">  <span class="list">(<span class="title">while</span> <span class="list">(<span class="title">outline-next-heading</span>)</span></span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">my/org-should-include-current</span> level)</span></span></div><div class="line">        <span class="list">(<span class="title">add-to-list</span> <span class="quoted">'headings</span> <span class="list">(<span class="title">my/org-get-current-header</span>)</span> <span class="literal">t</span>)</span>))</div><div class="line">  headings)</div></pre></figure>
+
+<h3 id="Generating_The_Message">Generating The Message</h3>
+<p>At this point, I had all the data I needed to quickly generate my scrum
+message. All that was left was to hook it together, open a temp buffer with the
+formatted results, and then start filling in the current day’s goals.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> my/org-outline-create-scrum-message <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">let*</span> <span class="list">(<span class="list">(<span class="title">previous</span> <span class="list">(<span class="title">my/org-find-previous-workday</span>)</span>)</span>)</span></span></div><div class="line">    <span class="list">(<span class="title">setq</span> journal-file <span class="list">(<span class="title">concat</span> org-journal-dir <span class="list">(<span class="title">format-time-string</span> <span class="string">"%Y%m%d"</span> previous)</span>)</span>)</span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">file-exists-p</span> journal-file)</span></span></div><div class="line">        <span class="list">(<span class="title">progn</span></span></div><div class="line">          <span class="list">(<span class="title">switch-to-buffer</span> <span class="list">(<span class="title">find-file-noselect</span> journal-file)</span>)</span></div><div class="line">          <span class="list">(<span class="title">setq</span> headings <span class="list">(<span class="title">my/org-outline-headings-to-list</span> <span class="number">2</span>)</span>)</span></div><div class="line">          <span class="list">(<span class="title">switch-to-buffer</span> <span class="string">"*daily scrum*"</span>)</span></div><div class="line">          <span class="list">(<span class="title">erase-buffer</span>)</span></div><div class="line">          <span class="list">(<span class="title">insert</span> <span class="string">"* Yesterday\n"</span>)</span></div><div class="line">          <span class="list">(<span class="title">mapcar</span> <span class="list">(<span class="title">lambda</span><span class="list">(<span class="title">element</span>)</span></span></span></div><div class="line">                    <span class="list">(<span class="title">insert</span> <span class="list">(<span class="title">replace-regexp-in-string</span> <span class="string">"^** ..... "</span> <span class="string">"  - "</span> element)</span> <span class="string">"\n"</span>)</span>) headings)</div><div class="line">          <span class="list">(<span class="title">insert</span> <span class="string">"\n* Today\n  - "</span>)</span></div><div class="line">          <span class="list">(<span class="title">org-mode</span>)</span></div><div class="line">          <span class="list">(<span class="title">show-all</span>)</span>))))</div></pre></figure>
+
+<h2 id="Future_Expansion">Future Expansion</h2>
+<p>I have been using this method for the last couple of weeks to much success. It
+has saved me a ton of time, and has helped ensure that I account for every task
+I worked on during the previous day.</p>
+<p>There are a few things I would like to improve. The most obvious next step is
+to hook up gnus to my work email and generate this message in an actual email
+buffer. Then, once I’m finished typing, I can just send it off directly from
+Emacs instead of copy and pasting it into my mail client.</p>
+<p>The other thing I need to handle is skipped dates. If I take a vacation day, or
+there is a holiday, this code will just fail to generate a message template for
+me. It only goes back one day and then calls it quits after that. It wouldn’t
+take much to modify it to keep searching until it finds a day with an entry. I
+just haven’t gotten around to it yet.</p>
+<p>As I mentioned before, I’m sure the code could be improved. I would love to
+hear feedback from the community on what I could do better. Lisp is still
+pretty new to me, but I’ve been having a blast learning it.</p>
+<p>For those interested in seeing the code all in one place, or checking out the
+rest of my configuration, you can see it on GitHub.</p>
+<p>Thanks, and happy coding!</p>
+
+        
+        </div>
+    </div>
+</article>
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+    </div>
+</div>
+</section>
+      </div>
+      <!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+    <div class="section-title">Links of interest</div>
+    <div id="footer" class="container">
+        <div class="row oneandhalf">
+            <div class="12u">
+
+                <section class="feature-list small">
+                    <div class="row">
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-envelope">Email</h3>
+                                <p>
+                                <a href="#">keelerm@tortugas-llc.com</a>
+                                </p>
+                            </section>
+                            <section>
+                                <h3 class="icon fa-rss">Subscribe</h3>
+                                <p>
+                                <a href="/atom.xml">Atom Feed</a>
+                                </p>
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-comment">Social</h3>
+                                <p>
+                                <a href="#">@keelerm84</a><br />
+                                <a href="#">github.com/keelerm84</a><br />
+                                <a href="#">youtube.com/user/keelerm84ify</a>
+                                </p>
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-tag">Tags</h3>
+                                
+  <div class="widget-wrap">
+    <p>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    </p>
+  </div>
+
+
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-folder-open">Categories</h3>
+                                
+    <p>
+    <a class="category-link" href="/categories/Emacs/">Emacs</a>, <a class="category-link" href="/categories/Emacs/PHP/">PHP</a>, <a class="category-link" href="/categories/Programming/">Programming</a>, <a class="category-link" href="/categories/Utilities/">Utilities</a>
+    </p>
+
+
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <hr />
+        <header class="style1">
+            <h2>There is no system but GNU, and Linux is one of its kernels.</h2>
+            <p>&mdash; St. IGNUcius</p>
+        </header>
+    </div>
+</div>
+
+    </div>
+    
+<script>
+  var disqus_shortname = 'cupfullofcode';
+  
+  var disqus_url = 'http://cupfullofcode.com/blog/2013/11/17/daily-messages-with-org-journal/';
+  
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55725869-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </div>
+</body>
+</html>

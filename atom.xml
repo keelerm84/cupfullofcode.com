@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Cup Full of Code]]></title>
+  
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://cupfullofcode.com/"/>
+  <updated>2015-02-02T03:37:30.330Z</updated>
+  <id>http://cupfullofcode.com/</id>
+  
+  <author>
+    <name><![CDATA[Matthew Keeler]]></name>
+    <email><![CDATA[keelerm@tortugas-llc.com]]></email>
+  </author>
+  
+  <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Invalidate Projectile Cache on Delete]]></title>
+    <link href="http://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/"/>
+    <id>http://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</id>
+    <published>2014-10-07T01:36:39.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p><a href="https://github.com/bbatsov/projectile" target="_blank" rel="external">Projectile</a> is a staple of my emacs
+configuration.  In my opinion, it is one of the all time best packages
+available, along with <a href="https://github.com/jwiegley/org-mode" target="_blank" rel="external">org-mode</a> and
+<a href="https://github.com/magit/magit" target="_blank" rel="external">magit</a>.</p>
+<p>One of my most commonly used commands with projectile is helm-projectile.  This
+lets me locate any file in my project by pressing <code>C-c p h</code>.  Using the
+narrowing abilities of helm, I can quickly filter the list of options to
+exactly the one I want.<a id="more"></a></p>
+<p>Because I work on some projects that are extremely large in size, I have
+enabled projectiles caching mechanism.  This tells projectile to maintain a
+local cache of all the files within a project for faster searching.  You can
+enable this with <code>(setq projectile-enable-caching t)</code></p>
+<p>Projectile helps maintain the current state of this cache by adding a hook to
+find-file.  Whenever a new file is found or created, projectile will
+automatically add that new file to the cache.  This saves me from having to
+manually invalidate the cache with <code>C-c p i</code> every time a create a new file.</p>
+<p>However, if I delete a file, projectile does not automatically remove it from
+the cache.  The next time I search for a similarly named file, the deleted file
+will still show up in the helm list of candidates.  While not a deal breaker,
+it is certainly a source of annoyance for me.  Since emacs is all about
+tweaking your environment to eliminate those little headaches, I knew I had to
+fix it.</p>
+<p>At first, I thought adding a hook to delete-file would be the easy,
+straightforward fix.  I couldn’t find any documentation for a
+delete-file-hook.  Having tried to check out the source code, I realized that
+while find-file is implemented in lisp, delete-file is actually implemented in
+C.</p>
+<p>Having been unable to find a hook associated with this function, what was I do
+to?</p>
+<p>This is where defadvice comes in.  I won’t go into detail about how defadvice
+works, but the short version is that defadvice allows you to suggest behavior
+to emacs before, after, or around an invocation of a particular function.  You
+can read more about
+<a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html" target="_blank" rel="external">defadvice</a>
+in the manual.</p>
+<p>The below snippet adds advice before the delete-file function is called.  It
+checks to see if the file is part of a projectile project; if the file is
+cached by projectile, it removes it from the cache.</p>
+<p><strong>NOTE</strong> This defadvice function is no longer necessary.  This functionality has
+ now been incorporated into projectile.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defadvice</span> delete-file <span class="list">(<span class="title">before</span> purge-from-projectile-cache <span class="list">(<span class="title">filename</span> <span class="keyword">&amp;optional</span> trash)</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">and</span> <span class="list">(<span class="title">projectile-project-p</span>)</span> projectile-enable-caching)</span></span></div><div class="line">      <span class="list">(<span class="title">let*</span> <span class="list">(<span class="list">(<span class="title">project-root</span> <span class="list">(<span class="title">projectile-project-root</span>)</span>)</span></span></span></div><div class="line">             <span class="list">(<span class="title">true-filename</span> <span class="list">(<span class="title">file-truename</span> filename)</span>)</span></div><div class="line">             <span class="list">(<span class="title">relative-filename</span> <span class="list">(<span class="title">file-relative-name</span> true-filename project-root)</span>)</span>)</div><div class="line">        <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">projectile-file-cached-p</span> relative-filename project-root)</span></span></div><div class="line">            <span class="list">(<span class="title">projectile-purge-file-from-cache</span> relative-filename)</span>))))</div><div class="line">  </div><div class="line"><span class="list">(<span class="title">ad-activate</span> <span class="quoted">'delete-file</span>)</span></div></pre></figure>
+
+<p>That’s it.  With just a few short lines, projectile will now invalidate the
+cache as soon as I delete a file, just as I would like.  Isn’t emacs great?</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><a href="https://github.com/bbatsov/projectile" target="_blank" rel="external">Projectile</a> is a staple of my emacs
+configuration.  In my opinion, it is one of the all time best packages
+available, along with <a href="https://github.com/jwiegley/org-mode" target="_blank" rel="external">org-mode</a> and
+<a href="https://github.com/magit/magit" target="_blank" rel="external">magit</a>.</p>
+<p>One of my most commonly used commands with projectile is helm-projectile.  This
+lets me locate any file in my project by pressing <code>C-c p h</code>.  Using the
+narrowing abilities of helm, I can quickly filter the list of options to
+exactly the one I want.]]>
+    
+    </summary>
+    
+      <category term="projectile" scheme="http://cupfullofcode.com/tags/projectile/"/>
+    
+      <category term="elisp" scheme="http://cupfullofcode.com/tags/elisp/"/>
+    
+      <category term="emacs" scheme="http://cupfullofcode.com/tags/emacs/"/>
+    
+      <category term="Emacs" scheme="http://cupfullofcode.com/categories/Emacs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Performing Controlled PHP Refactorings in Emacs]]></title>
+    <link href="http://cupfullofcode.com/blog/2014/09/21/php-refactor-mode/"/>
+    <id>http://cupfullofcode.com/blog/2014/09/21/php-refactor-mode/</id>
+    <published>2014-09-21T04:00:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>By day, I work as a PHP developer at
+<a href="http://researchsquare.com" target="_blank" rel="external">Research Square</a>.  My time is spent developing new
+functionality for the RS suite of products.  This may include working in
+greenfield code bases or extending our legacy products.  In either case, dozens
+of times a day, I find myself performing various code refactorings.<a id="more"></a></p>
+<h1 id="The_Problem">The Problem</h1>
+<p>Refactoring code is imperative to maintaining a healthy code base.  Technical
+debt can quickly pile up in even a moderately sized code base, let alone across
+a system flirting with a million lines of code.  It is the job of any developer
+to ensure code is refactored whenever the existing design begins to offer
+friction.  It is absolutely critical that these refactorings in no way alter
+the behavior of the system.</p>
+<p>In Martin Fowler’s book,
+<a href="http://martinfowler.com/books/refactoring.html" target="_blank" rel="external">Refactoring: Improving the Design of Existing Code</a>,
+he discusses a variety of common refactoring patterns, outlining the necessary
+steps to execute these methods safely and efficiently.  While the steps given
+are excellent, to perform them manually is not only tedious, but horribly error
+prone.</p>
+<p>While some IDEs provide automated support for such refactorings, text editors
+like vim and emacs do not.  As a long time user of both (with emacs being my
+favored editor these days), I needed to look elsewhere to achieve this kind of
+support.</p>
+<h1 id="The_Solution">The Solution</h1>
+<p>During my search for a decent solution, I came across the
+<a href="https://github.com/QafooLabs/php-refactoring-browser" target="_blank" rel="external">php-refactoring-browser</a>
+by QafooLabs.  The php-refactoring-browser is a command-line tool, written in
+PHP, that can perform a variety of refactoring methods on a particular file.
+Following the guidelines from Fowler’s books, each refactoring is a series of
+simple steps that ensure the system’s behavior is left unaltered.</p>
+<h1 id="A_New_Problem">A New Problem</h1>
+<p>I tried out this tool for a while and absolutely loved the results.  The
+php-refactoring-browser performed remarkably well and provided me with a
+solution I had desperately been seeking.  But alas, there was a problem.</p>
+<p>While I love the command-line, using the php-refactoring-browser
+directly was time consuming and frankly, quite annoying.  Each refactoring
+method requires a decent number of arguments, including the file and associated
+line numbers to operate on.</p>
+<p>For example, in order to convert a local variable to an instance variable, the
+command would look something like</p>
+<figure class="highlight bash"><pre><div class="line">php refactor.phar convert-local-to-instance-variable FileToRefactor.php <span class="number">17</span> <span class="variable">$aLocalVariableName</span></div></pre></figure>    
+
+<p>Further more, the php-refactoring-browser will only generate a patch of the
+necessary changes.  It will not modify the files inline.  Not only was I
+responsible for providing all of these input parameters, I also had to manually
+apply the patch, and then refresh the file in my editor.</p>
+<h1 id="A_New_Solution">A New Solution</h1>
+<p>Being an enthusiastic user of emacs, I knew there had to be a better way.  So I
+set out to create a minor mode for working with the php-refactoring-browser.
+<a href="https://github.com/keelerm84/php-refactor-mode.el" target="_blank" rel="external">php-refactor-mode</a> is the
+result.</p>
+<p>This minor mode allows you to quickly perform a variety of the refactoring
+methods available through the php-refactoring-browser with a few short
+keystrokes.  Since emacs already knows the path to the file and any line
+numbers, I was relieved from ever having to think about that again.  And as for
+things emacs doesn’t know, such as the new method name I might want to use, it
+can simply prompt me for it.</p>
+<p>Furthermore, the minor mode will automatically apply the resulting patch from
+the php-refactoring-browser and re-read the file contents so you can focus on
+the work at hand, never breaking your flow to think about the steps for
+performing these refactorings.</p>
+<p>As a final benefit, each refactoring can be undone as one atomic operation.  So
+if you decide you don’t like the results, press <code>C-_</code> and proceed as if it never
+happened.</p>
+<h2 id="Let’s_See_It_In_Action">Let’s See It In Action</h2>
+<p>Below is a video demoing some of the supported refactoring methods provided by
+php-refactor-mode.  If you’re an emacs user who writes PHP, I hope you’ll
+consider giving it a try.  The package is available for installation on melpa
+and of course the source code is available on github.</p>
+<iframe width="100%" height="500" src="//www.youtube.com/embed/J9lbdtdsPi4" frameborder="0" allowfullscreen></iframe>
+
+<h1 id="vim_Users">vim Users</h1>
+<p>If you’re a vim user, then you’re in luck.
+<a href="https://github.com/vim-php/vim-php-refactoring" target="_blank" rel="external">vim-php-refactoring</a> is a vim
+plugin that provides the same type of support.  In fact, it was a great source
+of inspiration for my emacs package.  Thanks for paving the way!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>By day, I work as a PHP developer at
+<a href="http://researchsquare.com" target="_blank" rel="external">Research Square</a>.  My time is spent developing new
+functionality for the RS suite of products.  This may include working in
+greenfield code bases or extending our legacy products.  In either case, dozens
+of times a day, I find myself performing various code refactorings.]]>
+    
+    </summary>
+    
+      <category term="php" scheme="http://cupfullofcode.com/tags/php/"/>
+    
+      <category term="refactoring" scheme="http://cupfullofcode.com/tags/refactoring/"/>
+    
+      <category term="emacs" scheme="http://cupfullofcode.com/tags/emacs/"/>
+    
+      <category term="Emacs" scheme="http://cupfullofcode.com/categories/Emacs/"/>
+    
+      <category term="PHP" scheme="http://cupfullofcode.com/categories/Emacs/PHP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Embedding Code Snippets in Org Mode]]></title>
+    <link href="http://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/"/>
+    <id>http://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/</id>
+    <published>2013-11-22T18:15:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>Without a doubt, <a href="http://orgmode.org/" target="_blank" rel="external">Org Mode</a> is one of the most impressive
+and versatile features of Emacs.  Great for writing structured documents,
+managing lists and planning, and for exporting those documents into a variety
+of formats, it’s my go to tool for flexible, efficient editing.<a id="more"></a></p>
+<p>In the video below, I cover one small aspect of Org Mode; namely, the ability
+to embed code snippets within your document.  I’ll cover some of the problems
+you will run into when first attempting to embed code, how to overcome them,
+and some shortcuts that make the whole process much more streamlined.</p>
+<p>Enjoy!</p>
+<iframe width="100%" height="500" src="//www.youtube.com/embed/lsYdK0C2RvQ" frameborder="0" allowfullscreen></iframe>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Without a doubt, <a href="http://orgmode.org/" target="_blank" rel="external">Org Mode</a> is one of the most impressive
+and versatile features of Emacs.  Great for writing structured documents,
+managing lists and planning, and for exporting those documents into a variety
+of formats, it’s my go to tool for flexible, efficient editing.]]>
+    
+    </summary>
+    
+      <category term="org-mode" scheme="http://cupfullofcode.com/tags/org-mode/"/>
+    
+      <category term="emacs" scheme="http://cupfullofcode.com/tags/emacs/"/>
+    
+      <category term="Emacs" scheme="http://cupfullofcode.com/categories/Emacs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Generate Daily Messages With Org Journal]]></title>
+    <link href="http://cupfullofcode.com/blog/2013/11/17/daily-messages-with-org-journal/"/>
+    <id>http://cupfullofcode.com/blog/2013/11/17/daily-messages-with-org-journal/</id>
+    <published>2013-11-17T20:38:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>One of the requirements of my job is to send out a daily message. This message
+should summarize what I did the day before, and what I hope to accomplish for
+the current day. At first, I would spend my day jumping from task to task, and
+then the next morning, I would rack my brain to make sure I included all the
+things I worked on.<a id="more"></a></p>
+<p>It didn’t take long to realize that this was no way to live. I definitely
+needed a better solution. So I started looking around.</p>
+<h2 id="Org_Journal">Org Journal</h2>
+<p>After hunting around for a bit, I came across Org Journal. It is a fantastic
+package for, as the name implies, writing journal entries. And since it’s built
+on top of Org Mode, I knew I had to give it a try.</p>
+<p>Once installed and configured, I can press, in my case, C-x j, and this will
+either start a new journal entry if one doesn’t already exist, or open an
+existing one. Each time a new entry is added, org-journal inserts a second
+level heading in the document, and stamps it with the time the entry was added.</p>
+<p>This was definitely a productivity win for me, and so I settled on it as my
+tool of choice.</p>
+<h2 id="Scratching_An_Itch">Scratching An Itch</h2>
+<p>Even though org-journal was assisting me in remembering everything I did on the
+previous day, I still had to format the entries into a suitable format and send
+them off to my boss. Accomplishing this was a multi-step process which I
+quickly grew tired of. I had to:</p>
+<ol>
+<li>Call M-x calendar and navigate to the previous day</li>
+<li>Press j to open that day’s journal entry</li>
+<li>C-x h to copy the entire entry</li>
+<li>C-x b <em>scratch</em> to switch over to my scratch buffer</li>
+<li>C-y to paste the journal contents in</li>
+<li>Remove any additional notes I had, strip out the top level headers and time stamps, and then add my plan for the current day.</li>
+</ol>
+<p>What a bunch of nonsense! I certainly wasn’t going to do that 5 days a week for
+the rest of my career.</p>
+<h2 id="Elisp_to_the_Rescue">Elisp to the Rescue</h2>
+<p>So naturally, I did what any Emacs user would do: I wrote some lisp. Before we
+get into the code, I should warn you about something. I’m still pretty new to
+lisp. If you’re an old hat at this stuff, I’m sure there are better ways to
+accomplish what I’m doing. And I would LOVE to hear about them. Please feel
+free to comment!</p>
+<p>Disclaimer aside, let’s get into the code.</p>
+<h3 id="What_Was_Yesterday">What Was Yesterday</h3>
+<p>The first thing I needed to accomplish was determining the date of the prior
+day. Like most people (I hope), I only work 5 days a week. So simply grabbing
+yesterday’s date wasn’t going to work. Instead, I need to keep subtracting a
+day’s worth of time from the current day, until I reached some time period that
+fell between Monday and Friday.</p>
+<p>That lead me to:</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> my/org-find-previous-workday <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">let*</span> <span class="list">(<span class="list">(<span class="title">time</span> <span class="list">(<span class="title">time-subtract</span> <span class="list">(<span class="title">current-time</span>)</span> <span class="list">(<span class="title">seconds-to-time</span> <span class="number">86400</span>)</span>)</span>)</span></span></span></div><div class="line">         <span class="list">(<span class="title">workdays</span> <span class="quoted">'(<span class="string">"Monday"</span> <span class="string">"Tuesday"</span> <span class="string">"Wednesday"</span> <span class="string">"Thursday"</span> <span class="string">"Friday"</span>)</span>)</span>)</div><div class="line">    <span class="list">(<span class="title">while</span> <span class="list">(<span class="title">not</span> <span class="list">(<span class="title">member</span> <span class="list">(<span class="title">format-time-string</span> <span class="string">"%A"</span> time)</span> workdays)</span>)</span></span></div><div class="line">      <span class="list">(<span class="title">setq</span> time <span class="list">(<span class="title">time-subtract</span> time <span class="list">(<span class="title">seconds-to-time</span> <span class="number">86400</span>)</span>)</span>)</span>)</div><div class="line">    time))</div></pre></figure>
+
+<h3 id="Grab_The_Tasks">Grab The Tasks</h3>
+<p>Once I knew the previous working day’s date, I needed to grab the journal
+entry’s content. Since I include notes and other references for each entry, and
+this email is supposed to be succinct, using the entire journal entry wasn’t
+sufficient. Instead, I needed to strip out just the second level headings,
+which include short summaries of what I’m working on.</p>
+<p>I wrote three functions to handle this, which are included below. The results
+of these three functions is to return a list of all the headers in the org file
+with a level I specified. If I don’t specify a level, it will return all header
+levels.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> my/org-should-include-current <span class="list">(<span class="title">level</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">progn</span></span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">and</span></span></span></div><div class="line">         <span class="list">(<span class="title">outline-on-heading-p</span>)</span></div><div class="line">         <span class="list">(<span class="title">or</span></span></div><div class="line">          <span class="list">(<span class="title">eq</span> <span class="literal">nil</span> level)</span> <span class="list">(<span class="title">eq</span> level <span class="list">(<span class="title">org-outline-level</span>)</span>)</span>))</div><div class="line">        <span class="literal">t</span></div><div class="line">      <span class="literal">nil</span>)))</div><div class="line"></div><div class="line"><span class="list">(<span class="title">defun</span> my/org-get-current-header <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">progn</span></span></div><div class="line">    <span class="list">(<span class="title">setq</span> beg <span class="list">(<span class="title">point</span>)</span>)</span></div><div class="line">    <span class="list">(<span class="title">outline-end-of-heading</span>)</span></div><div class="line">    <span class="list">(<span class="title">buffer-substring-no-properties</span> beg <span class="list">(<span class="title">point</span>)</span>)</span>))</div><div class="line"></div><div class="line"><span class="list">(<span class="title">defun</span> my/org-outline-headings-to-list <span class="list">(<span class="title">level</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">setq</span> headings <span class="quoted">'()</span>)</span></div><div class="line">  <span class="list">(<span class="title">show-all</span>)</span></div><div class="line">  <span class="list">(<span class="title">goto-char</span> <span class="list">(<span class="title">point-min</span>)</span>)</span></div><div class="line"></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">my/org-should-include-current</span> level)</span></span></div><div class="line">      <span class="list">(<span class="title">add-to-list</span> <span class="quoted">'headings</span> <span class="list">(<span class="title">my/org-get-current-header</span>)</span> <span class="literal">t</span>)</span>)</div><div class="line"></div><div class="line">  <span class="list">(<span class="title">while</span> <span class="list">(<span class="title">outline-next-heading</span>)</span></span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">my/org-should-include-current</span> level)</span></span></div><div class="line">        <span class="list">(<span class="title">add-to-list</span> <span class="quoted">'headings</span> <span class="list">(<span class="title">my/org-get-current-header</span>)</span> <span class="literal">t</span>)</span>))</div><div class="line">  headings)</div></pre></figure>
+
+<h3 id="Generating_The_Message">Generating The Message</h3>
+<p>At this point, I had all the data I needed to quickly generate my scrum
+message. All that was left was to hook it together, open a temp buffer with the
+formatted results, and then start filling in the current day’s goals.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> my/org-outline-create-scrum-message <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">let*</span> <span class="list">(<span class="list">(<span class="title">previous</span> <span class="list">(<span class="title">my/org-find-previous-workday</span>)</span>)</span>)</span></span></div><div class="line">    <span class="list">(<span class="title">setq</span> journal-file <span class="list">(<span class="title">concat</span> org-journal-dir <span class="list">(<span class="title">format-time-string</span> <span class="string">"%Y%m%d"</span> previous)</span>)</span>)</span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">file-exists-p</span> journal-file)</span></span></div><div class="line">        <span class="list">(<span class="title">progn</span></span></div><div class="line">          <span class="list">(<span class="title">switch-to-buffer</span> <span class="list">(<span class="title">find-file-noselect</span> journal-file)</span>)</span></div><div class="line">          <span class="list">(<span class="title">setq</span> headings <span class="list">(<span class="title">my/org-outline-headings-to-list</span> <span class="number">2</span>)</span>)</span></div><div class="line">          <span class="list">(<span class="title">switch-to-buffer</span> <span class="string">"*daily scrum*"</span>)</span></div><div class="line">          <span class="list">(<span class="title">erase-buffer</span>)</span></div><div class="line">          <span class="list">(<span class="title">insert</span> <span class="string">"* Yesterday\n"</span>)</span></div><div class="line">          <span class="list">(<span class="title">mapcar</span> <span class="list">(<span class="title">lambda</span><span class="list">(<span class="title">element</span>)</span></span></span></div><div class="line">                    <span class="list">(<span class="title">insert</span> <span class="list">(<span class="title">replace-regexp-in-string</span> <span class="string">"^** ..... "</span> <span class="string">"  - "</span> element)</span> <span class="string">"\n"</span>)</span>) headings)</div><div class="line">          <span class="list">(<span class="title">insert</span> <span class="string">"\n* Today\n  - "</span>)</span></div><div class="line">          <span class="list">(<span class="title">org-mode</span>)</span></div><div class="line">          <span class="list">(<span class="title">show-all</span>)</span>))))</div></pre></figure>
+
+<h2 id="Future_Expansion">Future Expansion</h2>
+<p>I have been using this method for the last couple of weeks to much success. It
+has saved me a ton of time, and has helped ensure that I account for every task
+I worked on during the previous day.</p>
+<p>There are a few things I would like to improve. The most obvious next step is
+to hook up gnus to my work email and generate this message in an actual email
+buffer. Then, once I’m finished typing, I can just send it off directly from
+Emacs instead of copy and pasting it into my mail client.</p>
+<p>The other thing I need to handle is skipped dates. If I take a vacation day, or
+there is a holiday, this code will just fail to generate a message template for
+me. It only goes back one day and then calls it quits after that. It wouldn’t
+take much to modify it to keep searching until it finds a day with an entry. I
+just haven’t gotten around to it yet.</p>
+<p>As I mentioned before, I’m sure the code could be improved. I would love to
+hear feedback from the community on what I could do better. Lisp is still
+pretty new to me, but I’ve been having a blast learning it.</p>
+<p>For those interested in seeing the code all in one place, or checking out the
+rest of my configuration, you can see it on GitHub.</p>
+<p>Thanks, and happy coding!</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>One of the requirements of my job is to send out a daily message. This message
+should summarize what I did the day before, and what I hope to accomplish for
+the current day. At first, I would spend my day jumping from task to task, and
+then the next morning, I would rack my brain to make sure I included all the
+things I worked on.]]>
+    
+    </summary>
+    
+      <category term="org-mode" scheme="http://cupfullofcode.com/tags/org-mode/"/>
+    
+      <category term="emacs" scheme="http://cupfullofcode.com/tags/emacs/"/>
+    
+      <category term="elisp" scheme="http://cupfullofcode.com/tags/elisp/"/>
+    
+      <category term="Emacs" scheme="http://cupfullofcode.com/categories/Emacs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Efficient Command Line Navigation]]></title>
+    <link href="http://cupfullofcode.com/blog/2013/07/03/efficient-command-line-navigation/"/>
+    <id>http://cupfullofcode.com/blog/2013/07/03/efficient-command-line-navigation/</id>
+    <published>2013-07-03T23:36:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>I live on the command line. Between <a href="http://www.vim.org/" target="_blank" rel="external">vim</a>,
+<a href="http://tmux.sourceforge.net/" target="_blank" rel="external">tmux</a>, and <a href="http://xmonad.org/" target="_blank" rel="external">xmonad</a>, there
+isn’t much I have to use the mouse for these days. Given my love for keyboard
+navigation, it only makes sense that I learn as many of the command line
+shortcuts available as possible. Here I detail some of the most helpful
+navigation tricks, and those I use on a daily basis.<a id="more"></a></p>
+<p>First a brief word about these shortcut notations. If you see a command listed
+as <code>C-a</code>, that is the shorthand representation of pressing Control and a
+together. If you see <code>M-b</code>, that is the same as pressing Meta and b
+together. Meta is typically Alt on modern systems.</p>
+<p>I’m sure everyone knows about <code>TAB</code> completion, but just in case, I feel
+compelled to mention it. When working in your shell, you can begin specifying a
+file or directory and then use <code>TAB</code> to expand it as far as possible until a
+conflict arises. For example, let us assume we have a directory containing the
+files matthew.txt, jacob.txt and jacobsen.txt. If I wanted to open matthew.txt
+in vim, I can start typing <code>vim m</code> and hit <code>TAB</code> after the <code>m</code>. Since this
+character alone is enough to determine uniqueness, my shell will helpfully add
+the <code>atthew.txt</code>.</p>
+<p>However, if I wanted to open jacobsen.txt, I could type <code>vim j&lt;TAB&gt;</code>, which
+would only complete until jacob. After that, the shell cannot possibly know
+which file I meant, so it waits for more input. Typing a quick <code>s</code> and <code>TAB</code>;
+will finish the job, resulting in <code>vim jacobsen.txt</code>. A lot of shells offer
+context aware completion as well. In zsh for example, if I issue <code>git checkout</code>
+and hit <code>TAB</code>, I am presented with a list of branches and tags that I can
+checkout. Similarly, if I type <code>kill</code> I will get a list of running processes
+and their associated PIDs.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/tab-completion.gif" alt="Tab completion"></p>
+<p>There are also a lot of great shortcuts for navigation. For example, let us say
+you have typed out the command <code>sp aux | grep &#39;vim&#39; | xargs kill -9</code>. At this
+point, you notice you have a typo at the very beginning. You could use your
+arrow keys to navigate back to the beginning of the line, delete the two
+offending characters, and then use the arrow keys to navigate to the end so you
+can continue crafting the command. But this is so time consuming! Instead, we
+can use 3 helpful shortcuts — <code>C-a</code>, <code>C-t</code>, and <code>C-e</code>.</p>
+<p><code>C-a</code> will jump your cursor to the start of the line. <code>C-t</code> will transpose the
+character under your cursor with the one to the left. In our case, there is no
+character to the left, so it simply moves the cursor to the right and then
+performs the swap. Now we can jump back to the end of the line with <code>C-e</code>. How
+efficient is that?</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/home-transpose-end.gif" alt="Home, Transpose and End"></p>
+<p>A quick note about transpose. Vim users beware. This shifting behavior is
+different than what you normally experience when issuing <code>xp</code> in command mode,
+which swaps the character under the cursor to the right.</p>
+<p>What about if the error you made is towards the beginning, but isn’t at the
+first character? Once you’ve navigated to the beginning of the command with
+<code>C-a</code>, you can move forward a character at a time with <code>C-f</code>, or forward a word
+at a time with <code>M-f</code>. In the same spirit, you can move backwards a character
+with <code>C-b</code>, or back a word at a time with <code>M-b</code>.</p>
+<p>One thing you will soon notice about these commands is that they tend to exist
+in pairs. The control options tend to do the least amount of work, whereas meta
+will work on a larger scale. So what about our <code>C-t</code> (transpose) option? Does
+it have a <code>M-t</code> equivalent? Certainly! This will transpose words.</p>
+<p>You might not always want to transpose characters or words. Instead, you may
+need to delete some. <code>C-d</code> will delete one character a time, staring with the
+character under your cursor. <code>M-d</code> will delete words at a time. Notice though,
+that this deletes from the current cursor position to the end of the word. It
+does not actually go back to the beginning of the word, and then delete from
+there. If you need to delete a word from the current cursor position going
+backward, you can use <code>M-backspace</code>.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/move-delete-transpose.gif" alt="Move, Delete and Transpose"></p>
+<p>There are quite a few times I’m crafting a command, and halfway through I
+realize I need bail on the command and check something first. But if I <code>C-c</code> to
+kill the current command, I’ll have to retype it, and that’s just no
+good. Sure, there are ways around this. I could use the mouse to copy the
+command and then paste it in later. I could open another tab or tmux window and
+check whatever, but that just takes too long. Instead, you can use <code>C-u</code> to cut
+the command from your cursor to the beginning of the line, placing that text in
+your kill-ring, thereby freeing yourself do whatever you have to do. If you’re
+already at the beginning of the command, you can <code>C-k</code> to cut forward from your
+cursor position. Once you’re ready to resume that command, you can use <code>C-y</code> to
+paste that command back and go on your merry way.</p>
+<p>But it gets even better. Let’s say you used the <code>C-u</code> / <code>C-k</code> option a few
+times because it is so wicked helpful. But the last thing you cut isn’t what
+you want to restore. Use <code>C-y</code> to paste back your last cut, and then use <code>M-y</code>
+to cycle through your kill-ring until you find the text you want to restore!</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/kill-ring.gif" alt="Kill Ring"></p>
+<p>A lot of times in my workflow, I will edit a file, and then issue a <code>git add
+/path/to/file</code> to stage it. I can just type <code>vim /path/to/file</code>, do my edits,
+and then issue <code>git add /path/to/file</code>, but that means I have to type the same
+file path twice, and I can’t have that, even using <code>TAB</code> completion. The <code>M-.</code>
+command saves the day. <code>M-.</code> will insert the last argument from the previous
+command at the current cursor location. So now I just type <code>vim /path/to/file</code>,
+do my edits, and then git add <code>M-.</code> and the file path is added for
+me. Repeating <code>M-.</code> will cycle back through the last parameter for each of the
+commands stored in your history.</p>
+<p>This post is getting a little lengthy, but there are just a couple more
+shortcuts that you simply must know about, and they all deal with your command
+history. If you’re anything like me, you tend to issue the same command
+multiple times in a day, be it ssh-ing to some host, issuing <code>git status</code> or
+what have you. Your shell maintains a history of the commands you have
+executed, and you can move back through this history using the arrow keys on
+the terminal. But those keys are SO far away from home row!</p>
+<p>As you might have surmised, there is a more efficient solution. <code>C-n</code> and <code>C-p</code>
+will allow you to navigate through your history going forward and backwards,
+respectively.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/ctrl-n-navigation.gif" alt="Ctrl N Navigation"></p>
+<p>If the command you are looking to recall was executed recently, <code>C-n</code> and <code>C-p</code>
+are life savers. But if the command is more than a few lines back, they can
+quickly become annoying. <code>C-r</code> allows you to issue searches against the command
+history. Simply press <code>C-r</code> and then begin typing the command you would like to
+recall. As you type more and more characters, the most recent command matching
+your search will be displayed. Repeatedly tapping <code>C-r</code> at this point will find
+the next most recent command matching the criteria, and so on until all
+possible matches have been exhausted. Once you have found the command of
+interest, <code>C-j</code> will execute it. If you’d like to select the command, but edit
+it first, you can issue any of the navigation commands mentioned above to
+select it and start editing. Or, you can type <code>C-g</code> to abort the search, and
+your prompt will be restored with whatever text had originally been specified
+prior to the search.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/reverse-search.gif" alt="Reverse Search"></p>
+<p>I hope you find these commands helpful, and they make working on the command
+line a little more enjoyable!  And remember, there are plenty more shortcuts,
+so keep learning.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>I live on the command line. Between <a href="http://www.vim.org/" target="_blank" rel="external">vim</a>,
+<a href="http://tmux.sourceforge.net/" target="_blank" rel="external">tmux</a>, and <a href="http://xmonad.org/" target="_blank" rel="external">xmonad</a>, there
+isn’t much I have to use the mouse for these days. Given my love for keyboard
+navigation, it only makes sense that I learn as many of the command line
+shortcuts available as possible. Here I detail some of the most helpful
+navigation tricks, and those I use on a daily basis.]]>
+    
+    </summary>
+    
+      <category term="utilities" scheme="http://cupfullofcode.com/tags/utilities/"/>
+    
+      <category term="zsh" scheme="http://cupfullofcode.com/tags/zsh/"/>
+    
+      <category term="Utilities" scheme="http://cupfullofcode.com/categories/Utilities/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Snippet Expansion with YASnippet]]></title>
+    <link href="http://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/"/>
+    <id>http://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</id>
+    <published>2013-02-26T16:35:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>Any editor worth its salt has some provision for text snippet
+expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
+is certainly no exception. If you’re not familiar with the concept of snippets,
+the basic idea involves defining a keyword, which when followed with some
+trigger (keyboard shortcut or menu option), replaces that keyword with some
+predefined text. This functionality is a great boost to productivity as it
+prevents the developer from having to manually type potentially hundreds or
+thousands of lines of relatively boilerplate code.<a id="more"></a></p>
+<h2 id="YASnippet">YASnippet</h2>
+<p>Like nearly all things in Emacs, there are a number of available packages that
+provide this feature. The one I’ll be discussing today is
+<a href="https://github.com/capitaomorte/yasnippet" target="_blank" rel="external">YASnippet (Yet Another Snippet)</a>. The
+installation instructions are straightforward and minimal, so I won’t bother
+covering them here. Instead, I’ll get right into the meat of the extension.</p>
+<h2 id="Plain_Text_Expansion">Plain Text Expansion</h2>
+<p>The most basic functionality any snippet expansion package can offer is
+straight text replacement. At first blush, this doesn’t seem terribly helpful,
+but let’s consider an example. Suppose I want to include a copy of the GNU
+Public License in my project. Copying and pasting such a lengthy license would
+quickly grow tiresome for each project you work on. But with the help of
+YASnippet, it’s as painless as defining the below snippet and then typing
+<code>gpl3</code> and pressing <code>TAB</code> to expand.</p>
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name : GPLv3</span></div><div class="line"><span class="comment"># key : gpl3</span></div><div class="line"><span class="comment"># --</span></div><div class="line">                    GNU GENERAL PUBLIC LICENSE</div><div class="line">                       Version <span class="number">3</span>, <span class="number">29</span> June <span class="number">2007</span></div><div class="line"></div><div class="line"> Copyright (C) <span class="number">2007</span> Free Software Foundation, Inc. <span class="attribute">http</span>:<span class="regexp">//</span>fsf.org/</div><div class="line"> Everyone <span class="keyword">is</span> permitted to copy <span class="keyword">and</span> distribute verbatim copies</div><div class="line"> <span class="keyword">of</span> <span class="keyword">this</span> license <span class="built_in">document</span>, but changing it <span class="keyword">is</span> <span class="keyword">not</span> allowed.</div><div class="line">  </div><div class="line">                            Preamble</div><div class="line">  </div><div class="line">  The GNU General Public License <span class="keyword">is</span> a free, copyleft license <span class="keyword">for</span></div><div class="line">software <span class="keyword">and</span> other kinds <span class="keyword">of</span> works.</div><div class="line">[...]</div></pre></figure>
+
+<p>You will notice defining this snippet was incredibly easy. The <code>#name : GPLv3</code>
+line defines a common name for the snippet. The keyword we will use to trigger
+the expansion is defined by <code># key: gpl3</code>. Anything that follows the line <code>#
+--</code> will be the replacement text that is inserted when our snippet is
+expanded. Phew! That sure saved us a ton of typing. But that’s barely
+scratching the surface.</p>
+<h2 id="Tab_Stops">Tab Stops</h2>
+<p>While simple text replacement does have its place, it would be more beneficial
+if we could add a level of interactivity to the expansion process. This is
+where tab stop fields enter the scene. A lot of the boilerplate code a
+developer writes is similar, but not quite identical. For example, for loops
+follow the same structure, but the initial and terminating conditions,
+increment values, and variable names are likely to differ in some regard, so
+simple text expansion isn’t quite good enough. So let’s define the following
+snippet.</p>
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name : for</span></div><div class="line"><span class="comment"># key : for</span></div><div class="line"><span class="comment"># --</span></div><div class="line"><span class="keyword">for</span>(<span class="variable">$1</span>; <span class="variable">$2</span>; <span class="variable">$3</span>) {</div><div class="line">  <span class="variable">$0</span></div><div class="line">}</div></pre></figure>
+
+<p>The <code>$N</code> values will act as tab stops for your cursor when the snippet is
+expanded. This means, after expansion, my cursor will stop at <code>$1</code>, allowing me
+to specify a value of my choosing. As I successively hit <code>TAB</code>, I will move
+through the other tab stops, in numerical order. Upon exiting the expansion, my
+cursor will end at <code>$0</code>, which is a special <code>$N</code> type marker. It should be
+noted that each of the tab stops can also be defined with default values, using
+the syntax <code>${N:default value}</code>. If the defined default value is sufficient,
+you can simply tab past it and continue on your way.</p>
+<h2 id="Mirrored_Fields">Mirrored Fields</h2>
+<p>While that is pretty awesome, there is a bit of a downside there. In each of
+the three stops, if I was using the variable <code>i</code>, I would have to type that in
+3 times. <code>i</code> isn’t so bad, but if my variable is
+<code>anExtremelyLongAndOverlyVerboseVariable</code>, that is tedious and error
+prone. Luckily for us, YASnippet has the answer, and it is mirrored
+fields. Mirrored fields allow you to type something in once, and have it
+repeated throughout the snippet at other marked placeholders. The initial tab
+stop should be defined as <code>${N:enumerate}</code> and each place you want that
+information mirrored should use the standard tab notation. Let’s see that in
+action!</p>
+<p>A common style you’ll see in code is to define an if / while / for block, and
+then include a comment at the bottom that reminds the reader of the condition
+we’re closing. YASnippet can certainly help us with this. Check out the snippet
+below. Type in the condition once, have it included twice. Sweet. Converting
+the <code>for</code> snippet is left as an exercise to the reader.</p>
+<figure class="highlight text"><pre><div class="line"><span class="keyword">if</span> (<span class="variable">${1:enumerate}</span>)</div><div class="line">{</div><div class="line"><span class="variable">$0</span></div><div class="line">} // <span class="variable">$1</span></div></pre></figure>
+
+<h2 id="Embedded_Lisp">Embedded Lisp</h2>
+<p>While the above examples have been awesome, the real power of YASnippet has yet
+to be revealed. Not only can you include straight text, simple tab stops and
+mirrored fields, but you can even include elisp code! The realm of possibility
+just got ridiculous.</p>
+<p>Let’s look at an example from the C++ <a href="http://qt-project.org/" target="_blank" rel="external">QT</a> world. When
+defining QT UI classes, there is some standard code that must be included each
+time. Combining the power of mirrored fields with elisp, we can define the
+following snippets. You can see them in action on
+<a href="http://youtu.be/dlDvDNnsYr4" target="_blank" rel="external">YouTube</a>.</p>
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name: QT UI class ... { ... }</span></div><div class="line"><span class="comment"># key: uiclass</span></div><div class="line"><span class="comment"># --</span></div><div class="line"></div><div class="line"><span class="comment">#include &lt;$3&gt;</span></div><div class="line"></div><div class="line">namespace <span class="constant">Ui </span>{</div><div class="line">    class <span class="variable">$1</span>;</div><div class="line">}</div><div class="line"></div><div class="line">class <span class="variable">${</span><span class="number">1</span><span class="symbol">:Name</span>} <span class="symbol">:</span> public <span class="variable">${</span><span class="number">3</span><span class="symbol">:QWidget</span>}</div><div class="line">{</div><div class="line">    <span class="constant">Q_OBJECT</span></div><div class="line"></div><div class="line"><span class="symbol">public:</span></div><div class="line">    <span class="variable">$1</span>(<span class="variable">${</span><span class="number">2</span><span class="symbol">:QWidget</span> * parent = <span class="number">0</span>});</div><div class="line">    ~<span class="variable">$1</span>();</div><div class="line"></div><div class="line"><span class="symbol">private:</span></div><div class="line">    <span class="constant">Ui:</span><span class="symbol">:</span><span class="variable">$1</span> * ui;</div><div class="line">};</div></pre></figure>
+
+<figure class="highlight text"><pre><div class="line"><span class="comment"># name: QT UI source</span></div><div class="line"><span class="comment"># key: outsource</span></div><div class="line"><span class="comment"># --</span></div><div class="line"><span class="comment">#include "ui_${1:$(downcase yas/text)}.h"</span></div><div class="line"><span class="comment">#include "${1:$(downcase yas/text)}.h"</span></div><div class="line"></div><div class="line"><span class="variable">${</span><span class="number">1</span><span class="symbol">:Name</span>}<span class="symbol">:</span><span class="symbol">:</span><span class="variable">$1</span>(<span class="constant">QWidget </span>* parent) <span class="symbol">:</span> <span class="variable">${</span><span class="number">2</span><span class="symbol">:QWidget</span>}(parent), ui(new <span class="constant">Ui:</span><span class="symbol">:</span><span class="variable">$1</span>) {</div><div class="line">  ui-&gt;setupUi(this);</div><div class="line">  <span class="variable">$0</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="variable">$1</span><span class="symbol">:</span><span class="symbol">:~</span><span class="variable">$1</span>() {</div><div class="line">}</div></pre></figure>
+
+<p>As you can see, the syntax for including elisp is similar to providing default
+values for tab stop fields, except all the power of elisp is unleashed!
+YASnippet provides a handy placeholder, <code>yas/text</code> which represents the text
+that is being mirrored in the field. Using this, you can easily camel case
+certain words, upper or lowercase sections of code, and more. But you’re not
+limited to just built-in functionality. You can define entirely new functions
+of code and reference them just like anything else.</p>
+<h2 id="Putting_It_All_Together">Putting It All Together</h2>
+<p>What follows are a few elisp functions I have defined and a snippet that makes
+use of them. This snippet will generate the skeleton for a PHP class, including
+the namespace at the top. As all of the building blocks have been covered
+earlier in this post, I’ll just briefly touch on each portion.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-git-repo <span class="list">(<span class="title">dir</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">string=</span> <span class="string">"/"</span> dir)</span></span></div><div class="line">      <span class="literal">nil</span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">file-exists-p</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">".git/"</span> dir)</span>)</span></span></div><div class="line">        dir</div><div class="line">      <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">"../"</span> dir)</span>)</span>)))</div></pre></figure>
+
+<p>This function starts looking within a specified directory for the existing of a
+.git directory, which would signify we are at the top level of a git
+repository. If it doesn’t find it, it keeps looking up the directory structure
+until it either succeeds, or reaches the root. If it finds it, we return that
+directory. Otherwise, we’ll return nil.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-project-root <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">ignore-errors</span> <span class="list">(<span class="title">eproject-root</span>)</span>)</span></span></div><div class="line">      <span class="list">(<span class="title">eproject-root</span>)</span></div><div class="line">    <span class="list">(<span class="title">or</span> <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span> <span class="list">(<span class="title">file-name-directory</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span>)</span>))</div></pre></figure>
+
+<p>Using our find-git-repo as a spring board, this function will determine any
+project’s root directory. As I use
+<a href="https://github.com/jrockway/eproject" target="_blank" rel="external">eproject</a> for a lot of my work, I first
+check to see if the <code>eproject-root</code> variable is defined. If it isn’t, I’ll fall
+back to looking for a git repo.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> file-path-to-namespace <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">let</span> <span class="list">(</span></span></div><div class="line">        <span class="list">(<span class="title">root</span> <span class="list">(<span class="title">find-project-root</span>)</span>)</span></div><div class="line">        <span class="list">(<span class="title">base</span> <span class="list">(<span class="title">file-name-nondirectory</span> buffer-file-name)</span>)</span></div><div class="line">        )</div><div class="line">    <span class="list">(<span class="title">substring</span> <span class="list">(<span class="title">replace-regexp-in-string</span> <span class="string">"/"</span> <span class="string">"\\"</span> <span class="list">(<span class="title">substring</span> buffer-file-name <span class="list">(<span class="title">length</span> root)</span> <span class="list">(<span class="title">*</span> <span class="number">-1</span> <span class="list">(<span class="title">length</span> base)</span>)</span>)</span> <span class="literal">t</span> <span class="literal">t</span>)</span> <span class="number">0</span> <span class="number">-1</span>)</span></div><div class="line">    )</div><div class="line">  )</div></pre></figure>
+
+<p>This function will take the current buffer path, find the project root it is
+included in, and convert it into a PHP namespace with the portion of the path
+containing the project root removed.</p>
+<figure class="highlight text"><pre><div class="line"># name : php-namespaced-<span class="keyword">class</span></div><div class="line"># key : <span class="keyword">class</span></div><div class="line"># --</div><div class="line">&lt;?php</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`</div><div class="line"> *</div><div class="line"> * <span class="javadoctag">@author</span> `(user-full-name)` `(if user-mail-address (concat "&lt;" user-mail-address "&gt;") "")`</div><div class="line"> */</div><div class="line"></div><div class="line">namespace `(file-path-to-namespace)`;</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * ${1:Description}</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> `<span class="params">(file-name-nondirectory (file-name-sans-extension (buffer-file-name)</span>))`</span></div><div class="line">{</div><div class="line">    $<span class="number">0</span></div><div class="line">}</div></pre></figure>
+
+<p>This final snippet hooks everything up. If I have a project at
+<code>/var/www/html/</code>, and I create a file NewUtil.php in say <code>lib/utils/</code>, this
+snippet will generate</p>
+<figure class="highlight php"><pre><div class="line"><span class="preprocessor">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * NewUtil</div><div class="line"> *</div><div class="line"> *<span class="phpdoc"> @author</span> Matthew M. Keeler &lt;keelerm@tortugas-llc.com&gt;</div><div class="line"> */</div><div class="line">  </div><div class="line"><span class="keyword">namespace</span> <span class="title">lib</span>\<span class="title">utils</span>;</div><div class="line">  </div><div class="line"><span class="comment">/**</span></div><div class="line"> * New Util description goes here</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewUtil</span></span></div><div class="line">{</div><div class="line">}</div></pre></figure>
+
+<p>As you can see, the power of YASnippet is incredible. Be sure to check out the
+YASnippet repo for more examples of snippets that are included in the default
+installation. If any of you are currently using it, I’d love to see some of the
+snippets you use. And of course, if you know of ways to improve my examples,
+please let me know! Happy coding.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Any editor worth its salt has some provision for text snippet
+expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
+is certainly no exception. If you’re not familiar with the concept of snippets,
+the basic idea involves defining a keyword, which when followed with some
+trigger (keyboard shortcut or menu option), replaces that keyword with some
+predefined text. This functionality is a great boost to productivity as it
+prevents the developer from having to manually type potentially hundreds or
+thousands of lines of relatively boilerplate code.]]>
+    
+    </summary>
+    
+      <category term="org-mode" scheme="http://cupfullofcode.com/tags/org-mode/"/>
+    
+      <category term="emacs" scheme="http://cupfullofcode.com/tags/emacs/"/>
+    
+      <category term="elisp" scheme="http://cupfullofcode.com/tags/elisp/"/>
+    
+      <category term="snippets" scheme="http://cupfullofcode.com/tags/snippets/"/>
+    
+      <category term="Emacs" scheme="http://cupfullofcode.com/categories/Emacs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Automation with GNU Screen and SSH]]></title>
+    <link href="http://cupfullofcode.com/blog/2013/01/08/automation-with-gnu-screen-and-ssh/"/>
+    <id>http://cupfullofcode.com/blog/2013/01/08/automation-with-gnu-screen-and-ssh/</id>
+    <published>2013-01-08T18:38:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>As a developer, I tend to prefer automation whenever possible. Hours of your
+life are lost in the minutes spent doing that which could easily be
+scripted. The classic rule of thumb I try to follow is “if you have to do it
+twice, automate it.”<a id="more"></a></p>
+<p>At my job, I have to maintain multiple versions of the product, each of which
+are hosted on different virtual machines. When I am ready to start work on a
+new feature to an existing version, I have to fire up my code editor, connect
+multiple terminals to the system so I can tail various log files, and open a
+shell for git. As one can imagine, this is rather time consuming. There is
+simply no way I’m doing this by hand every day. To address this, I use a
+combination of SSH keys and configs, GNU screen and a small alias.</p>
+<p>There are tons of documentation on the web about the use of SSH keys and config
+files. If you are unfamiliar with these topics, you can read about SSH keys at
+<a href="http://paulkeck.com/ssh/" target="_blank" rel="external">http://paulkeck.com/ssh/</a> and config files at
+<a href="http://nerderati.com/2011/03/simplify-your-life-with-an-ssh-config-file/" target="_blank" rel="external">http://nerderati.com/2011/03/simplify-your-life-with-an-ssh-config-file/</a>. Since
+the main purpose is to show how my tools fit together, I’ll just state that
+every virtual server I connect to has a copy of my SSH key, and that I have a
+config file defined with an example snippet shown below:</p>
+<figure class="highlight sh"><pre><div class="line">Host <span class="number">19</span></div><div class="line">HostName <span class="number">19</span>.virtualserver</div><div class="line">Port <span class="number">12345</span></div><div class="line">User developer</div></pre></figure>
+
+<p>Each host corresponds to a server hosting a specific version, so instead of
+issuing ssh -p12345 developer@19.virtualserver, I can simply type ssh 19. With
+the added bonus SSH keys bring to the party, connecting is quick and
+simple. But what about all those connections I mentioned earlier?</p>
+<p>While it is true I could open multiple terminal tabs, I actually prefer to work
+within <a href="http://www.gnu.org/software/screen/" target="_blank" rel="external">GNU Screen</a>. Once again, the
+details of using screen are outside the scope of this entry, but check out this
+post
+<a href="http://www.kuro5hin.org/story/2004/3/9/16838/14935" target="_blank" rel="external">http://www.kuro5hin.org/story/2004/3/9/16838/14935</a>
+for some general information.</p>
+<p>One thing you don’t hear a lot about is scripting with screen. With the
+powerful options provided, you can easily start a screen, launch multiple named
+tabs, and execute any command of your choosing. I have a screen config for each
+product version I manage. Version 1.9’s config is shown below:</p>
+<figure class="highlight sh"><pre><div class="line"><span class="comment"># Start screen in detached mode (-d -m), and give it a session name ('1-9') to avoid</span></div><div class="line"><span class="comment"># confusion when communicating with this session later as we add commands</span></div><div class="line">screen <span class="operator">-d</span> -m -S <span class="number">1</span>-<span class="number">9</span></div><div class="line"></div><div class="line"><span class="comment"># Run a command in the current screen window (edit some file for example)</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X title Git</div><div class="line"></div><div class="line"><span class="comment"># Create a new window, and run a command in that window:</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Code emacsclient -nw -c</div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Application ssh <span class="number">19</span> <span class="string">'tail -F /var/www/product/logs/error.log'</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Apache ssh <span class="number">19</span> <span class="string">'tail -F /var/log/httpd/error.log'</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Remote ssh <span class="number">19</span></div></pre></figure>
+
+<p>Executing this script will create a new screen session with five tabs, giving
+me a tab for git, one for my editor of choice, two actively tailing various log
+files, and a third connected to the remote system so I can easily navigate and
+check out other bits of the system as needed. This script relies heavily on my
+aforementioned use of SSH configs and keys. With the keys copied over, I don’t
+have to provide a password for the three tabs that connect to the development
+box. And if any of the connection details for any of the virtual machines
+change, I don’t have to touch this script, and can instead make the
+modification in one place.</p>
+<p>And finally, just to prevent a few more keystrokes, I also have defined aliases
+in my .alias file like the following:</p>
+<figure class="highlight sh"><pre><div class="line">alias <span class="string">'19'</span>=<span class="string">'cd ~/Projects/version19; ~/.screen.d/1.9 &amp;&amp; screen -r 1-9'</span></div></pre></figure>
+
+<p>Now, when I’m ready to go to work, I simply open a terminal, type 19, and I’m
+automatically thrown into screen, running the applications and viewing the logs
+that I almost always need, ready to hit the ground coding with absolute minimal
+effort.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>As a developer, I tend to prefer automation whenever possible. Hours of your
+life are lost in the minutes spent doing that which could easily be
+scripted. The classic rule of thumb I try to follow is “if you have to do it
+twice, automate it.”]]>
+    
+    </summary>
+    
+      <category term="utilities" scheme="http://cupfullofcode.com/tags/utilities/"/>
+    
+      <category term="screen" scheme="http://cupfullofcode.com/tags/screen/"/>
+    
+      <category term="automation" scheme="http://cupfullofcode.com/tags/automation/"/>
+    
+      <category term="Utilities" scheme="http://cupfullofcode.com/categories/Utilities/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Dancing Code Monkey]]></title>
+    <link href="http://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/"/>
+    <id>http://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</id>
+    <published>2013-01-06T04:09:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>A few months ago, I started playing around with Emacs.  For roughly six years
+prior to that, I was a die-hard Vim fan.  Vim will always hold a special place
+in my heart, but I have grown to love Emacs. I’ll undoubtedly cover Emacs in
+more detail, but I’ll leave that for other posts.<a id="more"></a></p>
+<p>One cannot use Emacs for long without dabbling in Elisp, the language upon
+which Emacs is built.  Having only briefly touched on Lisp languages in
+college, I figured it was high time to start the learning process.</p>
+<p>Recently, a friend of mine stumbled upon this cute little code monkey on
+someone’s Stackoverflow profile.</p>
+<figure class="highlight text"><pre><div class="line">     __</div><div class="line">w  c(..)o  (</div><div class="line"> <span class="command">\_</span>_(-)   __)</div><div class="line">     /<span class="command">\ </span> (</div><div class="line">    /( )__)</div><div class="line">   m /|</div><div class="line">    | <span class="command">\</span></div><div class="line">    m  m</div></pre></figure>
+
+<p>Quite naturally I thought, “I should make him dance.”  As this seemed
+relatively simple, I decided to tackle this with Elisp.</p>
+<p>I first created four slightly altered copies of the little guy, and with the
+code shown below, had him dancing in no time.  You can make him dance
+interactively a set number of times by issuing the standard prefix arguments
+prior to invoking the function ( e.g. C-u 100 M-x dance-monkey ) or watch him
+shake his groove thing on YouTube.</p>
+<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> insert-monkey <span class="list">(<span class="title">num</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span> <span class="string">"P"</span>)</span></div><div class="line">  <span class="list">(<span class="title">erase-buffer</span>)</span></div><div class="line">  <span class="list">(<span class="title">insert-file-contents</span> </span></div><div class="line">    <span class="list">(<span class="title">concat</span> <span class="string">"/home/keelerm/Projects/emacs/code-monkey/"</span> <span class="list">(<span class="title">int-to-string</span> num)</span>)</span>))</div><div class="line"></div><div class="line"><span class="list">(<span class="title">defun</span> dance-monkey <span class="list">(<span class="title">repeat</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span> <span class="string">"P"</span>)</span></div><div class="line">  <span class="list">(<span class="title">let</span> <span class="list">(<span class="list">(<span class="title">times</span> <span class="number">0</span>)</span>)</span></span></div><div class="line">    <span class="list">(<span class="title">while</span> <span class="list">(<span class="title">&lt;</span> times repeat)</span></span></div><div class="line">      <span class="list">(<span class="title">insert-monkey</span> <span class="list">(<span class="title">mod</span> times <span class="number">4</span>)</span>)</span></div><div class="line">      <span class="list">(<span class="title">setq</span> times <span class="list">(<span class="number">1</span>+ times)</span>)</span></div><div class="line">      <span class="list">(<span class="title">sit-for</span> <span class="number">0.2</span>)</span></div><div class="line">      )))</div></pre></figure>
+
+<p>As stated above, I know this is extremely simple, but I suppose everyone has to
+start somewhere.  Besides, who doesn’t love a dancing monkey?</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>A few months ago, I started playing around with Emacs.  For roughly six years
+prior to that, I was a die-hard Vim fan.  Vim will always hold a special place
+in my heart, but I have grown to love Emacs. I’ll undoubtedly cover Emacs in
+more detail, but I’ll leave that for other posts.]]>
+    
+    </summary>
+    
+      <category term="emacs" scheme="http://cupfullofcode.com/tags/emacs/"/>
+    
+      <category term="elisp" scheme="http://cupfullofcode.com/tags/elisp/"/>
+    
+      <category term="Emacs" scheme="http://cupfullofcode.com/categories/Emacs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Negation and De Morgan's Law]]></title>
+    <link href="http://cupfullofcode.com/blog/2011/09/01/de-morgans-law/"/>
+    <id>http://cupfullofcode.com/blog/2011/09/01/de-morgans-law/</id>
+    <published>2011-09-01T04:00:00.000Z</published>
+    <updated>2015-02-02T03:31:51.000Z</updated>
+    <content type="html"><![CDATA[<p>Undoubtedly, your grade school grammar teacher has scolded you at one point or
+another for your inadvertent use of a double negative.  Statements such as “I
+don’t know nothing about physics”, while grammatically incorrect, are often
+semantically inaccurate as well.  While the previous statement would commonly
+be understood to mean the person posses no knowledge of physics, the actual
+statement implies the opposite, that the preposition “I know nothing about
+physics” is incorrect.  Certainly your teacher offered sound advice and one
+would be wise to heed such instruction.<a id="more"></a></p>
+<p>Unfortunately, when programming such double negation is quite common and often
+leads to disastrous ends.  For example, who would qualify for the below
+condition?</p>
+<figure class="highlight php"><pre><div class="line"><span class="preprocessor">&lt;?php</span></div><div class="line"><span class="keyword">if</span>( !(<span class="variable">$student</span><span class="variable">-&gt;age</span> != <span class="number">18</span> &amp;&amp; !<span class="variable">$student</span><span class="variable">-&gt;enrolled</span>(<span class="string">'Physics'</span>)) ) { ... }</div></pre></figure>
+
+<p>We want someone who is not both not 18 and not enrolled in physics. Simple,
+right?</p>
+<p>Granted, at the time this snippet was written, it might have been well
+understood by the author.  But 6 months later when this line needs altered by a
+different developer, precious time is wasted deciphering this twisted logic.</p>
+<p>This is where <a href="http://en.wikipedia.org/wiki/De_Morgan" target="_blank" rel="external">De Morgan’s Laws</a> come in handy. From Wikipedia:</p>
+<blockquote>
+<p>“The negation of a conjunction is the disjunction of the negations.”<br>“The negation of a disjunction is the conjunction of the negations.“</p>
+</blockquote>
+<p>Great, so what does that mean? Basically, it means that if you have two
+conditions — <code>p</code> and <code>q</code> — and you apply the negation to the statement <code>p and
+q</code>, this is logically equivalent to <code>!p or !q</code>. Similarly, if we have the
+statement <code>p or q</code> to which we apply the negation operation, this is logically
+equivalent to <code>!p and !q</code>.</p>
+<p>The easiest way to think about this mentally is that when we apply a negation
+across a statement, we prepend each preposition ( either <code>p</code> or <code>q</code> ) with the
+<code>not</code> operator, and every time we encounter the logical operators <code>and</code> or
+<code>or</code>, we toggle them</p>
+<p>Thus, <code>! ( ( p or q ) and ( r or s ) )</code> implies <code>( (!p and !q) or (!r and
+!s))</code>.</p>
+<p>Using De Morgan’s law, let’s simplify the logic of our initial if condition.</p>
+<p>Let us assume the preposition <code>p</code> represents the condition where the student’s
+age is 18 and <code>q</code> represents the condition where the student is enrolled in
+physics. Given this, our initial condition can be written in a more compact
+form as</p>
+<figure class="highlight c"><pre><div class="line"><span class="keyword">if</span>( !(!p &amp;&amp; !q) ) {</div></pre></figure>
+
+<p>After applying De Morgan’s Law, we have</p>
+<figure class="highlight c"><pre><div class="line"><span class="keyword">if</span>( !!p || !!q ) {</div></pre></figure>
+
+<p>The negation of the negation of <code>p</code> is <code>p</code>, so the above reduces to</p>
+<figure class="highlight c"><pre><div class="line"><span class="keyword">if</span>( p || q ) {</div></pre></figure>
+
+<p>Substituting <code>p</code> and <code>q</code> for the original conditions, we arrive at the greatly
+simplified</p>
+<figure class="highlight php"><pre><div class="line"><span class="preprocessor">&lt;?php</span></div><div class="line"><span class="keyword">if</span> ( <span class="variable">$student</span><span class="variable">-&gt;age</span> == <span class="number">18</span> || <span class="variable">$student</span><span class="variable">-&gt;enrolled</span>(<span class="string">'Physics'</span>) ) {</div></pre></figure>
+
+<p>which is much more readily understood.</p>
+<p>In order to convince you that the two statements are logically equivalent, a
+<a href="http://en.wikipedia.org/wiki/Truth_table" target="_blank" rel="external">truth table</a> is provided below. Note
+that the second to last column contains the results of the original condition,
+and the last column is the reduced condition.</p>
+<figure class="highlight text"><pre><div class="line">| p | <span class="string">q | !p |</span> !<span class="string">q | !p &amp;&amp; !q |</span> !(!p ^ !<span class="keyword">q</span>) | p v <span class="string">q |</span></div><div class="line">|---+---+----+----+----------+------------+-------|</div><div class="line">| <span class="number">1</span> | <span class="number">1</span> |  <span class="number">0</span> |  <span class="number">0</span> |        <span class="number">0</span> |          <span class="number">1</span> |     <span class="number">1</span> |</div><div class="line">| <span class="number">1</span> | <span class="number">0</span> |  <span class="number">0</span> |  <span class="number">1</span> |        <span class="number">0</span> |          <span class="number">1</span> |     <span class="number">1</span> |</div><div class="line">| <span class="number">0</span> | <span class="number">1</span> |  <span class="number">1</span> |  <span class="number">0</span> |        <span class="number">0</span> |          <span class="number">1</span> |     <span class="number">1</span> |</div><div class="line">| <span class="number">0</span> | <span class="number">0</span> |  <span class="number">1</span> |  <span class="number">1</span> |        <span class="number">1</span> |          <span class="number">0</span> |     <span class="number">0</span> |</div></pre></figure>
+
+<p>As you can see, De Morgan’s Law is a powerful tool for managing conditional
+complexity in code. I hope this hasn’t not helped.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>Undoubtedly, your grade school grammar teacher has scolded you at one point or
+another for your inadvertent use of a double negative.  Statements such as “I
+don’t know nothing about physics”, while grammatically incorrect, are often
+semantically inaccurate as well.  While the previous statement would commonly
+be understood to mean the person posses no knowledge of physics, the actual
+statement implies the opposite, that the preposition “I know nothing about
+physics” is incorrect.  Certainly your teacher offered sound advice and one
+would be wise to heed such instruction.]]>
+    
+    </summary>
+    
+      <category term="logic" scheme="http://cupfullofcode.com/tags/logic/"/>
+    
+      <category term="Programming" scheme="http://cupfullofcode.com/categories/Programming/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Efficient Command Line Navigation | Cup Full of Code</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <link rel="alternative" href="/atom.xml" title="Cup Full of Code" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="/js/jquery.min.js" type="text/javascript"></script>
+
+    <script src="/js/jquery.dropotron.min.js" type="text/javascript"></script>
+
+    <script src="/js/skel.min.js" type="text/javascript"></script>
+
+    <script src="/js/skel-layers.min.js" type="text/javascript"></script>
+
+    <script src="/js/init.js" type="text/javascript"></script>
+
+    <noscript>
+        <link rel="stylesheet" href="/css/skel.css" type="text/css">
+
+        <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+        <link rel="stylesheet" href="/css/style-desktop.css" type="text/css">
+
+    </noscript>
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+</head>
+
+<body class="no-sidebar">
+  <div id="container">
+    <div id="wrap">
+      <div id="header-wrapper" class="wrapper">
+    <div id="header">
+
+        <!-- Logo -->
+        <div id="logo">
+            <h1><a href="index.html">Cup Full of Code</a></h1>
+            <p>The personal site of Matthew M. Keeler</p>
+        </div>
+
+        <!-- Nav -->
+        <nav id="nav">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/resume">Resume</a></li>
+                <li><a href="/archives">Blog</a></li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+      <div class="outer">
+        <section><div class="wrapper style2">
+    <div class="section-title">
+        <a href="/blog/2013/07/03/efficient-command-line-navigation/" class="article-date">
+  <time datetime="2013-07-03T23:36:00.000Z" itemprop="datePublished">Jul 3 2013</time>
+</a>
+    </div>
+    <div id="main" class="container">
+        <article id="post-efficient-command-line-navigation" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+            
+  
+    <h1 class="article-title" itemprop="name">
+      Efficient Command Line Navigation
+    </h1>
+  
+
+        </header>
+    
+        <div class="article-entry" itemprop="articleBody">
+            
+                <p>I live on the command line. Between <a href="http://www.vim.org/" target="_blank" rel="external">vim</a>,
+<a href="http://tmux.sourceforge.net/" target="_blank" rel="external">tmux</a>, and <a href="http://xmonad.org/" target="_blank" rel="external">xmonad</a>, there
+isn’t much I have to use the mouse for these days. Given my love for keyboard
+navigation, it only makes sense that I learn as many of the command line
+shortcuts available as possible. Here I detail some of the most helpful
+navigation tricks, and those I use on a daily basis.<a id="more"></a></p>
+<p>First a brief word about these shortcut notations. If you see a command listed
+as <code>C-a</code>, that is the shorthand representation of pressing Control and a
+together. If you see <code>M-b</code>, that is the same as pressing Meta and b
+together. Meta is typically Alt on modern systems.</p>
+<p>I’m sure everyone knows about <code>TAB</code> completion, but just in case, I feel
+compelled to mention it. When working in your shell, you can begin specifying a
+file or directory and then use <code>TAB</code> to expand it as far as possible until a
+conflict arises. For example, let us assume we have a directory containing the
+files matthew.txt, jacob.txt and jacobsen.txt. If I wanted to open matthew.txt
+in vim, I can start typing <code>vim m</code> and hit <code>TAB</code> after the <code>m</code>. Since this
+character alone is enough to determine uniqueness, my shell will helpfully add
+the <code>atthew.txt</code>.</p>
+<p>However, if I wanted to open jacobsen.txt, I could type <code>vim j&lt;TAB&gt;</code>, which
+would only complete until jacob. After that, the shell cannot possibly know
+which file I meant, so it waits for more input. Typing a quick <code>s</code> and <code>TAB</code>;
+will finish the job, resulting in <code>vim jacobsen.txt</code>. A lot of shells offer
+context aware completion as well. In zsh for example, if I issue <code>git checkout</code>
+and hit <code>TAB</code>, I am presented with a list of branches and tags that I can
+checkout. Similarly, if I type <code>kill</code> I will get a list of running processes
+and their associated PIDs.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/tab-completion.gif" alt="Tab completion"></p>
+<p>There are also a lot of great shortcuts for navigation. For example, let us say
+you have typed out the command <code>sp aux | grep &#39;vim&#39; | xargs kill -9</code>. At this
+point, you notice you have a typo at the very beginning. You could use your
+arrow keys to navigate back to the beginning of the line, delete the two
+offending characters, and then use the arrow keys to navigate to the end so you
+can continue crafting the command. But this is so time consuming! Instead, we
+can use 3 helpful shortcuts — <code>C-a</code>, <code>C-t</code>, and <code>C-e</code>.</p>
+<p><code>C-a</code> will jump your cursor to the start of the line. <code>C-t</code> will transpose the
+character under your cursor with the one to the left. In our case, there is no
+character to the left, so it simply moves the cursor to the right and then
+performs the swap. Now we can jump back to the end of the line with <code>C-e</code>. How
+efficient is that?</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/home-transpose-end.gif" alt="Home, Transpose and End"></p>
+<p>A quick note about transpose. Vim users beware. This shifting behavior is
+different than what you normally experience when issuing <code>xp</code> in command mode,
+which swaps the character under the cursor to the right.</p>
+<p>What about if the error you made is towards the beginning, but isn’t at the
+first character? Once you’ve navigated to the beginning of the command with
+<code>C-a</code>, you can move forward a character at a time with <code>C-f</code>, or forward a word
+at a time with <code>M-f</code>. In the same spirit, you can move backwards a character
+with <code>C-b</code>, or back a word at a time with <code>M-b</code>.</p>
+<p>One thing you will soon notice about these commands is that they tend to exist
+in pairs. The control options tend to do the least amount of work, whereas meta
+will work on a larger scale. So what about our <code>C-t</code> (transpose) option? Does
+it have a <code>M-t</code> equivalent? Certainly! This will transpose words.</p>
+<p>You might not always want to transpose characters or words. Instead, you may
+need to delete some. <code>C-d</code> will delete one character a time, staring with the
+character under your cursor. <code>M-d</code> will delete words at a time. Notice though,
+that this deletes from the current cursor position to the end of the word. It
+does not actually go back to the beginning of the word, and then delete from
+there. If you need to delete a word from the current cursor position going
+backward, you can use <code>M-backspace</code>.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/move-delete-transpose.gif" alt="Move, Delete and Transpose"></p>
+<p>There are quite a few times I’m crafting a command, and halfway through I
+realize I need bail on the command and check something first. But if I <code>C-c</code> to
+kill the current command, I’ll have to retype it, and that’s just no
+good. Sure, there are ways around this. I could use the mouse to copy the
+command and then paste it in later. I could open another tab or tmux window and
+check whatever, but that just takes too long. Instead, you can use <code>C-u</code> to cut
+the command from your cursor to the beginning of the line, placing that text in
+your kill-ring, thereby freeing yourself do whatever you have to do. If you’re
+already at the beginning of the command, you can <code>C-k</code> to cut forward from your
+cursor position. Once you’re ready to resume that command, you can use <code>C-y</code> to
+paste that command back and go on your merry way.</p>
+<p>But it gets even better. Let’s say you used the <code>C-u</code> / <code>C-k</code> option a few
+times because it is so wicked helpful. But the last thing you cut isn’t what
+you want to restore. Use <code>C-y</code> to paste back your last cut, and then use <code>M-y</code>
+to cycle through your kill-ring until you find the text you want to restore!</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/kill-ring.gif" alt="Kill Ring"></p>
+<p>A lot of times in my workflow, I will edit a file, and then issue a <code>git add
+/path/to/file</code> to stage it. I can just type <code>vim /path/to/file</code>, do my edits,
+and then issue <code>git add /path/to/file</code>, but that means I have to type the same
+file path twice, and I can’t have that, even using <code>TAB</code> completion. The <code>M-.</code>
+command saves the day. <code>M-.</code> will insert the last argument from the previous
+command at the current cursor location. So now I just type <code>vim /path/to/file</code>,
+do my edits, and then git add <code>M-.</code> and the file path is added for
+me. Repeating <code>M-.</code> will cycle back through the last parameter for each of the
+commands stored in your history.</p>
+<p>This post is getting a little lengthy, but there are just a couple more
+shortcuts that you simply must know about, and they all deal with your command
+history. If you’re anything like me, you tend to issue the same command
+multiple times in a day, be it ssh-ing to some host, issuing <code>git status</code> or
+what have you. Your shell maintains a history of the commands you have
+executed, and you can move back through this history using the arrow keys on
+the terminal. But those keys are SO far away from home row!</p>
+<p>As you might have surmised, there is a more efficient solution. <code>C-n</code> and <code>C-p</code>
+will allow you to navigate through your history going forward and backwards,
+respectively.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/ctrl-n-navigation.gif" alt="Ctrl N Navigation"></p>
+<p>If the command you are looking to recall was executed recently, <code>C-n</code> and <code>C-p</code>
+are life savers. But if the command is more than a few lines back, they can
+quickly become annoying. <code>C-r</code> allows you to issue searches against the command
+history. Simply press <code>C-r</code> and then begin typing the command you would like to
+recall. As you type more and more characters, the most recent command matching
+your search will be displayed. Repeatedly tapping <code>C-r</code> at this point will find
+the next most recent command matching the criteria, and so on until all
+possible matches have been exhausted. Once you have found the command of
+interest, <code>C-j</code> will execute it. If you’d like to select the command, but edit
+it first, you can issue any of the navigation commands mentioned above to
+select it and start editing. Or, you can type <code>C-g</code> to abort the search, and
+your prompt will be restored with whatever text had originally been specified
+prior to the search.</p>
+<p><img src="../../../../../images/posts/efficient-command-line-navigation/reverse-search.gif" alt="Reverse Search"></p>
+<p>I hope you find these commands helpful, and they make working on the command
+line a little more enjoyable!  And remember, there are plenty more shortcuts,
+so keep learning.</p>
+
+        
+        </div>
+    </div>
+</article>
+
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+
+    </div>
+</div>
+</section>
+      </div>
+      <!-- Footer -->
+<div id="footer-wrapper" class="wrapper">
+    <div class="section-title">Links of interest</div>
+    <div id="footer" class="container">
+        <div class="row oneandhalf">
+            <div class="12u">
+
+                <section class="feature-list small">
+                    <div class="row">
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-envelope">Email</h3>
+                                <p>
+                                <a href="#">keelerm@tortugas-llc.com</a>
+                                </p>
+                            </section>
+                            <section>
+                                <h3 class="icon fa-rss">Subscribe</h3>
+                                <p>
+                                <a href="/atom.xml">Atom Feed</a>
+                                </p>
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-comment">Social</h3>
+                                <p>
+                                <a href="#">@keelerm84</a><br />
+                                <a href="#">github.com/keelerm84</a><br />
+                                <a href="#">youtube.com/user/keelerm84ify</a>
+                                </p>
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-tag">Tags</h3>
+                                
+  <div class="widget-wrap">
+    <p>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    </p>
+  </div>
+
+
+                            </section>
+                        </div>
+                        <div class="3u">
+                            <section>
+                                <h3 class="icon fa-folder-open">Categories</h3>
+                                
+    <p>
+    <a class="category-link" href="/categories/Emacs/">Emacs</a>, <a class="category-link" href="/categories/Emacs/PHP/">PHP</a>, <a class="category-link" href="/categories/Programming/">Programming</a>, <a class="category-link" href="/categories/Utilities/">Utilities</a>
+    </p>
+
+
+                            </section>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <hr />
+        <header class="style1">
+            <h2>There is no system but GNU, and Linux is one of its kernels.</h2>
+            <p>&mdash; St. IGNUcius</p>
+        </header>
+    </div>
+</div>
+
+    </div>
+    
+<script>
+  var disqus_shortname = 'cupfullofcode';
+  
+  var disqus_url = 'http://cupfullofcode.com/blog/2013/07/03/efficient-command-line-navigation/';
+  
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-55725869-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+  </div>
+</body>
+</html>
