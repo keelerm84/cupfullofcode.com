@@ -110,13 +110,13 @@ it is certainly a source of annoyance for me.  Since emacs is all about
 tweaking your environment to eliminate those little headaches, I knew I had to
 fix it.</p>
 <p>At first, I thought adding a hook to delete-file would be the easy,
-straightforward fix.  I couldn’t find any documentation for a
+straightforward fix.  I couldn&#39;t find any documentation for a
 delete-file-hook.  Having tried to check out the source code, I realized that
 while find-file is implemented in lisp, delete-file is actually implemented in
 C.</p>
 <p>Having been unable to find a hook associated with this function, what was I do
 to?</p>
-<p>This is where defadvice comes in.  I won’t go into detail about how defadvice
+<p>This is where defadvice comes in.  I won&#39;t go into detail about how defadvice
 works, but the short version is that defadvice allows you to suggest behavior
 to emacs before, after, or around an invocation of a particular function.  You
 can read more about
@@ -129,8 +129,8 @@ cached by projectile, it removes it from the cache.</p>
  now been incorporated into projectile.</p>
 <figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defadvice</span> delete-file <span class="list">(<span class="title">before</span> purge-from-projectile-cache <span class="list">(<span class="title">filename</span> <span class="keyword">&amp;optional</span> trash)</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">and</span> <span class="list">(<span class="title">projectile-project-p</span>)</span> projectile-enable-caching)</span></span></div><div class="line">      <span class="list">(<span class="title">let*</span> <span class="list">(<span class="list">(<span class="title">project-root</span> <span class="list">(<span class="title">projectile-project-root</span>)</span>)</span></span></span></div><div class="line">             <span class="list">(<span class="title">true-filename</span> <span class="list">(<span class="title">file-truename</span> filename)</span>)</span></div><div class="line">             <span class="list">(<span class="title">relative-filename</span> <span class="list">(<span class="title">file-relative-name</span> true-filename project-root)</span>)</span>)</div><div class="line">        <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">projectile-file-cached-p</span> relative-filename project-root)</span></span></div><div class="line">            <span class="list">(<span class="title">projectile-purge-file-from-cache</span> relative-filename)</span>))))</div><div class="line">  </div><div class="line"><span class="list">(<span class="title">ad-activate</span> <span class="quoted">'delete-file</span>)</span></div></pre></figure>
 
-<p>That’s it.  With just a few short lines, projectile will now invalidate the
-cache as soon as I delete a file, just as I would like.  Isn’t emacs great?</p>
+<p>That&#39;s it.  With just a few short lines, projectile will now invalidate the
+cache as soon as I delete a file, just as I would like.  Isn&#39;t emacs great?</p>
 
         
         </div>
@@ -187,7 +187,7 @@ cache as soon as I delete a file, just as I would like.  Isn’t emacs great?</p
                                 
   <div class="widget-wrap">
     <p>
-    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
     </p>
   </div>
 

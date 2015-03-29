@@ -89,16 +89,16 @@
             
                 <p>A few months ago, I started playing around with Emacs.  For roughly six years
 prior to that, I was a die-hard Vim fan.  Vim will always hold a special place
-in my heart, but I have grown to love Emacs. I’ll undoubtedly cover Emacs in
-more detail, but I’ll leave that for other posts.<a id="more"></a></p>
+in my heart, but I have grown to love Emacs. I&#39;ll undoubtedly cover Emacs in
+more detail, but I&#39;ll leave that for other posts.<a id="more"></a></p>
 <p>One cannot use Emacs for long without dabbling in Elisp, the language upon
 which Emacs is built.  Having only briefly touched on Lisp languages in
 college, I figured it was high time to start the learning process.</p>
 <p>Recently, a friend of mine stumbled upon this cute little code monkey on
-someone’s Stackoverflow profile.</p>
+someone&#39;s Stackoverflow profile.</p>
 <figure class="highlight text"><pre><div class="line">     __</div><div class="line">w  c(..)o  (</div><div class="line"> <span class="command">\_</span>_(-)   __)</div><div class="line">     /<span class="command">\ </span> (</div><div class="line">    /( )__)</div><div class="line">   m /|</div><div class="line">    | <span class="command">\</span></div><div class="line">    m  m</div></pre></figure>
 
-<p>Quite naturally I thought, “I should make him dance.”  As this seemed
+<p>Quite naturally I thought, &quot;I should make him dance.&quot;  As this seemed
 relatively simple, I decided to tackle this with Elisp.</p>
 <p>I first created four slightly altered copies of the little guy, and with the
 code shown below, had him dancing in no time.  You can make him dance
@@ -108,7 +108,7 @@ shake his groove thing on YouTube.</p>
 <figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> insert-monkey <span class="list">(<span class="title">num</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span> <span class="string">"P"</span>)</span></div><div class="line">  <span class="list">(<span class="title">erase-buffer</span>)</span></div><div class="line">  <span class="list">(<span class="title">insert-file-contents</span> </span></div><div class="line">    <span class="list">(<span class="title">concat</span> <span class="string">"/home/keelerm/Projects/emacs/code-monkey/"</span> <span class="list">(<span class="title">int-to-string</span> num)</span>)</span>))</div><div class="line"></div><div class="line"><span class="list">(<span class="title">defun</span> dance-monkey <span class="list">(<span class="title">repeat</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span> <span class="string">"P"</span>)</span></div><div class="line">  <span class="list">(<span class="title">let</span> <span class="list">(<span class="list">(<span class="title">times</span> <span class="number">0</span>)</span>)</span></span></div><div class="line">    <span class="list">(<span class="title">while</span> <span class="list">(<span class="title">&lt;</span> times repeat)</span></span></div><div class="line">      <span class="list">(<span class="title">insert-monkey</span> <span class="list">(<span class="title">mod</span> times <span class="number">4</span>)</span>)</span></div><div class="line">      <span class="list">(<span class="title">setq</span> times <span class="list">(<span class="number">1</span>+ times)</span>)</span></div><div class="line">      <span class="list">(<span class="title">sit-for</span> <span class="number">0.2</span>)</span></div><div class="line">      )))</div></pre></figure>
 
 <p>As stated above, I know this is extremely simple, but I suppose everyone has to
-start somewhere.  Besides, who doesn’t love a dancing monkey?</p>
+start somewhere.  Besides, who doesn&#39;t love a dancing monkey?</p>
 
         
         </div>
@@ -165,7 +165,7 @@ start somewhere.  Besides, who doesn’t love a dancing monkey?</p>
                                 
   <div class="widget-wrap">
     <p>
-    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
     </p>
   </div>
 

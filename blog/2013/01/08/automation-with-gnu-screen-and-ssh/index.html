@@ -89,20 +89,20 @@
             
                 <p>As a developer, I tend to prefer automation whenever possible. Hours of your
 life are lost in the minutes spent doing that which could easily be
-scripted. The classic rule of thumb I try to follow is “if you have to do it
-twice, automate it.”<a id="more"></a></p>
+scripted. The classic rule of thumb I try to follow is &quot;if you have to do it
+twice, automate it.&quot;<a id="more"></a></p>
 <p>At my job, I have to maintain multiple versions of the product, each of which
 are hosted on different virtual machines. When I am ready to start work on a
 new feature to an existing version, I have to fire up my code editor, connect
 multiple terminals to the system so I can tail various log files, and open a
 shell for git. As one can imagine, this is rather time consuming. There is
-simply no way I’m doing this by hand every day. To address this, I use a
+simply no way I&#39;m doing this by hand every day. To address this, I use a
 combination of SSH keys and configs, GNU screen and a small alias.</p>
 <p>There are tons of documentation on the web about the use of SSH keys and config
 files. If you are unfamiliar with these topics, you can read about SSH keys at
 <a href="http://paulkeck.com/ssh/" target="_blank" rel="external">http://paulkeck.com/ssh/</a> and config files at
 <a href="http://nerderati.com/2011/03/simplify-your-life-with-an-ssh-config-file/" target="_blank" rel="external">http://nerderati.com/2011/03/simplify-your-life-with-an-ssh-config-file/</a>. Since
-the main purpose is to show how my tools fit together, I’ll just state that
+the main purpose is to show how my tools fit together, I&#39;ll just state that
 every virtual server I connect to has a copy of my SSH key, and that I have a
 config file defined with an example snippet shown below:</p>
 <figure class="highlight sh"><pre><div class="line">Host <span class="number">19</span></div><div class="line">HostName <span class="number">19</span>.virtualserver</div><div class="line">Port <span class="number">12345</span></div><div class="line">User developer</div></pre></figure>
@@ -117,26 +117,26 @@ details of using screen are outside the scope of this entry, but check out this
 post
 <a href="http://www.kuro5hin.org/story/2004/3/9/16838/14935" target="_blank" rel="external">http://www.kuro5hin.org/story/2004/3/9/16838/14935</a>
 for some general information.</p>
-<p>One thing you don’t hear a lot about is scripting with screen. With the
+<p>One thing you don&#39;t hear a lot about is scripting with screen. With the
 powerful options provided, you can easily start a screen, launch multiple named
 tabs, and execute any command of your choosing. I have a screen config for each
-product version I manage. Version 1.9’s config is shown below:</p>
+product version I manage. Version 1.9&#39;s config is shown below:</p>
 <figure class="highlight sh"><pre><div class="line"><span class="comment"># Start screen in detached mode (-d -m), and give it a session name ('1-9') to avoid</span></div><div class="line"><span class="comment"># confusion when communicating with this session later as we add commands</span></div><div class="line">screen <span class="operator">-d</span> -m -S <span class="number">1</span>-<span class="number">9</span></div><div class="line"></div><div class="line"><span class="comment"># Run a command in the current screen window (edit some file for example)</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X title Git</div><div class="line"></div><div class="line"><span class="comment"># Create a new window, and run a command in that window:</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Code emacsclient -nw -c</div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Application ssh <span class="number">19</span> <span class="string">'tail -F /var/www/product/logs/error.log'</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Apache ssh <span class="number">19</span> <span class="string">'tail -F /var/log/httpd/error.log'</span></div><div class="line">screen -S <span class="number">1</span>-<span class="number">9</span> -p <span class="number">0</span> -X screen -t Remote ssh <span class="number">19</span></div></pre></figure>
 
 <p>Executing this script will create a new screen session with five tabs, giving
 me a tab for git, one for my editor of choice, two actively tailing various log
 files, and a third connected to the remote system so I can easily navigate and
 check out other bits of the system as needed. This script relies heavily on my
-aforementioned use of SSH configs and keys. With the keys copied over, I don’t
+aforementioned use of SSH configs and keys. With the keys copied over, I don&#39;t
 have to provide a password for the three tabs that connect to the development
 box. And if any of the connection details for any of the virtual machines
-change, I don’t have to touch this script, and can instead make the
+change, I don&#39;t have to touch this script, and can instead make the
 modification in one place.</p>
 <p>And finally, just to prevent a few more keystrokes, I also have defined aliases
 in my .alias file like the following:</p>
 <figure class="highlight sh"><pre><div class="line">alias <span class="string">'19'</span>=<span class="string">'cd ~/Projects/version19; ~/.screen.d/1.9 &amp;&amp; screen -r 1-9'</span></div></pre></figure>
 
-<p>Now, when I’m ready to go to work, I simply open a terminal, type 19, and I’m
+<p>Now, when I&#39;m ready to go to work, I simply open a terminal, type 19, and I&#39;m
 automatically thrown into screen, running the applications and viewing the logs
 that I almost always need, ready to hit the ground coding with absolute minimal
 effort.</p>
@@ -196,7 +196,7 @@ effort.</p>
                                 
   <div class="widget-wrap">
     <p>
-    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
     </p>
   </div>
 

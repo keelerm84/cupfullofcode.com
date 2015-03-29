@@ -89,25 +89,23 @@
             
                 <p>Any editor worth its salt has some provision for text snippet
 expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
-is certainly no exception. If you’re not familiar with the concept of snippets,
+is certainly no exception. If you&#39;re not familiar with the concept of snippets,
 the basic idea involves defining a keyword, which when followed with some
 trigger (keyboard shortcut or menu option), replaces that keyword with some
 predefined text. This functionality is a great boost to productivity as it
 prevents the developer from having to manually type potentially hundreds or
 thousands of lines of relatively boilerplate code.<a id="more"></a></p>
-<h2 id="YASnippet">YASnippet</h2>
-<p>Like nearly all things in Emacs, there are a number of available packages that
-provide this feature. The one I’ll be discussing today is
+<h2 id="YASnippet">YASnippet</h2><p>Like nearly all things in Emacs, there are a number of available packages that
+provide this feature. The one I&#39;ll be discussing today is
 <a href="https://github.com/capitaomorte/yasnippet" target="_blank" rel="external">YASnippet (Yet Another Snippet)</a>. The
-installation instructions are straightforward and minimal, so I won’t bother
-covering them here. Instead, I’ll get right into the meat of the extension.</p>
-<h2 id="Plain_Text_Expansion">Plain Text Expansion</h2>
-<p>The most basic functionality any snippet expansion package can offer is
-straight text replacement. At first blush, this doesn’t seem terribly helpful,
-but let’s consider an example. Suppose I want to include a copy of the GNU
+installation instructions are straightforward and minimal, so I won&#39;t bother
+covering them here. Instead, I&#39;ll get right into the meat of the extension.</p>
+<h2 id="Plain_Text_Expansion">Plain Text Expansion</h2><p>The most basic functionality any snippet expansion package can offer is
+straight text replacement. At first blush, this doesn&#39;t seem terribly helpful,
+but let&#39;s consider an example. Suppose I want to include a copy of the GNU
 Public License in my project. Copying and pasting such a lengthy license would
 quickly grow tiresome for each project you work on. But with the help of
-YASnippet, it’s as painless as defining the below snippet and then typing
+YASnippet, it&#39;s as painless as defining the below snippet and then typing
 <code>gpl3</code> and pressing <code>TAB</code> to expand.</p>
 <figure class="highlight text"><pre><div class="line"><span class="comment"># name : GPLv3</span></div><div class="line"><span class="comment"># key : gpl3</span></div><div class="line"><span class="comment"># --</span></div><div class="line">                    GNU GENERAL PUBLIC LICENSE</div><div class="line">                       Version <span class="number">3</span>, <span class="number">29</span> June <span class="number">2007</span></div><div class="line"></div><div class="line"> Copyright (C) <span class="number">2007</span> Free Software Foundation, Inc. <span class="attribute">http</span>:<span class="regexp">//</span>fsf.org/</div><div class="line"> Everyone <span class="keyword">is</span> permitted to copy <span class="keyword">and</span> distribute verbatim copies</div><div class="line"> <span class="keyword">of</span> <span class="keyword">this</span> license <span class="built_in">document</span>, but changing it <span class="keyword">is</span> <span class="keyword">not</span> allowed.</div><div class="line">  </div><div class="line">                            Preamble</div><div class="line">  </div><div class="line">  The GNU General Public License <span class="keyword">is</span> a free, copyleft license <span class="keyword">for</span></div><div class="line">software <span class="keyword">and</span> other kinds <span class="keyword">of</span> works.</div><div class="line">[...]</div></pre></figure>
 
@@ -115,16 +113,15 @@ YASnippet, it’s as painless as defining the below snippet and then typing
 line defines a common name for the snippet. The keyword we will use to trigger
 the expansion is defined by <code># key: gpl3</code>. Anything that follows the line <code>#
 --</code> will be the replacement text that is inserted when our snippet is
-expanded. Phew! That sure saved us a ton of typing. But that’s barely
+expanded. Phew! That sure saved us a ton of typing. But that&#39;s barely
 scratching the surface.</p>
-<h2 id="Tab_Stops">Tab Stops</h2>
-<p>While simple text replacement does have its place, it would be more beneficial
+<h2 id="Tab_Stops">Tab Stops</h2><p>While simple text replacement does have its place, it would be more beneficial
 if we could add a level of interactivity to the expansion process. This is
 where tab stop fields enter the scene. A lot of the boilerplate code a
 developer writes is similar, but not quite identical. For example, for loops
 follow the same structure, but the initial and terminating conditions,
 increment values, and variable names are likely to differ in some regard, so
-simple text expansion isn’t quite good enough. So let’s define the following
+simple text expansion isn&#39;t quite good enough. So let&#39;s define the following
 snippet.</p>
 <figure class="highlight text"><pre><div class="line"><span class="comment"># name : for</span></div><div class="line"><span class="comment"># key : for</span></div><div class="line"><span class="comment"># --</span></div><div class="line"><span class="keyword">for</span>(<span class="variable">$1</span>; <span class="variable">$2</span>; <span class="variable">$3</span>) {</div><div class="line">  <span class="variable">$0</span></div><div class="line">}</div></pre></figure>
 
@@ -136,30 +133,28 @@ cursor will end at <code>$0</code>, which is a special <code>$N</code> type mark
 noted that each of the tab stops can also be defined with default values, using
 the syntax <code>${N:default value}</code>. If the defined default value is sufficient,
 you can simply tab past it and continue on your way.</p>
-<h2 id="Mirrored_Fields">Mirrored Fields</h2>
-<p>While that is pretty awesome, there is a bit of a downside there. In each of
+<h2 id="Mirrored_Fields">Mirrored Fields</h2><p>While that is pretty awesome, there is a bit of a downside there. In each of
 the three stops, if I was using the variable <code>i</code>, I would have to type that in
-3 times. <code>i</code> isn’t so bad, but if my variable is
+3 times. <code>i</code> isn&#39;t so bad, but if my variable is
 <code>anExtremelyLongAndOverlyVerboseVariable</code>, that is tedious and error
 prone. Luckily for us, YASnippet has the answer, and it is mirrored
 fields. Mirrored fields allow you to type something in once, and have it
 repeated throughout the snippet at other marked placeholders. The initial tab
 stop should be defined as <code>${N:enumerate}</code> and each place you want that
-information mirrored should use the standard tab notation. Let’s see that in
+information mirrored should use the standard tab notation. Let&#39;s see that in
 action!</p>
-<p>A common style you’ll see in code is to define an if / while / for block, and
+<p>A common style you&#39;ll see in code is to define an if / while / for block, and
 then include a comment at the bottom that reminds the reader of the condition
-we’re closing. YASnippet can certainly help us with this. Check out the snippet
+we&#39;re closing. YASnippet can certainly help us with this. Check out the snippet
 below. Type in the condition once, have it included twice. Sweet. Converting
 the <code>for</code> snippet is left as an exercise to the reader.</p>
 <figure class="highlight text"><pre><div class="line"><span class="keyword">if</span> (<span class="variable">${1:enumerate}</span>)</div><div class="line">{</div><div class="line"><span class="variable">$0</span></div><div class="line">} // <span class="variable">$1</span></div></pre></figure>
 
-<h2 id="Embedded_Lisp">Embedded Lisp</h2>
-<p>While the above examples have been awesome, the real power of YASnippet has yet
+<h2 id="Embedded_Lisp">Embedded Lisp</h2><p>While the above examples have been awesome, the real power of YASnippet has yet
 to be revealed. Not only can you include straight text, simple tab stops and
 mirrored fields, but you can even include elisp code! The realm of possibility
 just got ridiculous.</p>
-<p>Let’s look at an example from the C++ <a href="http://qt-project.org/" target="_blank" rel="external">QT</a> world. When
+<p>Let&#39;s look at an example from the C++ <a href="http://qt-project.org/" target="_blank" rel="external">QT</a> world. When
 defining QT UI classes, there is some standard code that must be included each
 time. Combining the power of mirrored fields with elisp, we can define the
 following snippets. You can see them in action on
@@ -172,27 +167,26 @@ following snippets. You can see them in action on
 values for tab stop fields, except all the power of elisp is unleashed!
 YASnippet provides a handy placeholder, <code>yas/text</code> which represents the text
 that is being mirrored in the field. Using this, you can easily camel case
-certain words, upper or lowercase sections of code, and more. But you’re not
+certain words, upper or lowercase sections of code, and more. But you&#39;re not
 limited to just built-in functionality. You can define entirely new functions
 of code and reference them just like anything else.</p>
-<h2 id="Putting_It_All_Together">Putting It All Together</h2>
-<p>What follows are a few elisp functions I have defined and a snippet that makes
+<h2 id="Putting_It_All_Together">Putting It All Together</h2><p>What follows are a few elisp functions I have defined and a snippet that makes
 use of them. This snippet will generate the skeleton for a PHP class, including
 the namespace at the top. As all of the building blocks have been covered
-earlier in this post, I’ll just briefly touch on each portion.</p>
+earlier in this post, I&#39;ll just briefly touch on each portion.</p>
 <figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-git-repo <span class="list">(<span class="title">dir</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">string=</span> <span class="string">"/"</span> dir)</span></span></div><div class="line">      <span class="literal">nil</span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">file-exists-p</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">".git/"</span> dir)</span>)</span></span></div><div class="line">        dir</div><div class="line">      <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">"../"</span> dir)</span>)</span>)))</div></pre></figure>
 
 <p>This function starts looking within a specified directory for the existing of a
 .git directory, which would signify we are at the top level of a git
-repository. If it doesn’t find it, it keeps looking up the directory structure
+repository. If it doesn&#39;t find it, it keeps looking up the directory structure
 until it either succeeds, or reaches the root. If it finds it, we return that
-directory. Otherwise, we’ll return nil.</p>
+directory. Otherwise, we&#39;ll return nil.</p>
 <figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-project-root <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">ignore-errors</span> <span class="list">(<span class="title">eproject-root</span>)</span>)</span></span></div><div class="line">      <span class="list">(<span class="title">eproject-root</span>)</span></div><div class="line">    <span class="list">(<span class="title">or</span> <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span> <span class="list">(<span class="title">file-name-directory</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span>)</span>))</div></pre></figure>
 
 <p>Using our find-git-repo as a spring board, this function will determine any
-project’s root directory. As I use
+project&#39;s root directory. As I use
 <a href="https://github.com/jrockway/eproject" target="_blank" rel="external">eproject</a> for a lot of my work, I first
-check to see if the <code>eproject-root</code> variable is defined. If it isn’t, I’ll fall
+check to see if the <code>eproject-root</code> variable is defined. If it isn&#39;t, I&#39;ll fall
 back to looking for a git repo.</p>
 <figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> file-path-to-namespace <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">let</span> <span class="list">(</span></span></div><div class="line">        <span class="list">(<span class="title">root</span> <span class="list">(<span class="title">find-project-root</span>)</span>)</span></div><div class="line">        <span class="list">(<span class="title">base</span> <span class="list">(<span class="title">file-name-nondirectory</span> buffer-file-name)</span>)</span></div><div class="line">        )</div><div class="line">    <span class="list">(<span class="title">substring</span> <span class="list">(<span class="title">replace-regexp-in-string</span> <span class="string">"/"</span> <span class="string">"\\"</span> <span class="list">(<span class="title">substring</span> buffer-file-name <span class="list">(<span class="title">length</span> root)</span> <span class="list">(<span class="title">*</span> <span class="number">-1</span> <span class="list">(<span class="title">length</span> base)</span>)</span>)</span> <span class="literal">t</span> <span class="literal">t</span>)</span> <span class="number">0</span> <span class="number">-1</span>)</span></div><div class="line">    )</div><div class="line">  )</div></pre></figure>
 
@@ -208,7 +202,7 @@ snippet will generate</p>
 
 <p>As you can see, the power of YASnippet is incredible. Be sure to check out the
 YASnippet repo for more examples of snippets that are included in the default
-installation. If any of you are currently using it, I’d love to see some of the
+installation. If any of you are currently using it, I&#39;d love to see some of the
 snippets you use. And of course, if you know of ways to improve my examples,
 please let me know! Happy coding.</p>
 
@@ -267,7 +261,7 @@ please let me know! Happy coding.</p>
                                 
   <div class="widget-wrap">
     <p>
-    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
     </p>
   </div>
 

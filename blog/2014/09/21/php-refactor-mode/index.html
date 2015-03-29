@@ -92,14 +92,13 @@
 functionality for the RS suite of products.  This may include working in
 greenfield code bases or extending our legacy products.  In either case, dozens
 of times a day, I find myself performing various code refactorings.<a id="more"></a></p>
-<h1 id="The_Problem">The Problem</h1>
-<p>Refactoring code is imperative to maintaining a healthy code base.  Technical
+<h1 id="The_Problem">The Problem</h1><p>Refactoring code is imperative to maintaining a healthy code base.  Technical
 debt can quickly pile up in even a moderately sized code base, let alone across
 a system flirting with a million lines of code.  It is the job of any developer
 to ensure code is refactored whenever the existing design begins to offer
 friction.  It is absolutely critical that these refactorings in no way alter
 the behavior of the system.</p>
-<p>In Martin Fowler’s book,
+<p>In Martin Fowler&#39;s book,
 <a href="http://martinfowler.com/books/refactoring.html" target="_blank" rel="external">Refactoring: Improving the Design of Existing Code</a>,
 he discusses a variety of common refactoring patterns, outlining the necessary
 steps to execute these methods safely and efficiently.  While the steps given
@@ -109,15 +108,13 @@ prone.</p>
 like vim and emacs do not.  As a long time user of both (with emacs being my
 favored editor these days), I needed to look elsewhere to achieve this kind of
 support.</p>
-<h1 id="The_Solution">The Solution</h1>
-<p>During my search for a decent solution, I came across the
+<h1 id="The_Solution">The Solution</h1><p>During my search for a decent solution, I came across the
 <a href="https://github.com/QafooLabs/php-refactoring-browser" target="_blank" rel="external">php-refactoring-browser</a>
 by QafooLabs.  The php-refactoring-browser is a command-line tool, written in
 PHP, that can perform a variety of refactoring methods on a particular file.
-Following the guidelines from Fowler’s books, each refactoring is a series of
-simple steps that ensure the system’s behavior is left unaltered.</p>
-<h1 id="A_New_Problem">A New Problem</h1>
-<p>I tried out this tool for a while and absolutely loved the results.  The
+Following the guidelines from Fowler&#39;s books, each refactoring is a series of
+simple steps that ensure the system&#39;s behavior is left unaltered.</p>
+<h1 id="A_New_Problem">A New Problem</h1><p>I tried out this tool for a while and absolutely loved the results.  The
 php-refactoring-browser performed remarkably well and provided me with a
 solution I had desperately been seeking.  But alas, there was a problem.</p>
 <p>While I love the command-line, using the php-refactoring-browser
@@ -132,8 +129,7 @@ command would look something like</p>
 necessary changes.  It will not modify the files inline.  Not only was I
 responsible for providing all of these input parameters, I also had to manually
 apply the patch, and then refresh the file in my editor.</p>
-<h1 id="A_New_Solution">A New Solution</h1>
-<p>Being an enthusiastic user of emacs, I knew there had to be a better way.  So I
+<h1 id="A_New_Solution">A New Solution</h1><p>Being an enthusiastic user of emacs, I knew there had to be a better way.  So I
 set out to create a minor mode for working with the php-refactoring-browser.
 <a href="https://github.com/keelerm84/php-refactor-mode.el" target="_blank" rel="external">php-refactor-mode</a> is the
 result.</p>
@@ -141,24 +137,22 @@ result.</p>
 methods available through the php-refactoring-browser with a few short
 keystrokes.  Since emacs already knows the path to the file and any line
 numbers, I was relieved from ever having to think about that again.  And as for
-things emacs doesn’t know, such as the new method name I might want to use, it
+things emacs doesn&#39;t know, such as the new method name I might want to use, it
 can simply prompt me for it.</p>
 <p>Furthermore, the minor mode will automatically apply the resulting patch from
 the php-refactoring-browser and re-read the file contents so you can focus on
 the work at hand, never breaking your flow to think about the steps for
 performing these refactorings.</p>
 <p>As a final benefit, each refactoring can be undone as one atomic operation.  So
-if you decide you don’t like the results, press <code>C-_</code> and proceed as if it never
+if you decide you don&#39;t like the results, press <code>C-_</code> and proceed as if it never
 happened.</p>
-<h2 id="Let’s_See_It_In_Action">Let’s See It In Action</h2>
-<p>Below is a video demoing some of the supported refactoring methods provided by
-php-refactor-mode.  If you’re an emacs user who writes PHP, I hope you’ll
+<h2 id="Let&#39;s_See_It_In_Action">Let&#39;s See It In Action</h2><p>Below is a video demoing some of the supported refactoring methods provided by
+php-refactor-mode.  If you&#39;re an emacs user who writes PHP, I hope you&#39;ll
 consider giving it a try.  The package is available for installation on melpa
 and of course the source code is available on github.</p>
 <iframe width="100%" height="500" src="//www.youtube.com/embed/J9lbdtdsPi4" frameborder="0" allowfullscreen></iframe>
 
-<h1 id="vim_Users">vim Users</h1>
-<p>If you’re a vim user, then you’re in luck.
+<h1 id="vim_Users">vim Users</h1><p>If you&#39;re a vim user, then you&#39;re in luck.
 <a href="https://github.com/vim-php/vim-php-refactoring" target="_blank" rel="external">vim-php-refactoring</a> is a vim
 plugin that provides the same type of support.  In fact, it was a great source
 of inspiration for my emacs package.  Thanks for paving the way!</p>
@@ -218,7 +212,7 @@ of inspiration for my emacs package.  Thanks for paving the way!</p>
                                 
   <div class="widget-wrap">
     <p>
-    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
+    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
     </p>
   </div>
 
