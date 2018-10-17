@@ -1,129 +1,666 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Snippet Expansion with YASnippet | Cup Full of Code</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <link rel="alternative" href="/atom.xml" title="Cup Full of Code" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="/js/jquery.min.js" type="text/javascript"></script>
-
-    <script src="/js/jquery.dropotron.min.js" type="text/javascript"></script>
-
-    <script src="/js/skel.min.js" type="text/javascript"></script>
-
-    <script src="/js/skel-layers.min.js" type="text/javascript"></script>
-
-    <script src="/js/init.js" type="text/javascript"></script>
-
-    <noscript>
-        <link rel="stylesheet" href="/css/skel.css" type="text/css">
-
-        <link rel="stylesheet" href="/css/style.css" type="text/css">
-
-        <link rel="stylesheet" href="/css/style-desktop.css" type="text/css">
-
-    </noscript>
-    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-</head>
-
-<body class="no-sidebar">
-  <div id="container">
-    <div id="wrap">
-      <div id="header-wrapper" class="wrapper">
-    <div id="header">
-
-        <!-- Logo -->
-        <div id="logo">
-            <h1><a href="index.html">Cup Full of Code</a></h1>
-            <p>The personal site of Matthew M. Keeler</p>
-        </div>
-
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/resume">Resume</a></li>
-                <li><a href="/archives">Blog</a></li>
-            </ul>
-        </nav>
-
-    </div>
-</div>
-
-      <div class="outer">
-        <section><div class="wrapper style2">
-    <div class="section-title">
-        <a href="/blog/2013/02/26/snippet-expansion-with-yasnippet/" class="article-date">
-  <time datetime="2013-02-26T16:35:00.000Z" itemprop="datePublished">Feb 26 2013</time>
-</a>
-    </div>
-    <div id="main" class="container">
-        <article id="post-snippet-expansion-with-yasnippet" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <head>
+        <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "/"
+        },
+        "articleSection" : "blog",
+        "name" : "Snippet Expansion with YASnippet",
+        "headline" : "Snippet Expansion with YASnippet",
+        "description" : "Save yourself keystrokes and headaches",
+        "inLanguage" : "en",
+        "author" : "",
+        "creator" : "",
+        "publisher": "",
+        "accountablePerson" : "",
+        "copyrightHolder" : "",
+        "copyrightYear" : "2013",
+        "datePublished": "2013-02-26 11:35:00 &#43;0000 &#43;0000",
+        "dateModified" : "2013-02-26 11:35:00 &#43;0000 &#43;0000",
+        "url" : "/blog/2013/02/26/snippet-expansion-with-yasnippet/",
+        "wordCount" : "1436",
+        "keywords" : [ "org-mode","emacs","elisp","snippets","Blog" ]
+    }
+    </script>
         
-        
-            <header class="article-header">
             
-  
-    <h1 class="article-title" itemprop="name">
-      Snippet Expansion with YASnippet
-    </h1>
-  
+                <title>Snippet Expansion with YASnippet</title>
+            
+        
 
-        </header>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.49" />
+        
+
+
+        
+            <meta name="author" content="Matthew M. Keeler">
+        
+        
+            <meta name="description" content="Save yourself keystrokes and headaches">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Snippet Expansion with YASnippet"/>
+<meta name="twitter:description" content="Save yourself keystrokes and headaches"/>
+<meta name="twitter:site" content="@keelerm84"/>
+
+        <meta property="og:title" content="Snippet Expansion with YASnippet" />
+<meta property="og:description" content="Save yourself keystrokes and headaches" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2013/02/26/snippet-expansion-with-yasnippet/" /><meta property="article:published_time" content="2013-02-26T11:35:00&#43;00:00"/>
+<meta property="article:modified_time" content="2013-02-26T11:35:00&#43;00:00"/>
+
+        <meta property="og:image" content="//images/logo.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        
+<meta itemprop="name" content="Snippet Expansion with YASnippet">
+<meta itemprop="description" content="Save yourself keystrokes and headaches">
+
+
+<meta itemprop="datePublished" content="2013-02-26T11:35:00&#43;00:00" />
+<meta itemprop="dateModified" content="2013-02-26T11:35:00&#43;00:00" />
+<meta itemprop="wordCount" content="1436">
+
+
+
+<meta itemprop="keywords" content="org-mode,emacs,elisp,snippets," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+            <link rel="stylesheet" href="/css/academicons.min.css">
+        
+
+        
+            
+                
+            
+        
+
+
+  
     
-        <div class="article-entry" itemprop="articleBody">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/styles/gruvbox-dark.min.css' rel='stylesheet' type='text/css' />
+  
+
+
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-55725869-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">blog</a></h1>
+    
+
+    <nav class="links">
+        <ul>
             
-                <p>Any editor worth its salt has some provision for text snippet
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/blog/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/portfolio/">
+                            <i class="fa fa-list">&nbsp;</i>Portfolio
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resume/">
+                            <i class="fa fa-briefcase">&nbsp;</i>Resume
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/portfolio/">
+                            <h3>
+                                <i class="fa fa-list">&nbsp;</i>Portfolio
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resume/">
+                            <h3>
+                                <i class="fa fa-briefcase">&nbsp;</i>Resume
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section class="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2015/03/29/a-look-at-vim-and-emacs/">A Look at Vim and Emacs</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2015-03-29'>
+                                    March 29, 2015</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/" class="image featured">
+            <img src="/images/blog//a-look-at-vim-and-emacs/vim-and-emacs.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/">Invalidate Projectile Cache on Delete</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2014-10-06'>
+                                    October 6, 2014</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/" class="image featured">
+            <img src="/images/blog//invalidate-projectile-cache-on-delete/cache.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/">Performing Controlled PHP Refactorings in Emacs</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2014-09-21'>
+                                    September 21, 2014</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/" class="image featured">
+            <img src="/images/blog//php-refactor-mode/refactoring.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;text=Snippet%20Expansion%20with%20YASnippet&amp;via=keelerm84" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;title=Snippet%20Expansion%20with%20YASnippet" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;title=Snippet%20Expansion%20with%20YASnippet" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;description=Snippet%20Expansion%20with%20YASnippet" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Matthew%20M.%20Keeler&amp;body=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="/blog/2013/02/26/snippet-expansion-with-yasnippet/">Snippet Expansion with YASnippet</a></h1>
+            
+        
+        
+            <p>Save yourself keystrokes and headaches</p>
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2013-02-26'>
+            February 26, 2013</time>
+        <span class="author">Matthew M. Keeler</span>
+        
+            <p>7 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;text=Snippet%20Expansion%20with%20YASnippet&amp;via=keelerm84" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;title=Snippet%20Expansion%20with%20YASnippet" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;title=Snippet%20Expansion%20with%20YASnippet" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f&amp;description=Snippet%20Expansion%20with%20YASnippet" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Matthew%20M.%20Keeler&amp;body=%2fblog%2f2013%2f02%2f26%2fsnippet-expansion-with-yasnippet%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+      </ul>
+    </section>
+  
+
+  
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2013/02/26/snippet-expansion-with-yasnippet/" class="image featured">
+            <img src="/images/blog//snippet-expansion-with-yasnippet/expansion.jpg" alt="">
+        </a>
+    
+
+
+  <div id="content">
+    <p>Any editor worth its salt has some provision for text snippet
 expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
-is certainly no exception. If you&#39;re not familiar with the concept of snippets,
+is certainly no exception. If you&rsquo;re not familiar with the concept of snippets,
 the basic idea involves defining a keyword, which when followed with some
 trigger (keyboard shortcut or menu option), replaces that keyword with some
 predefined text. This functionality is a great boost to productivity as it
 prevents the developer from having to manually type potentially hundreds or
-thousands of lines of relatively boilerplate code.<a id="more"></a></p>
-<h2 id="YASnippet">YASnippet</h2><p>Like nearly all things in Emacs, there are a number of available packages that
-provide this feature. The one I&#39;ll be discussing today is
-<a href="https://github.com/capitaomorte/yasnippet" target="_blank" rel="external">YASnippet (Yet Another Snippet)</a>. The
-installation instructions are straightforward and minimal, so I won&#39;t bother
-covering them here. Instead, I&#39;ll get right into the meat of the extension.</p>
-<h2 id="Plain_Text_Expansion">Plain Text Expansion</h2><p>The most basic functionality any snippet expansion package can offer is
-straight text replacement. At first blush, this doesn&#39;t seem terribly helpful,
-but let&#39;s consider an example. Suppose I want to include a copy of the GNU
+thousands of lines of relatively boilerplate code.</p>
+
+<h2 id="yasnippet">YASnippet</h2>
+
+<p>Like nearly all things in Emacs, there are a number of available packages that
+provide this feature. The one I&rsquo;ll be discussing today is
+<a href="https://github.com/capitaomorte/yasnippet">YASnippet (Yet Another Snippet)</a>. The
+installation instructions are straightforward and minimal, so I won&rsquo;t bother
+covering them here. Instead, I&rsquo;ll get right into the meat of the extension.</p>
+
+<h2 id="plain-text-expansion">Plain Text Expansion</h2>
+
+<p>The most basic functionality any snippet expansion package can offer is
+straight text replacement. At first blush, this doesn&rsquo;t seem terribly helpful,
+but let&rsquo;s consider an example. Suppose I want to include a copy of the GNU
 Public License in my project. Copying and pasting such a lengthy license would
 quickly grow tiresome for each project you work on. But with the help of
-YASnippet, it&#39;s as painless as defining the below snippet and then typing
+YASnippet, it&rsquo;s as painless as defining the below snippet and then typing
 <code>gpl3</code> and pressing <code>TAB</code> to expand.</p>
-<figure class="highlight text"><pre><div class="line"><span class="comment"># name : GPLv3</span></div><div class="line"><span class="comment"># key : gpl3</span></div><div class="line"><span class="comment"># --</span></div><div class="line">                    GNU GENERAL PUBLIC LICENSE</div><div class="line">                       Version <span class="number">3</span>, <span class="number">29</span> June <span class="number">2007</span></div><div class="line"></div><div class="line"> Copyright (C) <span class="number">2007</span> Free Software Foundation, Inc. <span class="attribute">http</span>:<span class="regexp">//</span>fsf.org/</div><div class="line"> Everyone <span class="keyword">is</span> permitted to copy <span class="keyword">and</span> distribute verbatim copies</div><div class="line"> <span class="keyword">of</span> <span class="keyword">this</span> license <span class="built_in">document</span>, but changing it <span class="keyword">is</span> <span class="keyword">not</span> allowed.</div><div class="line">  </div><div class="line">                            Preamble</div><div class="line">  </div><div class="line">  The GNU General Public License <span class="keyword">is</span> a free, copyleft license <span class="keyword">for</span></div><div class="line">software <span class="keyword">and</span> other kinds <span class="keyword">of</span> works.</div><div class="line">[...]</div></pre></figure>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># name : GPLv3
+# key : gpl3
+# --
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
+ Copyright (C) 2007 Free Software Foundation, Inc. http://fsf.org/
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+  
+                            Preamble
+  
+  The GNU General Public License is a free, copyleft license for
+software and other kinds of works.
+[...]</code></pre></div>
 
 <p>You will notice defining this snippet was incredibly easy. The <code>#name : GPLv3</code>
 line defines a common name for the snippet. The keyword we will use to trigger
 the expansion is defined by <code># key: gpl3</code>. Anything that follows the line <code>#
 --</code> will be the replacement text that is inserted when our snippet is
-expanded. Phew! That sure saved us a ton of typing. But that&#39;s barely
+expanded. Phew! That sure saved us a ton of typing. But that&rsquo;s barely
 scratching the surface.</p>
-<h2 id="Tab_Stops">Tab Stops</h2><p>While simple text replacement does have its place, it would be more beneficial
+
+<h2 id="tab-stops">Tab Stops</h2>
+
+<p>While simple text replacement does have its place, it would be more beneficial
 if we could add a level of interactivity to the expansion process. This is
 where tab stop fields enter the scene. A lot of the boilerplate code a
 developer writes is similar, but not quite identical. For example, for loops
 follow the same structure, but the initial and terminating conditions,
 increment values, and variable names are likely to differ in some regard, so
-simple text expansion isn&#39;t quite good enough. So let&#39;s define the following
+simple text expansion isn&rsquo;t quite good enough. So let&rsquo;s define the following
 snippet.</p>
-<figure class="highlight text"><pre><div class="line"><span class="comment"># name : for</span></div><div class="line"><span class="comment"># key : for</span></div><div class="line"><span class="comment"># --</span></div><div class="line"><span class="keyword">for</span>(<span class="variable">$1</span>; <span class="variable">$2</span>; <span class="variable">$3</span>) {</div><div class="line">  <span class="variable">$0</span></div><div class="line">}</div></pre></figure>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># name : for
+# key : for
+# --
+for($1; $2; $3) {
+  $0
+}</code></pre></div>
 
 <p>The <code>$N</code> values will act as tab stops for your cursor when the snippet is
 expanded. This means, after expansion, my cursor will stop at <code>$1</code>, allowing me
@@ -133,188 +670,656 @@ cursor will end at <code>$0</code>, which is a special <code>$N</code> type mark
 noted that each of the tab stops can also be defined with default values, using
 the syntax <code>${N:default value}</code>. If the defined default value is sufficient,
 you can simply tab past it and continue on your way.</p>
-<h2 id="Mirrored_Fields">Mirrored Fields</h2><p>While that is pretty awesome, there is a bit of a downside there. In each of
+
+<h2 id="mirrored-fields">Mirrored Fields</h2>
+
+<p>While that is pretty awesome, there is a bit of a downside there. In each of
 the three stops, if I was using the variable <code>i</code>, I would have to type that in
-3 times. <code>i</code> isn&#39;t so bad, but if my variable is
+3 times. <code>i</code> isn&rsquo;t so bad, but if my variable is
 <code>anExtremelyLongAndOverlyVerboseVariable</code>, that is tedious and error
 prone. Luckily for us, YASnippet has the answer, and it is mirrored
 fields. Mirrored fields allow you to type something in once, and have it
 repeated throughout the snippet at other marked placeholders. The initial tab
 stop should be defined as <code>${N:enumerate}</code> and each place you want that
-information mirrored should use the standard tab notation. Let&#39;s see that in
+information mirrored should use the standard tab notation. Let&rsquo;s see that in
 action!</p>
-<p>A common style you&#39;ll see in code is to define an if / while / for block, and
+
+<p>A common style you&rsquo;ll see in code is to define an if / while / for block, and
 then include a comment at the bottom that reminds the reader of the condition
-we&#39;re closing. YASnippet can certainly help us with this. Check out the snippet
+we&rsquo;re closing. YASnippet can certainly help us with this. Check out the snippet
 below. Type in the condition once, have it included twice. Sweet. Converting
 the <code>for</code> snippet is left as an exercise to the reader.</p>
-<figure class="highlight text"><pre><div class="line"><span class="keyword">if</span> (<span class="variable">${1:enumerate}</span>)</div><div class="line">{</div><div class="line"><span class="variable">$0</span></div><div class="line">} // <span class="variable">$1</span></div></pre></figure>
 
-<h2 id="Embedded_Lisp">Embedded Lisp</h2><p>While the above examples have been awesome, the real power of YASnippet has yet
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">if (${1:enumerate})
+{
+$0
+} // $1</code></pre></div>
+
+<h2 id="embedded-lisp">Embedded Lisp</h2>
+
+<p>While the above examples have been awesome, the real power of YASnippet has yet
 to be revealed. Not only can you include straight text, simple tab stops and
 mirrored fields, but you can even include elisp code! The realm of possibility
 just got ridiculous.</p>
-<p>Let&#39;s look at an example from the C++ <a href="http://qt-project.org/" target="_blank" rel="external">QT</a> world. When
+
+<p>Let&rsquo;s look at an example from the C++ <a href="http://qt-project.org/">QT</a> world. When
 defining QT UI classes, there is some standard code that must be included each
 time. Combining the power of mirrored fields with elisp, we can define the
 following snippets. You can see them in action on
-<a href="http://youtu.be/dlDvDNnsYr4" target="_blank" rel="external">YouTube</a>.</p>
-<figure class="highlight text"><pre><div class="line"><span class="comment"># name: QT UI class ... { ... }</span></div><div class="line"><span class="comment"># key: uiclass</span></div><div class="line"><span class="comment"># --</span></div><div class="line"></div><div class="line"><span class="comment">#include &lt;$3&gt;</span></div><div class="line"></div><div class="line">namespace <span class="constant">Ui </span>{</div><div class="line">    class <span class="variable">$1</span>;</div><div class="line">}</div><div class="line"></div><div class="line">class <span class="variable">${</span><span class="number">1</span><span class="symbol">:Name</span>} <span class="symbol">:</span> public <span class="variable">${</span><span class="number">3</span><span class="symbol">:QWidget</span>}</div><div class="line">{</div><div class="line">    <span class="constant">Q_OBJECT</span></div><div class="line"></div><div class="line"><span class="symbol">public:</span></div><div class="line">    <span class="variable">$1</span>(<span class="variable">${</span><span class="number">2</span><span class="symbol">:QWidget</span> * parent = <span class="number">0</span>});</div><div class="line">    ~<span class="variable">$1</span>();</div><div class="line"></div><div class="line"><span class="symbol">private:</span></div><div class="line">    <span class="constant">Ui:</span><span class="symbol">:</span><span class="variable">$1</span> * ui;</div><div class="line">};</div></pre></figure>
+<a href="http://youtu.be/dlDvDNnsYr4">YouTube</a>.</p>
 
-<figure class="highlight text"><pre><div class="line"><span class="comment"># name: QT UI source</span></div><div class="line"><span class="comment"># key: outsource</span></div><div class="line"><span class="comment"># --</span></div><div class="line"><span class="comment">#include "ui_${1:$(downcase yas/text)}.h"</span></div><div class="line"><span class="comment">#include "${1:$(downcase yas/text)}.h"</span></div><div class="line"></div><div class="line"><span class="variable">${</span><span class="number">1</span><span class="symbol">:Name</span>}<span class="symbol">:</span><span class="symbol">:</span><span class="variable">$1</span>(<span class="constant">QWidget </span>* parent) <span class="symbol">:</span> <span class="variable">${</span><span class="number">2</span><span class="symbol">:QWidget</span>}(parent), ui(new <span class="constant">Ui:</span><span class="symbol">:</span><span class="variable">$1</span>) {</div><div class="line">  ui-&gt;setupUi(this);</div><div class="line">  <span class="variable">$0</span></div><div class="line">}</div><div class="line"></div><div class="line"><span class="variable">$1</span><span class="symbol">:</span><span class="symbol">:~</span><span class="variable">$1</span>() {</div><div class="line">}</div></pre></figure>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># name: QT UI class ... { ... }
+# key: uiclass
+# --
+
+#include &lt;$3&gt;
+
+namespace Ui {
+    class $1;
+}
+
+class ${1:Name} : public ${3:QWidget}
+{
+    Q_OBJECT
+
+public:
+    $1(${2:QWidget * parent = 0});
+    ~$1();
+
+private:
+    Ui::$1 * ui;
+};</code></pre></div>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># name: QT UI source
+# key: outsource
+# --
+#include &#34;ui_${1:$(downcase yas/text)}.h&#34;
+#include &#34;${1:$(downcase yas/text)}.h&#34;
+
+${1:Name}::$1(QWidget * parent) : ${2:QWidget}(parent), ui(new Ui::$1) {
+  ui-&gt;setupUi(this);
+  $0
+}
+
+$1::~$1() {
+}</code></pre></div>
 
 <p>As you can see, the syntax for including elisp is similar to providing default
 values for tab stop fields, except all the power of elisp is unleashed!
 YASnippet provides a handy placeholder, <code>yas/text</code> which represents the text
 that is being mirrored in the field. Using this, you can easily camel case
-certain words, upper or lowercase sections of code, and more. But you&#39;re not
+certain words, upper or lowercase sections of code, and more. But you&rsquo;re not
 limited to just built-in functionality. You can define entirely new functions
 of code and reference them just like anything else.</p>
-<h2 id="Putting_It_All_Together">Putting It All Together</h2><p>What follows are a few elisp functions I have defined and a snippet that makes
+
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+
+<p>What follows are a few elisp functions I have defined and a snippet that makes
 use of them. This snippet will generate the skeleton for a PHP class, including
 the namespace at the top. As all of the building blocks have been covered
-earlier in this post, I&#39;ll just briefly touch on each portion.</p>
-<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-git-repo <span class="list">(<span class="title">dir</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">string=</span> <span class="string">"/"</span> dir)</span></span></div><div class="line">      <span class="literal">nil</span></div><div class="line">    <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">file-exists-p</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">".git/"</span> dir)</span>)</span></span></div><div class="line">        dir</div><div class="line">      <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">expand-file-name</span> <span class="string">"../"</span> dir)</span>)</span>)))</div></pre></figure>
+earlier in this post, I&rsquo;ll just briefly touch on each portion.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defun find-git-repo (dir)
+  (if (string= <span style="color:#e6db74">&#34;/&#34;</span> dir)
+      <span style="color:#66d9ef">nil</span>
+    (if (file-exists-p (expand-file-name <span style="color:#e6db74">&#34;.git/&#34;</span> dir))
+        dir
+      (find-git-repo (expand-file-name <span style="color:#e6db74">&#34;../&#34;</span> dir)))))</code></pre></div>
 
 <p>This function starts looking within a specified directory for the existing of a
 .git directory, which would signify we are at the top level of a git
-repository. If it doesn&#39;t find it, it keeps looking up the directory structure
+repository. If it doesn&rsquo;t find it, it keeps looking up the directory structure
 until it either succeeds, or reaches the root. If it finds it, we return that
-directory. Otherwise, we&#39;ll return nil.</p>
-<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> find-project-root <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">if</span> <span class="list">(<span class="title">ignore-errors</span> <span class="list">(<span class="title">eproject-root</span>)</span>)</span></span></div><div class="line">      <span class="list">(<span class="title">eproject-root</span>)</span></div><div class="line">    <span class="list">(<span class="title">or</span> <span class="list">(<span class="title">find-git-repo</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span> <span class="list">(<span class="title">file-name-directory</span> <span class="list">(<span class="title">buffer-file-name</span>)</span>)</span>)</span>))</div></pre></figure>
+directory. Otherwise, we&rsquo;ll return nil.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defun find-project-root ()
+  (interactive)
+  (if (ignore-errors (eproject-root))
+      (eproject-root)
+    (or (find-git-repo (buffer-file-name)) (file-name-directory (buffer-file-name)))))</code></pre></div>
 
 <p>Using our find-git-repo as a spring board, this function will determine any
-project&#39;s root directory. As I use
-<a href="https://github.com/jrockway/eproject" target="_blank" rel="external">eproject</a> for a lot of my work, I first
-check to see if the <code>eproject-root</code> variable is defined. If it isn&#39;t, I&#39;ll fall
+project&rsquo;s root directory. As I use
+<a href="https://github.com/jrockway/eproject">eproject</a> for a lot of my work, I first
+check to see if the <code>eproject-root</code> variable is defined. If it isn&rsquo;t, I&rsquo;ll fall
 back to looking for a git repo.</p>
-<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> file-path-to-namespace <span class="list">()</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span>)</span></div><div class="line">  <span class="list">(<span class="title">let</span> <span class="list">(</span></span></div><div class="line">        <span class="list">(<span class="title">root</span> <span class="list">(<span class="title">find-project-root</span>)</span>)</span></div><div class="line">        <span class="list">(<span class="title">base</span> <span class="list">(<span class="title">file-name-nondirectory</span> buffer-file-name)</span>)</span></div><div class="line">        )</div><div class="line">    <span class="list">(<span class="title">substring</span> <span class="list">(<span class="title">replace-regexp-in-string</span> <span class="string">"/"</span> <span class="string">"\\"</span> <span class="list">(<span class="title">substring</span> buffer-file-name <span class="list">(<span class="title">length</span> root)</span> <span class="list">(<span class="title">*</span> <span class="number">-1</span> <span class="list">(<span class="title">length</span> base)</span>)</span>)</span> <span class="literal">t</span> <span class="literal">t</span>)</span> <span class="number">0</span> <span class="number">-1</span>)</span></div><div class="line">    )</div><div class="line">  )</div></pre></figure>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defun file-path-to-namespace ()
+  (interactive)
+  (let (
+        (root (find-project-root))
+        (base (file-name-nondirectory buffer-file-name))
+        )
+    (substring (replace-regexp-in-string <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#e6db74">&#34;\\&#34;</span> (substring buffer-file-name (length root) (* <span style="color:#ae81ff">-1</span> (length base))) <span style="color:#66d9ef">t</span> <span style="color:#66d9ef">t</span>) <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">-1</span>)
+    )
+  )</code></pre></div>
 
 <p>This function will take the current buffer path, find the project root it is
 included in, and convert it into a PHP namespace with the portion of the path
 containing the project root removed.</p>
-<figure class="highlight text"><pre><div class="line"># name : php-namespaced-<span class="keyword">class</span></div><div class="line"># key : <span class="keyword">class</span></div><div class="line"># --</div><div class="line">&lt;?php</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`</div><div class="line"> *</div><div class="line"> * <span class="javadoctag">@author</span> `(user-full-name)` `(if user-mail-address (concat "&lt;" user-mail-address "&gt;") "")`</div><div class="line"> */</div><div class="line"></div><div class="line">namespace `(file-path-to-namespace)`;</div><div class="line"></div><div class="line"><span class="javadoc">/**</span></div><div class="line"> * ${1:Description}</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> `<span class="params">(file-name-nondirectory (file-name-sans-extension (buffer-file-name)</span>))`</span></div><div class="line">{</div><div class="line">    $<span class="number">0</span></div><div class="line">}</div></pre></figure>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># name : php-namespaced-class
+# key : class
+# --
+&lt;?php
+
+/**
+ * `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`
+ *
+ * @author `(user-full-name)` `(if user-mail-address (concat &#34;&lt;&#34; user-mail-address &#34;&gt;&#34;) &#34;&#34;)`
+ */
+
+namespace `(file-path-to-namespace)`;
+
+/**
+ * ${1:Description}
+ */
+class `(file-name-nondirectory (file-name-sans-extension (buffer-file-name)))`
+{
+    $0
+}</code></pre></div>
 
 <p>This final snippet hooks everything up. If I have a project at
 <code>/var/www/html/</code>, and I create a file NewUtil.php in say <code>lib/utils/</code>, this
 snippet will generate</p>
-<figure class="highlight php"><pre><div class="line"><span class="preprocessor">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * NewUtil</div><div class="line"> *</div><div class="line"> *<span class="phpdoc"> @author</span> Matthew M. Keeler &lt;keelerm@tortugas-llc.com&gt;</div><div class="line"> */</div><div class="line">  </div><div class="line"><span class="keyword">namespace</span> <span class="title">lib</span>\<span class="title">utils</span>;</div><div class="line">  </div><div class="line"><span class="comment">/**</span></div><div class="line"> * New Util description goes here</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">NewUtil</span></span></div><div class="line">{</div><div class="line">}</div></pre></figure>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="color:#75715e">&lt;?php</span>
+
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * NewUtil
+</span><span style="color:#e6db74"> *
+</span><span style="color:#e6db74"> * @author Matthew M. Keeler &lt;keelerm@tortugas-llc.com&gt;
+</span><span style="color:#e6db74"> */</span>
+  
+<span style="color:#66d9ef">namespace</span> <span style="color:#a6e22e">lib\utils</span>;
+  
+<span style="color:#e6db74">/**
+</span><span style="color:#e6db74"> * New Util description goes here
+</span><span style="color:#e6db74"> */</span>
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NewUtil</span>
+{
+}
+</code></pre></div>
 
 <p>As you can see, the power of YASnippet is incredible. Be sure to check out the
 YASnippet repo for more examples of snippets that are included in the default
-installation. If any of you are currently using it, I&#39;d love to see some of the
+installation. If any of you are currently using it, I&rsquo;d love to see some of the
 snippets you use. And of course, if you know of ways to improve my examples,
 please let me know! Happy coding.</p>
+  </div>
 
+  <footer>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
         
-        </div>
-    </div>
+            
+            
+                <i class="fa fa-folder"></i>
+                
+                
+                <li><a class="article-category-link" href="/categories/emacs">Emacs</a></li>
+                
+            
+        
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+        
+            
+            
+                <i class="fa fa-tags"></i>
+                
+                
+                <li><a class="article-category-link" href="/tags/org-mode">org-mode</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/emacs">emacs</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/elisp">elisp</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/snippets">snippets</a></li>
+                
+            
+        
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+
 </article>
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "cupfullofcode" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
 
 
-    </div>
-</div>
-</section>
-      </div>
-      <!-- Footer -->
-<div id="footer-wrapper" class="wrapper">
-    <div class="section-title">Links of interest</div>
-    <div id="footer" class="container">
-        <div class="row oneandhalf">
-            <div class="12u">
+<ul class="actions pagination">
+    
+        <li><a href="/blog/2013/01/08/automation-with-gnu-screen-and-ssh/"
+                class="button big previous">Automation with GNU Screen and SSH</a></li>
+    
 
-                <section class="feature-list small">
-                    <div class="row">
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-envelope">Email</h3>
-                                <p>
-                                <a href="#">keelerm@tortugas-llc.com</a>
-                                </p>
-                            </section>
-                            <section>
-                                <h3 class="icon fa-rss">Subscribe</h3>
-                                <p>
-                                <a href="/atom.xml">Atom Feed</a>
-                                </p>
-                            </section>
-                        </div>
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-comment">Social</h3>
-                                <p>
-                                <a href="#">@keelerm84</a><br />
-                                <a href="#">github.com/keelerm84</a><br />
-                                <a href="#">youtube.com/user/keelerm84ify</a>
-                                </p>
-                            </section>
-                        </div>
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-tag">Tags</h3>
-                                
-  <div class="widget-wrap">
-    <p>
-    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
-    </p>
-  </div>
+    
+        <li><a href="/blog/2013/07/03/efficient-command-line-navigation/"
+                class="button big next">Efficient Command Line Navigation</a></li>
+    
+</ul>
 
-
-                            </section>
-                        </div>
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-folder-open">Categories</h3>
-                                
-    <p>
-    <a class="category-link" href="/categories/Emacs/">Emacs</a>, <a class="category-link" href="/categories/Emacs/PHP/">PHP</a>, <a class="category-link" href="/categories/Programming/">Programming</a>, <a class="category-link" href="/categories/Utilities/">Utilities</a>
-    </p>
-
-
-                            </section>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <hr />
-        <header class="style1">
-            <h2>There is no system but GNU, and Linux is one of its kernels.</h2>
-            <p>&mdash; St. IGNUcius</p>
-        </header>
-    </div>
-</div>
 
     </div>
     
-<script>
-  var disqus_shortname = 'cupfullofcode';
+<section id="sidebar">
+
   
-  var disqus_url = 'http://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/';
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/images/matthew-keeler.jpg" class="intro-circle" width="200" alt="Matthew M. Keeler" /></a>
+      
+    
+    
+      <header>
+        <h2>Cup Full of Code</h2>
+        <p>The personal site of Matthew M. Keeler</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          
+    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a></li>
+
+
+        
+        
+  <li><a href="//github.com/keelerm84" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+  <li><a href="//stackoverflow.com/users/859409" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/keelerm84" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//youtube.com/keelerm84ify" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/keelerm84" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+    
+  </section>
+
   
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+  <section class="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/">A Look at Vim and Emacs</a>
+              </h3>
+              
+              <time class="published" datetime='2015-03-29'>
+                March 29, 2015
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/" class="image featured">
+            <img src="/images/blog//a-look-at-vim-and-emacs/vim-and-emacs.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/">Invalidate Projectile Cache on Delete</a>
+              </h3>
+              
+              <time class="published" datetime='2014-10-06'>
+                October 6, 2014
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/" class="image featured">
+            <img src="/images/blog//invalidate-projectile-cache-on-delete/cache.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/">Performing Controlled PHP Refactorings in Emacs</a>
+              </h3>
+              
+              <time class="published" datetime='2014-09-21'>
+                September 21, 2014
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/" class="image featured">
+            <img src="/images/blog//php-refactor-mode/refactoring.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /blog/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/emacs/">emacs</a>
+                <span style="float:right;">7</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/php/">php</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/programming/">programming</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/utilities/">utilities</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+  
+
+  
+  
+    <section id="mini-bio">
+      <h3>About</h3>
+      <p>I am an enthusiastic developer who loves learning new technologies.</p>
+      <a href="/about/" class="button">Learn More</a>
+    </section>
+  
+
+  
+  <section id="footer">
+    
+    <p class="copyright">
+      
+        &copy; 2017
+        
+          Cup Full of Code
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+      
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/languages/lisp.min.js"></script>
+        <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+      
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+      <script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-55725869-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-  </div>
-</body>
+  </body>
 </html>
+

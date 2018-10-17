@@ -1,0 +1,1228 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "/"
+        },
+        "articleSection" : "blog",
+        "name" : "Generate Daily Messages With Org Journal",
+        "headline" : "Generate Daily Messages With Org Journal",
+        "description" : "Automating standup notes for fun and profit",
+        "inLanguage" : "en",
+        "author" : "",
+        "creator" : "",
+        "publisher": "",
+        "accountablePerson" : "",
+        "copyrightHolder" : "",
+        "copyrightYear" : "2013",
+        "datePublished": "2013-11-17 15:38:00 &#43;0000 &#43;0000",
+        "dateModified" : "2013-11-17 15:38:00 &#43;0000 &#43;0000",
+        "url" : "/blog/2013/11/17/generate-daily-messages-with-org-journal/",
+        "wordCount" : "1025",
+        "keywords" : [ "org-mode","emacs","elisp","Blog" ]
+    }
+    </script>
+        
+            
+                <title>Generate Daily Messages With Org Journal</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.49" />
+        
+
+
+        
+            <meta name="author" content="Matthew M. Keeler">
+        
+        
+            <meta name="description" content="Automating standup notes for fun and profit">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Generate Daily Messages With Org Journal"/>
+<meta name="twitter:description" content="Automating standup notes for fun and profit"/>
+<meta name="twitter:site" content="@keelerm84"/>
+
+        <meta property="og:title" content="Generate Daily Messages With Org Journal" />
+<meta property="og:description" content="Automating standup notes for fun and profit" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2013/11/17/generate-daily-messages-with-org-journal/" /><meta property="article:published_time" content="2013-11-17T15:38:00&#43;00:00"/>
+<meta property="article:modified_time" content="2013-11-17T15:38:00&#43;00:00"/>
+
+        <meta property="og:image" content="//images/logo.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        
+<meta itemprop="name" content="Generate Daily Messages With Org Journal">
+<meta itemprop="description" content="Automating standup notes for fun and profit">
+
+
+<meta itemprop="datePublished" content="2013-11-17T15:38:00&#43;00:00" />
+<meta itemprop="dateModified" content="2013-11-17T15:38:00&#43;00:00" />
+<meta itemprop="wordCount" content="1025">
+
+
+
+<meta itemprop="keywords" content="org-mode,emacs,elisp," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+            <link rel="stylesheet" href="/css/academicons.min.css">
+        
+
+        
+            
+                
+            
+        
+
+
+  
+    
+    <link href='https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/styles/gruvbox-dark.min.css' rel='stylesheet' type='text/css' />
+  
+
+
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-55725869-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">blog</a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/blog/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/portfolio/">
+                            <i class="fa fa-list">&nbsp;</i>Portfolio
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resume/">
+                            <i class="fa fa-briefcase">&nbsp;</i>Resume
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/portfolio/">
+                            <h3>
+                                <i class="fa fa-list">&nbsp;</i>Portfolio
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resume/">
+                            <h3>
+                                <i class="fa fa-briefcase">&nbsp;</i>Resume
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section class="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2015/03/29/a-look-at-vim-and-emacs/">A Look at Vim and Emacs</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2015-03-29'>
+                                    March 29, 2015</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/" class="image featured">
+            <img src="/images/blog//a-look-at-vim-and-emacs/vim-and-emacs.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/">Invalidate Projectile Cache on Delete</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2014-10-06'>
+                                    October 6, 2014</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/" class="image featured">
+            <img src="/images/blog//invalidate-projectile-cache-on-delete/cache.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/">Performing Controlled PHP Refactorings in Emacs</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2014-09-21'>
+                                    September 21, 2014</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/" class="image featured">
+            <img src="/images/blog//php-refactor-mode/refactoring.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;text=Generate%20Daily%20Messages%20With%20Org%20Journal&amp;via=keelerm84" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;title=Generate%20Daily%20Messages%20With%20Org%20Journal" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;title=Generate%20Daily%20Messages%20With%20Org%20Journal" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;description=Generate%20Daily%20Messages%20With%20Org%20Journal" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Matthew%20M.%20Keeler&amp;body=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="/blog/2013/11/17/generate-daily-messages-with-org-journal/">Generate Daily Messages With Org Journal</a></h1>
+            
+        
+        
+            <p>Automating standup notes for fun and profit</p>
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2013-11-17'>
+            November 17, 2013</time>
+        <span class="author">Matthew M. Keeler</span>
+        
+            <p>5 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;text=Generate%20Daily%20Messages%20With%20Org%20Journal&amp;via=keelerm84" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;title=Generate%20Daily%20Messages%20With%20Org%20Journal" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;title=Generate%20Daily%20Messages%20With%20Org%20Journal" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f&amp;description=Generate%20Daily%20Messages%20With%20Org%20Journal" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Matthew%20M.%20Keeler&amp;body=%2fblog%2f2013%2f11%2f17%2fgenerate-daily-messages-with-org-journal%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+      </ul>
+    </section>
+  
+
+  
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2013/11/17/generate-daily-messages-with-org-journal/" class="image featured">
+            <img src="/images/blog//daily-messages-with-org-journal/journal.jpg" alt="">
+        </a>
+    
+
+
+  <div id="content">
+    <p>One of the requirements of my job is to send out a daily message. This message
+should summarize what I did the day before, and what I hope to accomplish for
+the current day. At first, I would spend my day jumping from task to task, and
+then the next morning, I would rack my brain to make sure I included all the
+things I worked on.</p>
+
+<p>It didn&rsquo;t take long to realize that this was no way to live. I definitely
+needed a better solution. So I started looking around.</p>
+
+<h2 id="org-journal">Org Journal</h2>
+
+<p>After hunting around for a bit, I came across Org Journal. It is a fantastic
+package for, as the name implies, writing journal entries. And since it&rsquo;s built
+on top of Org Mode, I knew I had to give it a try.</p>
+
+<p>Once installed and configured, I can press, in my case, C-x j, and this will
+either start a new journal entry if one doesn&rsquo;t already exist, or open an
+existing one. Each time a new entry is added, org-journal inserts a second
+level heading in the document, and stamps it with the time the entry was added.</p>
+
+<p>This was definitely a productivity win for me, and so I settled on it as my
+tool of choice.</p>
+
+<h2 id="scratching-an-itch">Scratching An Itch</h2>
+
+<p>Even though org-journal was assisting me in remembering everything I did on the
+previous day, I still had to format the entries into a suitable format and send
+them off to my boss. Accomplishing this was a multi-step process which I
+quickly grew tired of. I had to:</p>
+
+<ol>
+<li>Call M-x calendar and navigate to the previous day</li>
+<li>Press j to open that day&rsquo;s journal entry</li>
+<li>C-x h to copy the entire entry</li>
+<li>C-x b <em>scratch</em> to switch over to my scratch buffer</li>
+<li>C-y to paste the journal contents in</li>
+<li>Remove any additional notes I had, strip out the top level headers and time stamps, and then add my plan for the current day.</li>
+</ol>
+
+<p>What a bunch of nonsense! I certainly wasn&rsquo;t going to do that 5 days a week for
+the rest of my career.</p>
+
+<h2 id="elisp-to-the-rescue">Elisp to the Rescue</h2>
+
+<p>So naturally, I did what any Emacs user would do: I wrote some lisp. Before we
+get into the code, I should warn you about something. I&rsquo;m still pretty new to
+lisp. If you&rsquo;re an old hat at this stuff, I&rsquo;m sure there are better ways to
+accomplish what I&rsquo;m doing. And I would LOVE to hear about them. Please feel
+free to comment!</p>
+
+<p>Disclaimer aside, let&rsquo;s get into the code.</p>
+
+<h3 id="what-was-yesterday">What Was Yesterday</h3>
+
+<p>The first thing I needed to accomplish was determining the date of the prior
+day. Like most people (I hope), I only work 5 days a week. So simply grabbing
+yesterday&rsquo;s date wasn&rsquo;t going to work. Instead, I need to keep subtracting a
+day&rsquo;s worth of time from the current day, until I reached some time period that
+fell between Monday and Friday.</p>
+
+<p>That lead me to:</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defun my/org-find-previous-workday ()
+  (let* ((time (time-subtract (current-time) (seconds-to-time <span style="color:#ae81ff">86400</span>)))
+         (workdays <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;Monday&#34;</span> <span style="color:#e6db74">&#34;Tuesday&#34;</span> <span style="color:#e6db74">&#34;Wednesday&#34;</span> <span style="color:#e6db74">&#34;Thursday&#34;</span> <span style="color:#e6db74">&#34;Friday&#34;</span>)))
+    (while (not (member (format-time-string <span style="color:#e6db74">&#34;%A&#34;</span> time) workdays))
+      (setq time (time-subtract time (seconds-to-time <span style="color:#ae81ff">86400</span>))))
+    time))</code></pre></div>
+
+<h3 id="grab-the-tasks">Grab The Tasks</h3>
+
+<p>Once I knew the previous working day&rsquo;s date, I needed to grab the journal
+entry&rsquo;s content. Since I include notes and other references for each entry, and
+this email is supposed to be succinct, using the entire journal entry wasn&rsquo;t
+sufficient. Instead, I needed to strip out just the second level headings,
+which include short summaries of what I&rsquo;m working on.</p>
+
+<p>I wrote three functions to handle this, which are included below. The results
+of these three functions is to return a list of all the headers in the org file
+with a level I specified. If I don&rsquo;t specify a level, it will return all header
+levels.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defun my/org-should-include-current (level)
+  (progn
+    (if (and
+         (outline-on-heading-p)
+         (or
+          (eq <span style="color:#66d9ef">nil</span> level) (eq level (org-outline-level))))
+        <span style="color:#66d9ef">t</span>
+      <span style="color:#66d9ef">nil</span>)))
+
+(defun my/org-get-current-header ()
+  (progn
+    (setq beg (point))
+    (outline-end-of-heading)
+    (buffer-substring-no-properties beg (point))))
+
+(defun my/org-outline-headings-to-list (level)
+  (setq headings <span style="color:#f92672">&#39;</span>())
+  (show-all)
+  (goto-char (point-min))
+
+  (if (my/org-should-include-current level)
+      (add-to-list <span style="color:#e6db74">&#39;headings</span> (my/org-get-current-header) <span style="color:#66d9ef">t</span>))
+
+  (while (outline-next-heading)
+    (if (my/org-should-include-current level)
+        (add-to-list <span style="color:#e6db74">&#39;headings</span> (my/org-get-current-header) <span style="color:#66d9ef">t</span>)))
+  headings)</code></pre></div>
+
+<h3 id="generating-the-message">Generating The Message</h3>
+
+<p>At this point, I had all the data I needed to quickly generate my scrum
+message. All that was left was to hook it together, open a temp buffer with the
+formatted results, and then start filling in the current day&rsquo;s goals.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defun my/org-outline-create-scrum-message ()
+  (interactive)
+  (let* ((previous (my/org-find-previous-workday)))
+    (setq journal-file (concat org-journal-dir (format-time-string <span style="color:#e6db74">&#34;%Y%m%d&#34;</span> previous)))
+    (if (file-exists-p journal-file)
+        (progn
+          (switch-to-buffer (find-file-noselect journal-file))
+          (setq headings (my/org-outline-headings-to-list <span style="color:#ae81ff">2</span>))
+          (switch-to-buffer <span style="color:#e6db74">&#34;*daily scrum*&#34;</span>)
+          (erase-buffer)
+          (insert <span style="color:#e6db74">&#34;* Yesterday\n&#34;</span>)
+          (mapcar (lambda(element)
+                    (insert (replace-regexp-in-string <span style="color:#e6db74">&#34;^** ..... &#34;</span> <span style="color:#e6db74">&#34;  - &#34;</span> element) <span style="color:#e6db74">&#34;\n&#34;</span>)) headings)
+          (insert <span style="color:#e6db74">&#34;\n* Today\n  - &#34;</span>)
+          (org-mode)
+          (show-all)))))</code></pre></div>
+
+<h2 id="future-expansion">Future Expansion</h2>
+
+<p>I have been using this method for the last couple of weeks to much success. It
+has saved me a ton of time, and has helped ensure that I account for every task
+I worked on during the previous day.</p>
+
+<p>There are a few things I would like to improve. The most obvious next step is
+to hook up gnus to my work email and generate this message in an actual email
+buffer. Then, once I&rsquo;m finished typing, I can just send it off directly from
+Emacs instead of copy and pasting it into my mail client.</p>
+
+<p>The other thing I need to handle is skipped dates. If I take a vacation day, or
+there is a holiday, this code will just fail to generate a message template for
+me. It only goes back one day and then calls it quits after that. It wouldn&rsquo;t
+take much to modify it to keep searching until it finds a day with an entry. I
+just haven&rsquo;t gotten around to it yet.</p>
+
+<p>As I mentioned before, I&rsquo;m sure the code could be improved. I would love to
+hear feedback from the community on what I could do better. Lisp is still
+pretty new to me, but I&rsquo;ve been having a blast learning it.</p>
+
+<p>For those interested in seeing the code all in one place, or checking out the
+rest of my configuration, you can see it on GitHub.</p>
+
+<p>Thanks, and happy coding!</p>
+  </div>
+
+  <footer>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
+        
+            
+            
+                <i class="fa fa-folder"></i>
+                
+                
+                <li><a class="article-category-link" href="/categories/emacs">Emacs</a></li>
+                
+            
+        
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+        
+            
+            
+                <i class="fa fa-tags"></i>
+                
+                
+                <li><a class="article-category-link" href="/tags/org-mode">org-mode</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/emacs">emacs</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/elisp">elisp</a></li>
+                
+            
+        
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+
+</article>
+
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "cupfullofcode" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
+
+
+<ul class="actions pagination">
+    
+        <li><a href="/blog/2013/07/03/efficient-command-line-navigation/"
+                class="button big previous">Efficient Command Line Navigation</a></li>
+    
+
+    
+        <li><a href="/blog/2013/11/22/embedding-code-snippets-in-org-mode/"
+                class="button big next">Embedding Code Snippets in Org Mode</a></li>
+    
+</ul>
+
+
+    </div>
+    
+<section id="sidebar">
+
+  
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/images/matthew-keeler.jpg" class="intro-circle" width="200" alt="Matthew M. Keeler" /></a>
+      
+    
+    
+      <header>
+        <h2>Cup Full of Code</h2>
+        <p>The personal site of Matthew M. Keeler</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          
+    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a></li>
+
+
+        
+        
+  <li><a href="//github.com/keelerm84" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+  <li><a href="//stackoverflow.com/users/859409" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/keelerm84" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//youtube.com/keelerm84ify" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/keelerm84" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+    
+  </section>
+
+  
+  <section class="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/">A Look at Vim and Emacs</a>
+              </h3>
+              
+              <time class="published" datetime='2015-03-29'>
+                March 29, 2015
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/" class="image featured">
+            <img src="/images/blog//a-look-at-vim-and-emacs/vim-and-emacs.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/">Invalidate Projectile Cache on Delete</a>
+              </h3>
+              
+              <time class="published" datetime='2014-10-06'>
+                October 6, 2014
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/" class="image featured">
+            <img src="/images/blog//invalidate-projectile-cache-on-delete/cache.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/">Performing Controlled PHP Refactorings in Emacs</a>
+              </h3>
+              
+              <time class="published" datetime='2014-09-21'>
+                September 21, 2014
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/" class="image featured">
+            <img src="/images/blog//php-refactor-mode/refactoring.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /blog/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/emacs/">emacs</a>
+                <span style="float:right;">7</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/php/">php</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/programming/">programming</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/utilities/">utilities</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+  
+
+  
+  
+    <section id="mini-bio">
+      <h3>About</h3>
+      <p>I am an enthusiastic developer who loves learning new technologies.</p>
+      <a href="/about/" class="button">Learn More</a>
+    </section>
+  
+
+  
+  <section id="footer">
+    
+    <p class="copyright">
+      
+        &copy; 2017
+        
+          Cup Full of Code
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+      
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/languages/lisp.min.js"></script>
+        <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+      
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+      <script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+
+  </body>
+</html>
+

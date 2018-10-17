@@ -1,224 +1,1114 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+
 <html>
-<head>
-  <meta charset="utf-8">
-  
-  <title>Dancing Code Monkey | Cup Full of Code</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <link rel="alternative" href="/atom.xml" title="Cup Full of Code" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
-
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
-    <script src="/js/jquery.min.js" type="text/javascript"></script>
-
-    <script src="/js/jquery.dropotron.min.js" type="text/javascript"></script>
-
-    <script src="/js/skel.min.js" type="text/javascript"></script>
-
-    <script src="/js/skel-layers.min.js" type="text/javascript"></script>
-
-    <script src="/js/init.js" type="text/javascript"></script>
-
-    <noscript>
-        <link rel="stylesheet" href="/css/skel.css" type="text/css">
-
-        <link rel="stylesheet" href="/css/style.css" type="text/css">
-
-        <link rel="stylesheet" href="/css/style-desktop.css" type="text/css">
-
-    </noscript>
-    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
-</head>
-
-<body class="no-sidebar">
-  <div id="container">
-    <div id="wrap">
-      <div id="header-wrapper" class="wrapper">
-    <div id="header">
-
-        <!-- Logo -->
-        <div id="logo">
-            <h1><a href="index.html">Cup Full of Code</a></h1>
-            <p>The personal site of Matthew M. Keeler</p>
-        </div>
-
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/about">About</a></li>
-                <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/resume">Resume</a></li>
-                <li><a href="/archives">Blog</a></li>
-            </ul>
-        </nav>
-
-    </div>
-</div>
-
-      <div class="outer">
-        <section><div class="wrapper style2">
-    <div class="section-title">
-        <a href="/blog/2013/01/05/dancing-code-monkey/" class="article-date">
-  <time datetime="2013-01-06T04:09:00.000Z" itemprop="datePublished">Jan 5 2013</time>
-</a>
-    </div>
-    <div id="main" class="container">
-        <article id="post-dancing-code-monkey" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+    <head>
+        <script type="application/ld+json">
+    {
+        "@context" : "http://schema.org",
+        "@type" : "BlogPosting",
+        "mainEntityOfPage": {
+             "@type": "WebPage",
+             "@id": "/"
+        },
+        "articleSection" : "blog",
+        "name" : "Dancing Code Monkey",
+        "headline" : "Dancing Code Monkey",
+        "description" : "A fun learning experience with emacs lisp",
+        "inLanguage" : "en",
+        "author" : "",
+        "creator" : "",
+        "publisher": "",
+        "accountablePerson" : "",
+        "copyrightHolder" : "",
+        "copyrightYear" : "2013",
+        "datePublished": "2013-01-05 23:09:00 &#43;0000 &#43;0000",
+        "dateModified" : "2013-01-05 23:09:00 &#43;0000 &#43;0000",
+        "url" : "/blog/2013/01/05/dancing-code-monkey/",
+        "wordCount" : "263",
+        "keywords" : [ "emacs","elisp","Blog" ]
+    }
+    </script>
         
-        
-            <header class="article-header">
             
-  
-    <h1 class="article-title" itemprop="name">
-      Dancing Code Monkey
-    </h1>
-  
+                <title>Dancing Code Monkey</title>
+            
+        
 
-        </header>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.49" />
+        
+
+
+        
+            <meta name="author" content="Matthew M. Keeler">
+        
+        
+            <meta name="description" content="A fun learning experience with emacs lisp">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dancing Code Monkey"/>
+<meta name="twitter:description" content="A fun learning experience with emacs lisp"/>
+<meta name="twitter:site" content="@keelerm84"/>
+
+        <meta property="og:title" content="Dancing Code Monkey" />
+<meta property="og:description" content="A fun learning experience with emacs lisp" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/blog/2013/01/05/dancing-code-monkey/" /><meta property="article:published_time" content="2013-01-05T23:09:00&#43;00:00"/>
+<meta property="article:modified_time" content="2013-01-05T23:09:00&#43;00:00"/>
+
+        <meta property="og:image" content="//images/logo.png">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="512">
+        <meta property="og:image:height" content="512">
+        
+<meta itemprop="name" content="Dancing Code Monkey">
+<meta itemprop="description" content="A fun learning experience with emacs lisp">
+
+
+<meta itemprop="datePublished" content="2013-01-05T23:09:00&#43;00:00" />
+<meta itemprop="dateModified" content="2013-01-05T23:09:00&#43;00:00" />
+<meta itemprop="wordCount" content="263">
+
+
+
+<meta itemprop="keywords" content="emacs,elisp," />
+
+        
+
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,800,900|Source+Sans+Pro:400,700">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.css">
+            <link rel="stylesheet" href="/css/main.css">
+            <link rel="stylesheet" href="/css/add-on.css">
+            <link rel="stylesheet" href="/css/academicons.min.css">
+        
+
+        
+            
+                
+            
+        
+
+
+  
     
-        <div class="article-entry" itemprop="articleBody">
+    <link href='https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/styles/gruvbox-dark.min.css' rel='stylesheet' type='text/css' />
+  
+
+
+      
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-55725869-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    </head>
+    <body>
+
+      
+      <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+      <h1><a href="/">blog</a></h1>
+    
+
+    <nav class="links">
+        <ul>
             
-                <p>A few months ago, I started playing around with Emacs.  For roughly six years
+                <li>
+                    <a href="/">
+                            <i class="fa fa-home">&nbsp;</i>Home
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about/">
+                            <i class="fa fa-id-card-o">&nbsp;</i>About
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/blog/">
+                            <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/portfolio/">
+                            <i class="fa fa-list">&nbsp;</i>Portfolio
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resume/">
+                            <i class="fa fa-briefcase">&nbsp;</i>Resume
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="as_sitesearch" value="/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="as_sitesearch" value="/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/">
+                            <h3>
+                                <i class="fa fa-home">&nbsp;</i>Home
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about/">
+                            <h3>
+                                <i class="fa fa-id-card-o">&nbsp;</i>About
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/blog/">
+                            <h3>
+                                <i class="fa fa-newspaper-o">&nbsp;</i>Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/portfolio/">
+                            <h3>
+                                <i class="fa fa-list">&nbsp;</i>Portfolio
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resume/">
+                            <h3>
+                                <i class="fa fa-briefcase">&nbsp;</i>Resume
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section class="recent-posts">
+            <div class="mini-posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+
+                
+                    
+                
+
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2015/03/29/a-look-at-vim-and-emacs/">A Look at Vim and Emacs</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2015-03-29'>
+                                    March 29, 2015</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/" class="image featured">
+            <img src="/images/blog//a-look-at-vim-and-emacs/vim-and-emacs.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/">Invalidate Projectile Cache on Delete</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2014-10-06'>
+                                    October 6, 2014</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/" class="image featured">
+            <img src="/images/blog//invalidate-projectile-cache-on-delete/cache.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+                        <article class="mini-post">
+                            <header>
+                                <h3><a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/">Performing Controlled PHP Refactorings in Emacs</a></h3>
+                                
+                                <time class="published" datetime=
+                                    '2014-09-21'>
+                                    September 21, 2014</time>
+                            </header>
+                            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/" class="image featured">
+            <img src="/images/blog//php-refactor-mode/refactoring.jpg" alt="">
+        </a>
+    
+
+
+                        </article>
+                
+
+                
+                    <a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a>
+                
+            </div>
+        </section>
+
+    
+        
+</section>
+
+    <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;text=Dancing%20Code%20Monkey&amp;via=keelerm84" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;title=Dancing%20Code%20Monkey" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;title=Dancing%20Code%20Monkey" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;description=Dancing%20Code%20Monkey" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Matthew%20M.%20Keeler&amp;body=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+        </ul>
+    </section>
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+  <header>
+    <div class="title">
+        
+            <h1><a href="/blog/2013/01/05/dancing-code-monkey/">Dancing Code Monkey</a></h1>
+            
+        
+        
+            <p>A fun learning experience with emacs lisp</p>
+        
+    </div>
+    <div class="meta">
+        
+
+        <time class="published"
+            datetime='2013-01-05'>
+            January 5, 2013</time>
+        <span class="author">Matthew M. Keeler</span>
+        
+            <p>2 minute read</p>
+        
+        
+    </div>
+</header>
+
+
+  
+    <section id="social-share">
+      <ul class="icons">
+        
+
+
+
+<li>
+  <a href="//twitter.com/share?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;text=Dancing%20Code%20Monkey&amp;via=keelerm84" target="_blank" class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+
+<li>
+  <a href="//www.facebook.com/sharer/sharer.php?u=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f" target="_blank" class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+    </a>
+</li>
+
+
+
+
+<li>
+  <a href="//reddit.com/submit?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;title=Dancing%20Code%20Monkey" target="_blank" class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="//www.linkedin.com/shareArticle?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;title=Dancing%20Code%20Monkey" target="_blank" class="share-btn linkedin">
+      <i class="fa fa-linkedin"></i>
+      <p>LinkedIn</p>
+    </a>
+</li>
+
+
+
+
+
+
+
+<li>
+  <a href="//www.pinterest.com/pin/create/button/?url=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f&amp;description=Dancing%20Code%20Monkey" target="_blank" class="share-btn pinterest">
+    <i class="fa fa-pinterest-p"></i>
+    <p>Pinterest</p>
+  </a>
+</li>
+
+
+
+
+<li>
+  <a href="mailto:?subject=Check out this post by Matthew%20M.%20Keeler&amp;body=%2fblog%2f2013%2f01%2f05%2fdancing-code-monkey%2f" target="_blank" class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+  </a>
+</li>
+
+
+      </ul>
+    </section>
+  
+
+  
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2013/01/05/dancing-code-monkey/" class="image featured">
+            <img src="/images/blog//dancing-code-monkey/monkey-dance.png" alt="">
+        </a>
+    
+
+
+  <div id="content">
+    <p>A few months ago, I started playing around with Emacs.  For roughly six years
 prior to that, I was a die-hard Vim fan.  Vim will always hold a special place
-in my heart, but I have grown to love Emacs. I&#39;ll undoubtedly cover Emacs in
-more detail, but I&#39;ll leave that for other posts.<a id="more"></a></p>
+in my heart, but I have grown to love Emacs. I&rsquo;ll undoubtedly cover Emacs in
+more detail, but I&rsquo;ll leave that for other posts.</p>
+
 <p>One cannot use Emacs for long without dabbling in Elisp, the language upon
 which Emacs is built.  Having only briefly touched on Lisp languages in
 college, I figured it was high time to start the learning process.</p>
-<p>Recently, a friend of mine stumbled upon this cute little code monkey on
-someone&#39;s Stackoverflow profile.</p>
-<figure class="highlight text"><pre><div class="line">     __</div><div class="line">w  c(..)o  (</div><div class="line"> <span class="command">\_</span>_(-)   __)</div><div class="line">     /<span class="command">\ </span> (</div><div class="line">    /( )__)</div><div class="line">   m /|</div><div class="line">    | <span class="command">\</span></div><div class="line">    m  m</div></pre></figure>
 
-<p>Quite naturally I thought, &quot;I should make him dance.&quot;  As this seemed
+<p>Recently, a friend of mine stumbled upon this cute little code monkey on
+someone&rsquo;s Stackoverflow profile.</p>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">          __
+     w  c(..)o  (
+      \__(-)   __)
+          /\  (
+         /( )__)
+        m /|
+         | \
+         m  m</code></pre></div>
+
+<p>Quite naturally I thought, &ldquo;I should make him dance.&rdquo;  As this seemed
 relatively simple, I decided to tackle this with Elisp.</p>
+
 <p>I first created four slightly altered copies of the little guy, and with the
 code shown below, had him dancing in no time.  You can make him dance
 interactively a set number of times by issuing the standard prefix arguments
 prior to invoking the function ( e.g. C-u 100 M-x dance-monkey ) or watch him
 shake his groove thing on YouTube.</p>
-<figure class="highlight lisp"><pre><div class="line"><span class="list">(<span class="title">defun</span> insert-monkey <span class="list">(<span class="title">num</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span> <span class="string">"P"</span>)</span></div><div class="line">  <span class="list">(<span class="title">erase-buffer</span>)</span></div><div class="line">  <span class="list">(<span class="title">insert-file-contents</span> </span></div><div class="line">    <span class="list">(<span class="title">concat</span> <span class="string">"/home/keelerm/Projects/emacs/code-monkey/"</span> <span class="list">(<span class="title">int-to-string</span> num)</span>)</span>))</div><div class="line"></div><div class="line"><span class="list">(<span class="title">defun</span> dance-monkey <span class="list">(<span class="title">repeat</span>)</span></span></div><div class="line">  <span class="list">(<span class="title">interactive</span> <span class="string">"P"</span>)</span></div><div class="line">  <span class="list">(<span class="title">let</span> <span class="list">(<span class="list">(<span class="title">times</span> <span class="number">0</span>)</span>)</span></span></div><div class="line">    <span class="list">(<span class="title">while</span> <span class="list">(<span class="title">&lt;</span> times repeat)</span></span></div><div class="line">      <span class="list">(<span class="title">insert-monkey</span> <span class="list">(<span class="title">mod</span> times <span class="number">4</span>)</span>)</span></div><div class="line">      <span class="list">(<span class="title">setq</span> times <span class="list">(<span class="number">1</span>+ times)</span>)</span></div><div class="line">      <span class="list">(<span class="title">sit-for</span> <span class="number">0.2</span>)</span></div><div class="line">      )))</div></pre></figure>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lisp" data-lang="lisp">(defun insert-monkey (num)
+  (interactive <span style="color:#e6db74">&#34;P&#34;</span>)
+  (erase-buffer)
+  (insert-file-contents 
+    (concat <span style="color:#e6db74">&#34;/home/keelerm/Projects/emacs/code-monkey/&#34;</span> (int-to-string num))))
+
+(defun dance-monkey (repeat)
+  (interactive <span style="color:#e6db74">&#34;P&#34;</span>)
+  (let ((times <span style="color:#ae81ff">0</span>))
+    (while (&lt; times repeat)
+      (insert-monkey (mod times <span style="color:#ae81ff">4</span>))
+      (setq times (1+ times))
+      (sit-for <span style="color:#ae81ff">0.2</span>)
+      )))</code></pre></div>
 
 <p>As stated above, I know this is extremely simple, but I suppose everyone has to
-start somewhere.  Besides, who doesn&#39;t love a dancing monkey?</p>
+start somewhere.  Besides, who doesn&rsquo;t love a dancing monkey?</p>
+  </div>
 
+  <footer>
+    <ul class="stats">
+  <li class="categories">
+    <ul>
         
-        </div>
-    </div>
+            
+            
+                <i class="fa fa-folder"></i>
+                
+                
+                <li><a class="article-category-link" href="/categories/emacs">Emacs</a></li>
+                
+            
+        
+    </ul>
+  </li>
+  <li class="tags">
+    <ul>
+        
+            
+            
+                <i class="fa fa-tags"></i>
+                
+                
+                <li><a class="article-category-link" href="/tags/emacs">emacs</a></li>
+                
+                
+                <li><a class="article-category-link" href="/tags/elisp">elisp</a></li>
+                
+            
+        
+    </ul>
+  </li>
+</ul>
+
+  </footer>
+
 </article>
 
-<section id="comments">
-  <div id="disqus_thread">
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-  </div>
-</section>
+    <article class="post">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "cupfullofcode" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </article>
 
 
-    </div>
-</div>
-</section>
-      </div>
-      <!-- Footer -->
-<div id="footer-wrapper" class="wrapper">
-    <div class="section-title">Links of interest</div>
-    <div id="footer" class="container">
-        <div class="row oneandhalf">
-            <div class="12u">
+<ul class="actions pagination">
+    
+        <li><a href="/blog/2011/09/01/negation-and-de-morgans-law/"
+                class="button big previous">Negation and De Morgan&#39;s Law</a></li>
+    
 
-                <section class="feature-list small">
-                    <div class="row">
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-envelope">Email</h3>
-                                <p>
-                                <a href="#">keelerm@tortugas-llc.com</a>
-                                </p>
-                            </section>
-                            <section>
-                                <h3 class="icon fa-rss">Subscribe</h3>
-                                <p>
-                                <a href="/atom.xml">Atom Feed</a>
-                                </p>
-                            </section>
-                        </div>
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-comment">Social</h3>
-                                <p>
-                                <a href="#">@keelerm84</a><br />
-                                <a href="#">github.com/keelerm84</a><br />
-                                <a href="#">youtube.com/user/keelerm84ify</a>
-                                </p>
-                            </section>
-                        </div>
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-tag">Tags</h3>
-                                
-  <div class="widget-wrap">
-    <p>
-    <a class="tag-link" href="/tags/automation/">automation</a>, <a class="tag-link" href="/tags/elisp/">elisp</a>, <a class="tag-link" href="/tags/emacs/">emacs</a>, <a class="tag-link" href="/tags/logic/">logic</a>, <a class="tag-link" href="/tags/org-mode/">org-mode</a>, <a class="tag-link" href="/tags/php/">php</a>, <a class="tag-link" href="/tags/projectile/">projectile</a>, <a class="tag-link" href="/tags/refactoring/">refactoring</a>, <a class="tag-link" href="/tags/screen/">screen</a>, <a class="tag-link" href="/tags/snippets/">snippets</a>, <a class="tag-link" href="/tags/utilities/">utilities</a>, <a class="tag-link" href="/tags/vim/">vim</a>, <a class="tag-link" href="/tags/zsh/">zsh</a>
-    </p>
-  </div>
+    
+        <li><a href="/blog/2013/01/08/automation-with-gnu-screen-and-ssh/"
+                class="button big next">Automation with GNU Screen and SSH</a></li>
+    
+</ul>
 
-
-                            </section>
-                        </div>
-                        <div class="3u">
-                            <section>
-                                <h3 class="icon fa-folder-open">Categories</h3>
-                                
-    <p>
-    <a class="category-link" href="/categories/Emacs/">Emacs</a>, <a class="category-link" href="/categories/Emacs/PHP/">PHP</a>, <a class="category-link" href="/categories/Programming/">Programming</a>, <a class="category-link" href="/categories/Utilities/">Utilities</a>
-    </p>
-
-
-                            </section>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </div>
-        <hr />
-        <header class="style1">
-            <h2>There is no system but GNU, and Linux is one of its kernels.</h2>
-            <p>&mdash; St. IGNUcius</p>
-        </header>
-    </div>
-</div>
 
     </div>
     
-<script>
-  var disqus_shortname = 'cupfullofcode';
+<section id="sidebar">
+
   
-  var disqus_url = 'http://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/';
+  <section id="intro">
+    
+    
+      
+        <a href='/'><img src="/images/matthew-keeler.jpg" class="intro-circle" width="200" alt="Matthew M. Keeler" /></a>
+      
+    
+    
+      <header>
+        <h2>Cup Full of Code</h2>
+        <p>The personal site of Matthew M. Keeler</p>
+      </header>
+    
+    
+      <ul class="icons">
+        
+          
+    <li><a href="/index.xml" type="application/rss+xml" target="_blank" title="RSS" class="fa fa-rss"></a></li>
+
+
+        
+        
+  <li><a href="//github.com/keelerm84" target="_blank" title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+  <li><a href="//stackoverflow.com/users/859409" target="_blank" title="Stack Overflow" class="fa fa-stack-overflow"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//linkedin.com/in/keelerm84" target="_blank" title="LinkedIn" class="fa fa-linkedin"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//youtube.com/keelerm84ify" target="_blank" title="YouTube" class="fa fa-youtube"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <li><a href="//twitter.com/keelerm84" target="_blank" title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </ul>
+    
+  </section>
+
   
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
+  <section class="recent-posts">
+    <div class="mini-posts">
+      <header>
+        <h3>Recent Posts</h3>
+      </header>
+      <div class="posts-container">
+        
+
+        
+          
+        
+
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/">A Look at Vim and Emacs</a>
+              </h3>
+              
+              <time class="published" datetime='2015-03-29'>
+                March 29, 2015
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2015/03/29/a-look-at-vim-and-emacs/" class="image featured">
+            <img src="/images/blog//a-look-at-vim-and-emacs/vim-and-emacs.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/">Invalidate Projectile Cache on Delete</a>
+              </h3>
+              
+              <time class="published" datetime='2014-10-06'>
+                October 6, 2014
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/10/06/invalidate-projectile-cache-on-delete/" class="image featured">
+            <img src="/images/blog//invalidate-projectile-cache-on-delete/cache.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+          <article class="mini-post">
+            <header>
+              <h3>
+                <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/">Performing Controlled PHP Refactorings in Emacs</a>
+              </h3>
+              
+              <time class="published" datetime='2014-09-21'>
+                September 21, 2014
+              </time>
+            </header>
+            
+    
+
+    
+        
+        
+
+
+
+
+
+
+
+  
+
+
+        
+        
+        
+
+        <a href="/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/" class="image featured">
+            <img src="/images/blog//php-refactor-mode/refactoring.jpg" alt="">
+        </a>
+    
+
+
+          </article>
+        
+      </div>
+
+      
+        <a href=
+          
+            /blog/
+          
+        class="button">View more posts</a>
+      
+    </div>
+  </section>
+
+  
+  
+  
+  
+  
+    <section id="categories">
+      <header>
+        <h3>
+          <a href="/categories/">Categories</a>
+        </h3>
+      </header>
+        
+          
+        
+
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/emacs/">emacs</a>
+                <span style="float:right;">7</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/php/">php</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/programming/">programming</a>
+                <span style="float:right;">1</span>
+              
+            </header>
+          </article>
+        </p>
+        
+        <p>
+          <article>
+            <header>
+              
+                <a href="/categories/utilities/">utilities</a>
+                <span style="float:right;">2</span>
+              
+            </header>
+          </article>
+        </p>
+        
+    </section>
+  
+  
+
+  
+  
+    <section id="mini-bio">
+      <h3>About</h3>
+      <p>I am an enthusiastic developer who loves learning new technologies.</p>
+      <a href="/about/" class="button">Learn More</a>
+    </section>
+  
+
+  
+  <section id="footer">
+    
+    <p class="copyright">
+      
+        &copy; 2017
+        
+          Cup Full of Code
+        
+      .
+      Powered by <a href="//gohugo.io" target="_blank">Hugo</a>
+    </p>
+  </section>
+</section>
+
+    </div>
+    <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+    
+
+    
+      
+    
+
+    
+      
+      
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/highlight.min.js"></script>
+        
+        
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs//highlight.js/9.12.0/languages/lisp.min.js"></script>
+        <script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+      
+    
+    
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/skel/3.0.1/skel.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.1.25/jquery.fancybox.min.js"></script>
+      <script src="/js/util.js"></script>
+      <script src="/js/main.js"></script>
+      <script src="/js/backToTop.js"></script>
+    
+
+    
+      
+        
+      
+    
+
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+      <script src="//yihui.name/js/math-code.js"></script>
+<script async
+src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-55725869-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-  </div>
-</body>
+  </body>
 </html>
+

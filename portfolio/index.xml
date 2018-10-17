@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Portfolio on Cup Full of Code</title>
+    <link>/portfolio/</link>
+    <description>Recent content in Portfolio on Cup Full of Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 22 Jun 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Emacs Configuration</title>
+      <link>/portfolio/emacs-configuration/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/emacs-configuration/</guid>
+      <description>Developers love their editors. Typically, they love one to the exclusion of all others. But this is definitely not the case with me. In fact, you might say I have an editor addiction, having played with vim, Sublime Text, Eclipse, Netbeans, and of course emacs.
+My emacs configuration includes elisp code to perform auto installation and updating upon start up, as well as customizations to various packages.</description>
+    </item>
+    
+    <item>
+      <title>Emacs Packages</title>
+      <link>/portfolio/emacs-packages/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/emacs-packages/</guid>
+      <description>Projectile Projectile is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies(when feasible).
+I added some defadvice to the delete-file functionality that would remove the file from the cache automatically, preventing the user from having to manually invalidate everything in order to clean up the file list.
+buster-mode buster-mode is a minor mode for emacs to speed up development when writing tests with Buster.</description>
+    </item>
+    
+    <item>
+      <title>GitList</title>
+      <link>/portfolio/gitlist/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/gitlist/</guid>
+      <description>gitlist was built to be a modern web interface for multiple git repositories, using some of the latest frameworks, including Silex and Twig, with Twitter bootstrap for the design.
+I have contributed a few patches to this project, such as better handling for raw resource viewing and correcting paths to various commit objects.</description>
+    </item>
+    
+    <item>
+      <title>Dotfiles</title>
+      <link>/portfolio/dotfiles/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/dotfiles/</guid>
+      <description>What developer&amp;rsquo;s github account would be complete without a dotfiles repo?
+My dotfiles repository is structured to work with homeshick, a bash based management system for maintaing your .dotfiles. It includes the configurations for the tools I use most often, such as vim, tmux, zsh and irssi.</description>
+    </item>
+    
+    <item>
+      <title>powerline</title>
+      <link>/portfolio/powerline/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/powerline/</guid>
+      <description>powerline has quickly become a favorite for command line lovers that want to jazz up their environments. My contribution included adding a segment that would show the number of users connected to the active tmux session.</description>
+    </item>
+    
+    <item>
+      <title>The Bug Genie</title>
+      <link>/portfolio/buggenie/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/buggenie/</guid>
+      <description>The BugGenie was the first open source project I contributed to. It is an easy to use issue tracking / project management system, written in PHP.
+I have contributed various improvements, including fixing invalid links on generated emails, inappropriate handling of various ajax requests, and a variety of CSS based improvements.</description>
+    </item>
+    
+    <item>
+      <title>timetrap</title>
+      <link>/portfolio/timetrap/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/timetrap/</guid>
+      <description>timetrap is a simple Ruby based command line application to track your time on various projects. This was the first Ruby project I have contributed to, implementing features such as a filter for viewing &amp;ldquo;todays&amp;rdquo; events, as well as a custom invoice generation formatter built with LaTeX.</description>
+    </item>
+    
+    <item>
+      <title>find.torrent</title>
+      <link>/portfolio/find-torrent/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/find-torrent/</guid>
+      <description>This API service was developed in collaboration with my friend Jacob Walker. It is a PHP based REST application, written using the BulletPHP framework, and using the HAL specification.
+With this service, you can easily search for torrents from a variety of sources and process one for downloading.</description>
+    </item>
+    
+    <item>
+      <title>ft-nodejs</title>
+      <link>/portfolio/ft-nodejs/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/ft-nodejs/</guid>
+      <description>The find.torrent service is a fantastic project, but on its own, it isn&amp;rsquo;t very useful. There must be an application built to manipulate it&amp;rsquo;s API.
+ft-nodejs is a node.js project built to do exactly this. Using node.js, the jade templating engine, and socket.io, it providers a simple, clean interface to search for torrents from a variety of devices.</description>
+    </item>
+    
+    <item>
+      <title>php-refactor-mode.el</title>
+      <link>/portfolio/php-refactor-mode/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/php-refactor-mode/</guid>
+      <description>The Bug Genie - A friendly project management and issue tracking tool.   Built on top of the php-refactoring-browser, php-refactor-mode.el allows a user to quickly perform automated refactorings from within emacs.</description>
+    </item>
+    
+    <item>
+      <title>youtube-dl-gui</title>
+      <link>/portfolio/youtube-dl-gui/</link>
+      <pubDate>Thu, 22 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/portfolio/youtube-dl-gui/</guid>
+      <description>The wildly popular youtube-dl python script is an excellent tool for downloading and converting YouTube videos. While it is an awesome tool, it isn&amp;rsquo;t the most user friendly tool for some people.
+To make using it easier for my wife, I developed a cross-platform C++ QT GUI that drives the command line utility. Files can be downloaded as video only, audio only, or as both, and automatically converted into a variety of formats.</description>
+    </item>
+    
+  </channel>
+</rss>

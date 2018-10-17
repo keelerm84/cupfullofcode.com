@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Cup Full of Code</title>
+    <link>/tags/</link>
+    <description>Recent content in Tags on Cup Full of Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 08 Jan 2013 13:38:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Automation</title>
+      <link>/tags/automation/</link>
+      <pubDate>Tue, 08 Jan 2013 13:38:00 +0000</pubDate>
+      
+      <guid>/tags/automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elisp</title>
+      <link>/tags/elisp/</link>
+      <pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate>
+      
+      <guid>/tags/elisp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Emacs</title>
+      <link>/tags/emacs/</link>
+      <pubDate>Sun, 29 Mar 2015 06:06:55 +0000</pubDate>
+      
+      <guid>/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Logic</title>
+      <link>/tags/logic/</link>
+      <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/logic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Org Mode</title>
+      <link>/tags/org-mode/</link>
+      <pubDate>Fri, 22 Nov 2013 13:15:00 +0000</pubDate>
+      
+      <guid>/tags/org-mode/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Php</title>
+      <link>/tags/php/</link>
+      <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Projectile</title>
+      <link>/tags/projectile/</link>
+      <pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate>
+      
+      <guid>/tags/projectile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Refactoring</title>
+      <link>/tags/refactoring/</link>
+      <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/refactoring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Screen</title>
+      <link>/tags/screen/</link>
+      <pubDate>Tue, 08 Jan 2013 13:38:00 +0000</pubDate>
+      
+      <guid>/tags/screen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Snippets</title>
+      <link>/tags/snippets/</link>
+      <pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate>
+      
+      <guid>/tags/snippets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Utilities</title>
+      <link>/tags/utilities/</link>
+      <pubDate>Wed, 03 Jul 2013 19:36:00 +0000</pubDate>
+      
+      <guid>/tags/utilities/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>/tags/vim/</link>
+      <pubDate>Sun, 29 Mar 2015 06:06:55 +0000</pubDate>
+      
+      <guid>/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Zsh</title>
+      <link>/tags/zsh/</link>
+      <pubDate>Wed, 03 Jul 2013 19:36:00 +0000</pubDate>
+      
+      <guid>/tags/zsh/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

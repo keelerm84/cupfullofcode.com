@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on Cup Full of Code</title>
+    <link>/tags/vim/</link>
+    <description>Recent content in Vim on Cup Full of Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 29 Mar 2015 06:06:55 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Look at Vim and Emacs</title>
+      <link>/blog/2015/03/29/a-look-at-vim-and-emacs/</link>
+      <pubDate>Sun, 29 Mar 2015 06:06:55 +0000</pubDate>
+      
+      <guid>/blog/2015/03/29/a-look-at-vim-and-emacs/</guid>
+      <description>&lt;p&gt;On Thursday, March 26th, 2015 my friend Jacob and I presented to
+&lt;a href=&#34;http://devict.org/&#34;&gt;DevICT&lt;/a&gt; on what we love about our editors of choice.
+Jacob covered vim and I spoke about emacs.&lt;/p&gt;
+
+&lt;p&gt;While this talk was billed as a head-to-head competition, neither Jacob nor I
+had any intention of &amp;ldquo;battling it out&amp;rdquo;.  Instead, we wanted to focus on what we
+thought each editor excelled at, and what we in particular liked about
+them.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

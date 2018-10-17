@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Utilities on Cup Full of Code</title>
+    <link>/tags/utilities/</link>
+    <description>Recent content in Utilities on Cup Full of Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 Jul 2013 19:36:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/utilities/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Efficient Command Line Navigation</title>
+      <link>/blog/2013/07/03/efficient-command-line-navigation/</link>
+      <pubDate>Wed, 03 Jul 2013 19:36:00 +0000</pubDate>
+      
+      <guid>/blog/2013/07/03/efficient-command-line-navigation/</guid>
+      <description>&lt;p&gt;I live on the command line. Between &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt;,
+&lt;a href=&#34;http://tmux.sourceforge.net/&#34;&gt;tmux&lt;/a&gt;, and &lt;a href=&#34;http://xmonad.org/&#34;&gt;xmonad&lt;/a&gt;, there
+isn&amp;rsquo;t much I have to use the mouse for these days. Given my love for keyboard
+navigation, it only makes sense that I learn as many of the command line
+shortcuts available as possible. Here I detail some of the most helpful
+navigation tricks, and those I use on a daily basis.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Automation with GNU Screen and SSH</title>
+      <link>/blog/2013/01/08/automation-with-gnu-screen-and-ssh/</link>
+      <pubDate>Tue, 08 Jan 2013 13:38:00 +0000</pubDate>
+      
+      <guid>/blog/2013/01/08/automation-with-gnu-screen-and-ssh/</guid>
+      <description>&lt;p&gt;As a developer, I tend to prefer automation whenever possible. Hours of your
+life are lost in the minutes spent doing that which could easily be
+scripted. The classic rule of thumb I try to follow is &amp;ldquo;if you have to do it
+twice, automate it.&amp;ldquo;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
