@@ -14,7 +14,7 @@ Undoubtedly, your grade school grammar teacher has scolded you at one point or
 another for your inadvertent use of a double negative.  Statements such as “I
 don’t know nothing about physics”, while grammatically incorrect, are often
 semantically inaccurate as well.  While the previous statement would commonly
-be understood to mean the person posses no knowledge of physics, the actual
+be understood to mean the person possesses no knowledge of physics, the actual
 statement implies the opposite, that the preposition “I know nothing about
 physics” is incorrect.  Certainly your teacher offered sound advice and one
 would be wise to heed such instruction.<!--more-->

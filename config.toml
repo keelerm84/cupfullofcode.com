@@ -1,4 +1,4 @@
-baseurl = "/"
+baseurl = "https://cupfullofcode.com"
 languageCode = "en-us"
 title = "Cup Full of Code"
 theme = "hugo-future-imperfect"
