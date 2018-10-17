@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Automation on Cup Full of Code</title>
-    <link>/tags/automation/</link>
+    <link>https://cupfullofcode.com/tags/automation/</link>
     <description>Recent content in Automation on Cup Full of Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Jan 2013 13:38:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/automation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cupfullofcode.com/tags/automation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Automation with GNU Screen and SSH</title>
-      <link>/blog/2013/01/08/automation-with-gnu-screen-and-ssh/</link>
+      <link>https://cupfullofcode.com/blog/2013/01/08/automation-with-gnu-screen-and-ssh/</link>
       <pubDate>Tue, 08 Jan 2013 13:38:00 +0000</pubDate>
       
-      <guid>/blog/2013/01/08/automation-with-gnu-screen-and-ssh/</guid>
+      <guid>https://cupfullofcode.com/blog/2013/01/08/automation-with-gnu-screen-and-ssh/</guid>
       <description>&lt;p&gt;As a developer, I tend to prefer automation whenever possible. Hours of your
 life are lost in the minutes spent doing that which could easily be
 scripted. The classic rule of thumb I try to follow is &amp;ldquo;if you have to do it

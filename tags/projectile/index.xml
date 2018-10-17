@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projectile on Cup Full of Code</title>
-    <link>/tags/projectile/</link>
+    <link>https://cupfullofcode.com/tags/projectile/</link>
     <description>Recent content in Projectile on Cup Full of Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 06 Oct 2014 21:36:39 +0000</lastBuildDate>
     
-	<atom:link href="/tags/projectile/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cupfullofcode.com/tags/projectile/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Invalidate Projectile Cache on Delete</title>
-      <link>/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link>
+      <link>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link>
       <pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate>
       
-      <guid>/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid>
+      <guid>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/bbatsov/projectile&#34;&gt;Projectile&lt;/a&gt; is a staple of my emacs
 configuration.  In my opinion, it is one of the all time best packages
 available, along with &lt;a href=&#34;https://github.com/jwiegley/org-mode&#34;&gt;org-mode&lt;/a&gt; and

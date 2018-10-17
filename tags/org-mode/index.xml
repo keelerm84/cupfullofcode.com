@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Org Mode on Cup Full of Code</title>
-    <link>/tags/org-mode/</link>
+    <link>https://cupfullofcode.com/tags/org-mode/</link>
     <description>Recent content in Org Mode on Cup Full of Code</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 22 Nov 2013 13:15:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/org-mode/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cupfullofcode.com/tags/org-mode/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Embedding Code Snippets in Org Mode</title>
-      <link>/blog/2013/11/22/embedding-code-snippets-in-org-mode/</link>
+      <link>https://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/</link>
       <pubDate>Fri, 22 Nov 2013 13:15:00 +0000</pubDate>
       
-      <guid>/blog/2013/11/22/embedding-code-snippets-in-org-mode/</guid>
+      <guid>https://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/</guid>
       <description>&lt;p&gt;Without a doubt, &lt;a href=&#34;http://orgmode.org/&#34;&gt;Org Mode&lt;/a&gt; is one of the most impressive
 and versatile features of Emacs.  Great for writing structured documents,
 managing lists and planning, and for exporting those documents into a variety
@@ -25,10 +25,10 @@ of formats, it&amp;rsquo;s my go to tool for flexible, efficient editing.&lt;/p&
     
     <item>
       <title>Generate Daily Messages With Org Journal</title>
-      <link>/blog/2013/11/17/generate-daily-messages-with-org-journal/</link>
+      <link>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</link>
       <pubDate>Sun, 17 Nov 2013 15:38:00 +0000</pubDate>
       
-      <guid>/blog/2013/11/17/generate-daily-messages-with-org-journal/</guid>
+      <guid>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</guid>
       <description>&lt;p&gt;One of the requirements of my job is to send out a daily message. This message
 should summarize what I did the day before, and what I hope to accomplish for
 the current day. At first, I would spend my day jumping from task to task, and
@@ -38,10 +38,10 @@ things I worked on.&lt;/p&gt;</description>
     
     <item>
       <title>Snippet Expansion with YASnippet</title>
-      <link>/blog/2013/02/26/snippet-expansion-with-yasnippet/</link>
+      <link>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</link>
       <pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate>
       
-      <guid>/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid>
+      <guid>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid>
       <description>&lt;p&gt;Any editor worth its salt has some provision for text snippet
 expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
 is certainly no exception. If you&amp;rsquo;re not familiar with the concept of snippets,
