@@ -23,5 +23,5 @@ RUN hugo
 
 RUN cd public && \
     git add --all && \
-    git commit -m "Site updated: `date +'%Y-%m-%d %H:%M:%S'`" && \
+    git commit -m "Site updated: `date +'%Y-%m-%d %H:%M:%S'`" --allow-empty && \
     git push origin gh-pages:gh-pages
