@@ -21,8 +21,8 @@
         "accountablePerson" : "",
         "copyrightHolder" : "",
         "copyrightYear" : "2013",
-        "datePublished": "2013-01-08 13:38:00 &#43;0000 &#43;0000",
-        "dateModified" : "2013-01-08 13:38:00 &#43;0000 &#43;0000",
+        "datePublished": "2013-01-08 13:38:00 &#43;0000 UTC",
+        "dateModified" : "2013-01-08 13:38:00 &#43;0000 UTC",
         "url" : "https://cupfullofcode.com/blog/2013/01/08/automation-with-gnu-screen-and-ssh/",
         "wordCount" : "685",
         "keywords" : [ "utilities","screen","automation","Blog" ]
@@ -36,7 +36,7 @@
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="generator" content="Hugo 0.49" />
+        <meta name="generator" content="Hugo 0.52" />
         
 
 
@@ -597,7 +597,7 @@ if (!doNotTrack) {
     <p>As a developer, I tend to prefer automation whenever possible. Hours of your
 life are lost in the minutes spent doing that which could easily be
 scripted. The classic rule of thumb I try to follow is &ldquo;if you have to do it
-twice, automate it.&ldquo;</p>
+twice, automate it.&rdquo;</p>
 
 <p>At my job, I have to maintain multiple versions of the product, each of which
 are hosted on different virtual machines. When I am ready to start work on a
@@ -637,15 +637,15 @@ powerful options provided, you can easily start a screen, launch multiple named
 tabs, and execute any command of your choosing. I have a screen config for each
 product version I manage. Version 1.9&rsquo;s config is shown below:</p>
 
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Start screen in detached mode (-d -m), and give it a session name (&#39;1-9&#39;) to avoid
-</span><span style="color:#75715e"># confusion when communicating with this session later as we add commands
-</span><span style="color:#75715e"></span>screen -d -m -S <span style="color:#ae81ff">1</span>-9
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Start screen in detached mode (-d -m), and give it a session name (&#39;1-9&#39;) to avoid</span>
+<span style="color:#75715e"># confusion when communicating with this session later as we add commands</span>
+screen -d -m -S <span style="color:#ae81ff">1</span>-9
 
-<span style="color:#75715e"># Run a command in the current screen window (edit some file for example)
-</span><span style="color:#75715e"></span>screen -S <span style="color:#ae81ff">1</span>-9 -p <span style="color:#ae81ff">0</span> -X title Git
+<span style="color:#75715e"># Run a command in the current screen window (edit some file for example)</span>
+screen -S <span style="color:#ae81ff">1</span>-9 -p <span style="color:#ae81ff">0</span> -X title Git
 
-<span style="color:#75715e"># Create a new window, and run a command in that window:
-</span><span style="color:#75715e"></span>screen -S <span style="color:#ae81ff">1</span>-9 -p <span style="color:#ae81ff">0</span> -X screen -t Code emacsclient -nw -c
+<span style="color:#75715e"># Create a new window, and run a command in that window:</span>
+screen -S <span style="color:#ae81ff">1</span>-9 -p <span style="color:#ae81ff">0</span> -X screen -t Code emacsclient -nw -c
 screen -S <span style="color:#ae81ff">1</span>-9 -p <span style="color:#ae81ff">0</span> -X screen -t Application ssh <span style="color:#ae81ff">19</span> <span style="color:#e6db74">&#39;tail -F /var/www/product/logs/error.log&#39;</span>
 screen -S <span style="color:#ae81ff">1</span>-9 -p <span style="color:#ae81ff">0</span> -X screen -t Apache ssh <span style="color:#ae81ff">19</span> <span style="color:#e6db74">&#39;tail -F /var/log/httpd/error.log&#39;</span>
 screen -S <span style="color:#ae81ff">1</span>-9 -p <span style="color:#ae81ff">0</span> -X screen -t Remote ssh <span style="color:#ae81ff">19</span></code></pre></div>
