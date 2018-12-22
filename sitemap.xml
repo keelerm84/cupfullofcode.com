@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://cupfullofcode.com/blog/2018/12/21/deploying-hugo-with-github-actions/</loc>
+    <lastmod>2018-12-21T00:08:49-05:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cupfullofcode.com/portfolio/emacs-configuration/</loc>
     <lastmod>2017-06-22T00:00:00+00:00</lastmod>
   </url>
@@ -125,7 +130,7 @@
   
   <url>
     <loc>https://cupfullofcode.com/blog/</loc>
-    <lastmod>2015-03-29T06:06:55+00:00</lastmod>
+    <lastmod>2018-12-21T00:08:49-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -136,7 +141,19 @@
   
   <url>
     <loc>https://cupfullofcode.com/</loc>
-    <lastmod>2017-06-22T00:00:00+00:00</lastmod>
+    <lastmod>2018-12-21T00:08:49-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cupfullofcode.com/tags/devops/</loc>
+    <lastmod>2018-12-21T00:08:49-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cupfullofcode.com/categories/devops/</loc>
+    <lastmod>2018-12-21T00:08:49-05:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -155,6 +172,18 @@
   <url>
     <loc>https://cupfullofcode.com/categories/emacs/</loc>
     <lastmod>2015-03-29T06:06:55+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cupfullofcode.com/tags/github/</loc>
+    <lastmod>2018-12-21T00:08:49-05:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://cupfullofcode.com/tags/hugo/</loc>
+    <lastmod>2018-12-21T00:08:49-05:00</lastmod>
     <priority>0</priority>
   </url>
   
