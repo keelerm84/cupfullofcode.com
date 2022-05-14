@@ -1,114 +1,35 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Emacs on Cup Full of Code</title>
-    <link>https://cupfullofcode.com/tags/emacs/</link>
-    <description>Recent content in Emacs on Cup Full of Code</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 29 Mar 2015 06:06:55 +0000</lastBuildDate>
-    
-	<atom:link href="https://cupfullofcode.com/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>A Look at Vim and Emacs</title>
-      <link>https://cupfullofcode.com/blog/2015/03/29/a-look-at-vim-and-emacs/</link>
-      <pubDate>Sun, 29 Mar 2015 06:06:55 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2015/03/29/a-look-at-vim-and-emacs/</guid>
-      <description>&lt;p&gt;On Thursday, March 26th, 2015 my friend Jacob and I presented to
-&lt;a href=&#34;http://devict.org/&#34;&gt;DevICT&lt;/a&gt; on what we love about our editors of choice.
-Jacob covered vim and I spoke about emacs.&lt;/p&gt;
-
-&lt;p&gt;While this talk was billed as a head-to-head competition, neither Jacob nor I
-had any intention of &amp;ldquo;battling it out&amp;rdquo;.  Instead, we wanted to focus on what we
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>emacs on Cup Full of Code</title><link>https://cupfullofcode.com/tags/emacs/</link><description>Recent content in emacs on Cup Full of Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 29 Mar 2015 06:06:55 +0000</lastBuildDate><atom:link href="https://cupfullofcode.com/tags/emacs/index.xml" rel="self" type="application/rss+xml"/><item><title>A Look at Vim and Emacs</title><link>https://cupfullofcode.com/blog/2015/03/29/a-look-at-vim-and-emacs/</link><pubDate>Sun, 29 Mar 2015 06:06:55 +0000</pubDate><guid>https://cupfullofcode.com/blog/2015/03/29/a-look-at-vim-and-emacs/</guid><description>&lt;p>On Thursday, March 26th, 2015 my friend Jacob and I presented to
+&lt;a href="http://devict.org/" target="_blank">DevICT&lt;/a> on what we love about our editors of choice.
+Jacob covered vim and I spoke about emacs.&lt;/p>
+&lt;p>While this talk was billed as a head-to-head competition, neither Jacob nor I
+had any intention of &amp;ldquo;battling it out&amp;rdquo;. Instead, we wanted to focus on what we
 thought each editor excelled at, and what we in particular liked about
-them.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Invalidate Projectile Cache on Delete</title>
-      <link>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link>
-      <pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/bbatsov/projectile&#34;&gt;Projectile&lt;/a&gt; is a staple of my emacs
-configuration.  In my opinion, it is one of the all time best packages
-available, along with &lt;a href=&#34;https://github.com/jwiegley/org-mode&#34;&gt;org-mode&lt;/a&gt; and
-&lt;a href=&#34;https://github.com/magit/magit&#34;&gt;magit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;One of my most commonly used commands with projectile is helm-projectile.  This
-lets me locate any file in my project by pressing &lt;code&gt;C-c p h&lt;/code&gt;.  Using the
+them.&lt;/p></description></item><item><title>Invalidate Projectile Cache on Delete</title><link>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link><pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate><guid>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid><description>&lt;p>&lt;a href="https://github.com/bbatsov/projectile" target="_blank">Projectile&lt;/a> is a staple of my emacs
+configuration. In my opinion, it is one of the all time best packages
+available, along with &lt;a href="https://github.com/jwiegley/org-mode" target="_blank">org-mode&lt;/a> and
+&lt;a href="https://github.com/magit/magit" target="_blank">magit&lt;/a>.&lt;/p>
+&lt;p>One of my most commonly used commands with projectile is helm-projectile. This
+lets me locate any file in my project by pressing &lt;code>C-c p h&lt;/code>. Using the
 narrowing abilities of helm, I can quickly filter the list of options to
-exactly the one I want.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Performing Controlled PHP Refactorings in Emacs</title>
-      <link>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</link>
-      <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</guid>
-      <description>&lt;p&gt;By day, I work as a PHP developer at
-&lt;a href=&#34;http://researchsquare.com&#34;&gt;Research Square&lt;/a&gt;.  My time is spent developing new
-functionality for the RS suite of products.  This may include working in
-greenfield code bases or extending our legacy products.  In either case, dozens
-of times a day, I find myself performing various code refactorings.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Embedding Code Snippets in Org Mode</title>
-      <link>https://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/</link>
-      <pubDate>Fri, 22 Nov 2013 13:15:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/</guid>
-      <description>&lt;p&gt;Without a doubt, &lt;a href=&#34;http://orgmode.org/&#34;&gt;Org Mode&lt;/a&gt; is one of the most impressive
-and versatile features of Emacs.  Great for writing structured documents,
+exactly the one I want.&lt;/p></description></item><item><title>Performing Controlled PHP Refactorings in Emacs</title><link>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</link><pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</guid><description>&lt;p>By day, I work as a PHP developer at
+&lt;a href="http://researchsquare.com" target="_blank">Research Square&lt;/a>. My time is spent developing new
+functionality for the RS suite of products. This may include working in
+greenfield code bases or extending our legacy products. In either case, dozens
+of times a day, I find myself performing various code refactorings.&lt;/p></description></item><item><title>Embedding Code Snippets in Org Mode</title><link>https://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/</link><pubDate>Fri, 22 Nov 2013 13:15:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/11/22/embedding-code-snippets-in-org-mode/</guid><description>&lt;p>Without a doubt, &lt;a href="http://orgmode.org/" target="_blank">Org Mode&lt;/a> is one of the most impressive
+and versatile features of Emacs. Great for writing structured documents,
 managing lists and planning, and for exporting those documents into a variety
-of formats, it&amp;rsquo;s my go to tool for flexible, efficient editing.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Generate Daily Messages With Org Journal</title>
-      <link>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</link>
-      <pubDate>Sun, 17 Nov 2013 15:38:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</guid>
-      <description>&lt;p&gt;One of the requirements of my job is to send out a daily message. This message
+of formats, it&amp;rsquo;s my go to tool for flexible, efficient editing.&lt;/p></description></item><item><title>Generate Daily Messages With Org Journal</title><link>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</link><pubDate>Sun, 17 Nov 2013 15:38:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</guid><description>&lt;p>One of the requirements of my job is to send out a daily message. This message
 should summarize what I did the day before, and what I hope to accomplish for
 the current day. At first, I would spend my day jumping from task to task, and
 then the next morning, I would rack my brain to make sure I included all the
-things I worked on.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Snippet Expansion with YASnippet</title>
-      <link>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</link>
-      <pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid>
-      <description>&lt;p&gt;Any editor worth its salt has some provision for text snippet
+things I worked on.&lt;/p></description></item><item><title>Snippet Expansion with YASnippet</title><link>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</link><pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid><description>&lt;p>Any editor worth its salt has some provision for text snippet
 expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
 is certainly no exception. If you&amp;rsquo;re not familiar with the concept of snippets,
 the basic idea involves defining a keyword, which when followed with some
 trigger (keyboard shortcut or menu option), replaces that keyword with some
 predefined text. This functionality is a great boost to productivity as it
 prevents the developer from having to manually type potentially hundreds or
-thousands of lines of relatively boilerplate code.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Dancing Code Monkey</title>
-      <link>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</link>
-      <pubDate>Sat, 05 Jan 2013 23:09:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</guid>
-      <description>&lt;p&gt;A few months ago, I started playing around with Emacs.  For roughly six years
-prior to that, I was a die-hard Vim fan.  Vim will always hold a special place
+thousands of lines of relatively boilerplate code.&lt;/p></description></item><item><title>Dancing Code Monkey</title><link>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</link><pubDate>Sat, 05 Jan 2013 23:09:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</guid><description>&lt;p>A few months ago, I started playing around with Emacs. For roughly six years
+prior to that, I was a die-hard Vim fan. Vim will always hold a special place
 in my heart, but I have grown to love Emacs. I&amp;rsquo;ll undoubtedly cover Emacs in
-more detail, but I&amp;rsquo;ll leave that for other posts.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+more detail, but I&amp;rsquo;ll leave that for other posts.&lt;/p></description></item></channel></rss>

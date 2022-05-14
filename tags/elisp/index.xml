@@ -1,73 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Elisp on Cup Full of Code</title>
-    <link>https://cupfullofcode.com/tags/elisp/</link>
-    <description>Recent content in Elisp on Cup Full of Code</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 06 Oct 2014 21:36:39 +0000</lastBuildDate>
-    
-	<atom:link href="https://cupfullofcode.com/tags/elisp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Invalidate Projectile Cache on Delete</title>
-      <link>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link>
-      <pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/bbatsov/projectile&#34;&gt;Projectile&lt;/a&gt; is a staple of my emacs
-configuration.  In my opinion, it is one of the all time best packages
-available, along with &lt;a href=&#34;https://github.com/jwiegley/org-mode&#34;&gt;org-mode&lt;/a&gt; and
-&lt;a href=&#34;https://github.com/magit/magit&#34;&gt;magit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;One of my most commonly used commands with projectile is helm-projectile.  This
-lets me locate any file in my project by pressing &lt;code&gt;C-c p h&lt;/code&gt;.  Using the
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>elisp on Cup Full of Code</title><link>https://cupfullofcode.com/tags/elisp/</link><description>Recent content in elisp on Cup Full of Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Oct 2014 21:36:39 +0000</lastBuildDate><atom:link href="https://cupfullofcode.com/tags/elisp/index.xml" rel="self" type="application/rss+xml"/><item><title>Invalidate Projectile Cache on Delete</title><link>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link><pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate><guid>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid><description>&lt;p>&lt;a href="https://github.com/bbatsov/projectile" target="_blank">Projectile&lt;/a> is a staple of my emacs
+configuration. In my opinion, it is one of the all time best packages
+available, along with &lt;a href="https://github.com/jwiegley/org-mode" target="_blank">org-mode&lt;/a> and
+&lt;a href="https://github.com/magit/magit" target="_blank">magit&lt;/a>.&lt;/p>
+&lt;p>One of my most commonly used commands with projectile is helm-projectile. This
+lets me locate any file in my project by pressing &lt;code>C-c p h&lt;/code>. Using the
 narrowing abilities of helm, I can quickly filter the list of options to
-exactly the one I want.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Generate Daily Messages With Org Journal</title>
-      <link>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</link>
-      <pubDate>Sun, 17 Nov 2013 15:38:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</guid>
-      <description>&lt;p&gt;One of the requirements of my job is to send out a daily message. This message
+exactly the one I want.&lt;/p></description></item><item><title>Generate Daily Messages With Org Journal</title><link>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</link><pubDate>Sun, 17 Nov 2013 15:38:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/11/17/generate-daily-messages-with-org-journal/</guid><description>&lt;p>One of the requirements of my job is to send out a daily message. This message
 should summarize what I did the day before, and what I hope to accomplish for
 the current day. At first, I would spend my day jumping from task to task, and
 then the next morning, I would rack my brain to make sure I included all the
-things I worked on.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Snippet Expansion with YASnippet</title>
-      <link>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</link>
-      <pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid>
-      <description>&lt;p&gt;Any editor worth its salt has some provision for text snippet
+things I worked on.&lt;/p></description></item><item><title>Snippet Expansion with YASnippet</title><link>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</link><pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid><description>&lt;p>Any editor worth its salt has some provision for text snippet
 expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
 is certainly no exception. If you&amp;rsquo;re not familiar with the concept of snippets,
 the basic idea involves defining a keyword, which when followed with some
 trigger (keyboard shortcut or menu option), replaces that keyword with some
 predefined text. This functionality is a great boost to productivity as it
 prevents the developer from having to manually type potentially hundreds or
-thousands of lines of relatively boilerplate code.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Dancing Code Monkey</title>
-      <link>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</link>
-      <pubDate>Sat, 05 Jan 2013 23:09:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</guid>
-      <description>&lt;p&gt;A few months ago, I started playing around with Emacs.  For roughly six years
-prior to that, I was a die-hard Vim fan.  Vim will always hold a special place
+thousands of lines of relatively boilerplate code.&lt;/p></description></item><item><title>Dancing Code Monkey</title><link>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</link><pubDate>Sat, 05 Jan 2013 23:09:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/01/05/dancing-code-monkey/</guid><description>&lt;p>A few months ago, I started playing around with Emacs. For roughly six years
+prior to that, I was a die-hard Vim fan. Vim will always hold a special place
 in my heart, but I have grown to love Emacs. I&amp;rsquo;ll undoubtedly cover Emacs in
-more detail, but I&amp;rsquo;ll leave that for other posts.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+more detail, but I&amp;rsquo;ll leave that for other posts.&lt;/p></description></item></channel></rss>

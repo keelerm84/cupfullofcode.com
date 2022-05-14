@@ -1,28 +1,5 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Refactoring on Cup Full of Code</title>
-    <link>https://cupfullofcode.com/tags/refactoring/</link>
-    <description>Recent content in Refactoring on Cup Full of Code</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 21 Sep 2014 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://cupfullofcode.com/tags/refactoring/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Performing Controlled PHP Refactorings in Emacs</title>
-      <link>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</link>
-      <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</guid>
-      <description>&lt;p&gt;By day, I work as a PHP developer at
-&lt;a href=&#34;http://researchsquare.com&#34;&gt;Research Square&lt;/a&gt;.  My time is spent developing new
-functionality for the RS suite of products.  This may include working in
-greenfield code bases or extending our legacy products.  In either case, dozens
-of times a day, I find myself performing various code refactorings.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>refactoring on Cup Full of Code</title><link>https://cupfullofcode.com/tags/refactoring/</link><description>Recent content in refactoring on Cup Full of Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 21 Sep 2014 00:00:00 +0000</lastBuildDate><atom:link href="https://cupfullofcode.com/tags/refactoring/index.xml" rel="self" type="application/rss+xml"/><item><title>Performing Controlled PHP Refactorings in Emacs</title><link>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</link><pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2014/09/21/performing-controlled-php-refactorings-in-emacs/</guid><description>&lt;p>By day, I work as a PHP developer at
+&lt;a href="http://researchsquare.com" target="_blank">Research Square&lt;/a>. My time is spent developing new
+functionality for the RS suite of products. This may include working in
+greenfield code bases or extending our legacy products. In either case, dozens
+of times a day, I find myself performing various code refactorings.&lt;/p></description></item></channel></rss>

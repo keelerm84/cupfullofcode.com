@@ -1,29 +1,6 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Zsh on Cup Full of Code</title>
-    <link>https://cupfullofcode.com/tags/zsh/</link>
-    <description>Recent content in Zsh on Cup Full of Code</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jul 2013 19:36:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://cupfullofcode.com/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Efficient Command Line Navigation</title>
-      <link>https://cupfullofcode.com/blog/2013/07/03/efficient-command-line-navigation/</link>
-      <pubDate>Wed, 03 Jul 2013 19:36:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/07/03/efficient-command-line-navigation/</guid>
-      <description>&lt;p&gt;I live on the command line. Between &lt;a href=&#34;http://www.vim.org/&#34;&gt;vim&lt;/a&gt;,
-&lt;a href=&#34;http://tmux.sourceforge.net/&#34;&gt;tmux&lt;/a&gt;, and &lt;a href=&#34;http://xmonad.org/&#34;&gt;xmonad&lt;/a&gt;, there
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>zsh on Cup Full of Code</title><link>https://cupfullofcode.com/tags/zsh/</link><description>Recent content in zsh on Cup Full of Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 03 Jul 2013 19:36:00 +0000</lastBuildDate><atom:link href="https://cupfullofcode.com/tags/zsh/index.xml" rel="self" type="application/rss+xml"/><item><title>Efficient Command Line Navigation</title><link>https://cupfullofcode.com/blog/2013/07/03/efficient-command-line-navigation/</link><pubDate>Wed, 03 Jul 2013 19:36:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/07/03/efficient-command-line-navigation/</guid><description>&lt;p>I live on the command line. Between &lt;a href="http://www.vim.org/" target="_blank">vim&lt;/a>,
+&lt;a href="http://tmux.sourceforge.net/" target="_blank">tmux&lt;/a>, and &lt;a href="http://xmonad.org/" target="_blank">xmonad&lt;/a>, there
 isn&amp;rsquo;t much I have to use the mouse for these days. Given my love for keyboard
 navigation, it only makes sense that I learn as many of the command line
 shortcuts available as possible. Here I detail some of the most helpful
-navigation tricks, and those I use on a daily basis.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+navigation tricks, and those I use on a daily basis.&lt;/p></description></item></channel></rss>

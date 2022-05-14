@@ -1,32 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Projectile on Cup Full of Code</title>
-    <link>https://cupfullofcode.com/tags/projectile/</link>
-    <description>Recent content in Projectile on Cup Full of Code</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 06 Oct 2014 21:36:39 +0000</lastBuildDate>
-    
-	<atom:link href="https://cupfullofcode.com/tags/projectile/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Invalidate Projectile Cache on Delete</title>
-      <link>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link>
-      <pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://github.com/bbatsov/projectile&#34;&gt;Projectile&lt;/a&gt; is a staple of my emacs
-configuration.  In my opinion, it is one of the all time best packages
-available, along with &lt;a href=&#34;https://github.com/jwiegley/org-mode&#34;&gt;org-mode&lt;/a&gt; and
-&lt;a href=&#34;https://github.com/magit/magit&#34;&gt;magit&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;One of my most commonly used commands with projectile is helm-projectile.  This
-lets me locate any file in my project by pressing &lt;code&gt;C-c p h&lt;/code&gt;.  Using the
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>projectile on Cup Full of Code</title><link>https://cupfullofcode.com/tags/projectile/</link><description>Recent content in projectile on Cup Full of Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 06 Oct 2014 21:36:39 +0000</lastBuildDate><atom:link href="https://cupfullofcode.com/tags/projectile/index.xml" rel="self" type="application/rss+xml"/><item><title>Invalidate Projectile Cache on Delete</title><link>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</link><pubDate>Mon, 06 Oct 2014 21:36:39 +0000</pubDate><guid>https://cupfullofcode.com/blog/2014/10/06/invalidate-projectile-cache-on-delete/</guid><description>&lt;p>&lt;a href="https://github.com/bbatsov/projectile" target="_blank">Projectile&lt;/a> is a staple of my emacs
+configuration. In my opinion, it is one of the all time best packages
+available, along with &lt;a href="https://github.com/jwiegley/org-mode" target="_blank">org-mode&lt;/a> and
+&lt;a href="https://github.com/magit/magit" target="_blank">magit&lt;/a>.&lt;/p>
+&lt;p>One of my most commonly used commands with projectile is helm-projectile. This
+lets me locate any file in my project by pressing &lt;code>C-c p h&lt;/code>. Using the
 narrowing abilities of helm, I can quickly filter the list of options to
-exactly the one I want.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+exactly the one I want.&lt;/p></description></item></channel></rss>

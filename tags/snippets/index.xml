@@ -1,31 +1,8 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Snippets on Cup Full of Code</title>
-    <link>https://cupfullofcode.com/tags/snippets/</link>
-    <description>Recent content in Snippets on Cup Full of Code</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 26 Feb 2013 11:35:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://cupfullofcode.com/tags/snippets/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Snippet Expansion with YASnippet</title>
-      <link>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</link>
-      <pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate>
-      
-      <guid>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid>
-      <description>&lt;p&gt;Any editor worth its salt has some provision for text snippet
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>snippets on Cup Full of Code</title><link>https://cupfullofcode.com/tags/snippets/</link><description>Recent content in snippets on Cup Full of Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 26 Feb 2013 11:35:00 +0000</lastBuildDate><atom:link href="https://cupfullofcode.com/tags/snippets/index.xml" rel="self" type="application/rss+xml"/><item><title>Snippet Expansion with YASnippet</title><link>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</link><pubDate>Tue, 26 Feb 2013 11:35:00 +0000</pubDate><guid>https://cupfullofcode.com/blog/2013/02/26/snippet-expansion-with-yasnippet/</guid><description>&lt;p>Any editor worth its salt has some provision for text snippet
 expansion. TextMate, Vim, and Sublime Text 2 all have this capability and Emacs
 is certainly no exception. If you&amp;rsquo;re not familiar with the concept of snippets,
 the basic idea involves defining a keyword, which when followed with some
 trigger (keyboard shortcut or menu option), replaces that keyword with some
 predefined text. This functionality is a great boost to productivity as it
 prevents the developer from having to manually type potentially hundreds or
-thousands of lines of relatively boilerplate code.&lt;/p&gt;</description>
-    </item>
-    
-  </channel>
-</rss>
+thousands of lines of relatively boilerplate code.&lt;/p></description></item></channel></rss>
