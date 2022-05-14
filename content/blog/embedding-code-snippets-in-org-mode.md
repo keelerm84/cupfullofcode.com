@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Emacs"]
 tags = ["org-mode", "emacs"]
 date = 2013-11-22T13:15:00+00:00
 description = "Better code editing experience when authoring documents"
-featured = "embedding-code-snippets-in-org-mode/embed-code.jpg"
-featuredpath = "/images/blog/"
 title = "Embedding Code Snippets in Org Mode"
-type = "post"
+type = "blog"
 +++
 
 Without a doubt, [Org Mode](http://orgmode.org/) is one of the most impressive

@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["DevOps"]
 tags = ["devops", "hugo", "github"]
 title = "Deploying Hugo With Github Actions"
 date = 2018-12-21T00:08:49-05:00
 description = "Automating hugo static site deployments with GitHub Actions"
-featured = "deploying-hugo-with-github-actions/hugo.jpg"
-featuredpath = "/images/blog/"
-type = "post"
+type = "blog"
 +++
 
 I recently converted this site from [hexo](https://www.staticgen.com/hexo) to

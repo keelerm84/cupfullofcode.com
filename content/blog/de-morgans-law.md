@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Programming"]
 tags = ["logic"]
 date = 2011-09-01T00:00:00+00:00
 description = "Safely simplify complicated negation logic"
-featured = "de-morgans-law/symbolic-logic.gif"
-featuredpath = "/images/blog/"
 title = "Negation and De Morgan's Law"
-type = "post"
+type = "blog"
 +++
 
 Undoubtedly, your grade school grammar teacher has scolded you at one point or

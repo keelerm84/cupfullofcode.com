@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Emacs"]
 tags = ["org-mode", "emacs", "elisp"]
 date = 2013-11-17T15:38:00+00:00
 description = "Automating standup notes for fun and profit"
-featured = "daily-messages-with-org-journal/journal.jpg"
-featuredpath = "/images/blog/"
 title = "Generate Daily Messages With Org Journal"
-type = "post"
+type = "blog"
 +++
 
 One of the requirements of my job is to send out a daily message. This message

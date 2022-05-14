@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Utilities"]
 tags = ["utilities", "zsh"]
 date = 2013-07-03T19:36:00+00:00
 description = "Finding the way to a better command line life"
-featured = "efficient-command-line-navigation/navigation.jpg"
-featuredpath = "/images/blog/"
 title = "Efficient Command Line Navigation"
-type = "post"
+type = "blog"
 +++
 
 I live on the command line. Between [vim](http://www.vim.org/),

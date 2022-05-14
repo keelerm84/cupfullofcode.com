@@ -1,76 +1,113 @@
 baseurl = "https://cupfullofcode.com"
-languageCode = "en-us"
 title = "Cup Full of Code"
+
 theme = "fuji"
-preserveTaxonomyNames = false
+hasCJKLanguage = true
+enableEmoji = true
+disableKinds = ["taxonomy"]
+ignoreErrors = ["error-disable-taxonomy"]
+
+## Change this two to switch between different language
+languageCode = "en"           # For RSS, view https://www.rssboard.org/rss-language-codes
+defaultContentLanguage = "en" # For HTML page, now support: en, zh-hans, zh-hant, ja, nl, pl, it
+
+summaryLength = 100 # Custom summary length, add <!--more--> in post file to custom split point
 paginate = 5
+
+preserveTaxonomyNames = false
 disqusShortname = "cupfullofcode"
 googleAnalytics = "UA-55725869-1"
 pluralizeListTitles = false
+
 # Set the followings to true as part of your site SEO
 enableRobotsTXT = true
 canonifyURLs = true
 
+mainSections = ["blog"]
+
+[outputFormats]
+[outputFormats.SearchIndex]
+isPlainText = true
+notAlternative = true
+mediaType = "application/json"
+path = "/search/"
+
+[outputs]
+home = ["HTML", "RSS", "SearchIndex"]
+
 [permalinks]
-  blog = "/blog/:year/:month/:day/:title"
+blog = "/blog/:year/:month/:day/:title"
 
 [params]
-  # Sets the meta tag description
-  description          = "The personal site of Matthew M. Keeler"
-  # Sets the navbarTitle that appears in the top left of the navigation bar
-  navbarTitle          = "Cup Full of Code"
-  # Sets where "View More Posts" links
-  viewMorePostLink     = "/blog/"
+author = "Matthew M. Keeler"
+subTitle = "The personal site of Matthew M. Keeler"
+navbarTitle = "Cup Full of Code"
+sourceURL = "https://github.com/keelerm84/cupfullofcode.com"
 
-# Optional Params
-  # Sets navbarTitle to match the section of the website
-  dynamicTitles        = true
-  # Sets RSS icons to appear on the sidebar with the social media buttons
-  rssAppearAtTop       = true
-  rssAppearAtBottom    = false
-  # Sets Social Media icons to appear on the sidebar
-  socialAppearAtTop    = true
-  socialAppearAtBottom = false
-  # Sets Categories to sort by number of posts instead of alphabetical
-  categoriesByCount    = false
-  # set to show or to hide categories in the sidebar
-  showSidebarCategories = true
-  # Sets Estimated Reading Time to appear in post headers
-  includeReadingTime   = true
-  # Sets the Favicon and Version for the site. Default support is for
-  # apple-touch-icon-precomposed.png, favicon.png, favicon.ico, and mstile.png.
-  # These are stored in the favicon folder. See the following for more information:
-  # https://github.com/audreyr/favicon-cheat-sheet
-  loadFavicon          = false
-  faviconVersion       = ""
-  # Sets Social Share links to appear on posts
-  socialShare          = true
-  # Sets specific share to appear on posts (default behavior is to appear)
-  socialShareTwitter   = true
-  socialShareGoogleplus = false
-  socialShareFacebook  = true
-  socialShareReddit    = true
-  socialShareLinkedin  = true
-  socialShareStumbleupon = false
-  socialSharePinterest = true
-  socialShareEmail     = true
+# options for highlight.js (version, additional languages, and theme)
+disable_highlight = false # set to true to disable Highlight
+highlightjsVersion = "9.12.0"
+highlightjsCDN = "https://cdnjs.cloudflare.com/ajax/libs/"
+highlightjsLang = ["lisp"]
+highlightjsTheme = "gruvbox-dark"
+MathJaxCDN = "//cdn.bootcss.com"
+MathJaxVersion = "2.7.1"
 
-  # Load custom CSS or JavaScript files. The variable is an array so that you
-  # can load multiple files if necessary. You can also load the standard theme
-  # files by adding the value, "default".
-  # customCSS            = ["default", "/path/to/file"]
-  # customJS             = ["default", "/path/to/file"]
-  customCSS            = ["default"]
-  customJS             = ["default"]
+showWordCounter = true
+showReadTime = true
+showLicenseInFooter = false
+showToc = true
 
-  # options for highlight.js (version, additional languages, and theme)
-  disable_highlight = false # set to true to disable Highlight
-  highlightjsVersion = "9.12.0"
-  highlightjsCDN = "https://cdnjs.cloudflare.com/ajax/libs/"
-  highlightjsLang = ["lisp"]
-  highlightjsTheme = "gruvbox-dark"
-  MathJaxCDN = "//cdn.bootcss.com"
-  MathJaxVersion = "2.7.1"
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true # Enable user to embed HTML snippets in Markdown content
+[markup.highlight]
+codeFences = false # Disable Hugo's code highlighter
+
+[markup.tableOfContents]
+startLevel = 2
+endLevel = 3
+
+[taxonomies]
+tag = "tags"
+
+[menu]
+[[menu.nav]]
+name = "Home"
+url = "/"
+weight = 1
+[[menu.nav]]
+name = "About"
+url = "/about/"
+weight = 2
+[[menu.nav]]
+name = "Blog"
+url = "/blog/"
+weight = 3
+[[menu.nav]]
+name = "Search"
+url = "/search/"
+weight = 4
+[[menu.nav]]
+name = "RSS"
+url = "/index.xml"
+weight = 5
+
+[[menu.link]]
+name = "GitHub"
+url = "https://github.com/keelerm84"
+weight = 1
+[[menu.link]]
+name = "Twitter"
+url = "https://twitter.com/keelerm84"
+weight = 2
+
+[build]
+noJSConfigInAssets = true
+
+[security]
+enableInlineShortcodes = true
 
 # Disqus will take priority over Staticman (github.com/eduardoboucas/staticman)
 # due to its ease of use. Feel free to check out both and decide what you would
@@ -86,109 +123,3 @@ canonifyURLs = true
   [params.staticman.recaptcha]
     sitekey = "SITE_KEY"
     secret  = "ENCRYPTED_SECRET"
-
-  # These are optional params related to the sidebar. They are recommended, but not
-  # required for proper functionality. HTML is supported within the params.
-[params.intro]
-  header    = "Cup Full of Code"
-
-  paragraph = "The personal site of Matthew M. Keeler"
-
-  about     = "I am an enthusiastic developer who loves learning new technologies."
-
-  # This appears at the top of the sidebar above params.intro.header.
-  # A width of less than 100px is recommended from a design perspective.
-  [params.intro.pic]
-    src       = "/images/matthew-keeler.jpg"
-    # Sets Image to be a cirlce
-    circle    = true
-    # Sets Image to be Future Imperfect's hexagon
-    imperfect = false
-    width     = "200"
-    alt       = "Matthew M. Keeler"
-
-[params.postAmount]
-# Sets the number of recent posts to show in the sidebar. The default value is 5.
-    sidebar = 3
-
-# Sets the menu items in the navigation bar
-# Identifier prepends a Font Awesome icon to the menu item
-[[menu.main]]
-  name = "Home"
-  url = "/"
-  identifier = "fa fa-home"
-  weight = 1
-
-[[menu.main]]
-  name = "About"
-  url = "/about/"
-  identifier = "fa fa-id-card-o"
-  weight = 2
-
-[[menu.main]]
-  name = "Blog"
-  url = "/blog/"
-  identifier = "fa fa-newspaper-o"
-  weight = 3
-
-[[menu.main]]
-  name = "Portfolio"
-  url = "/portfolio/"
-  identifier = "fa fa-list"
-  weight = 4
-
-[[menu.main]]
-  name = "Resume"
-  url = "/resume/"
-  identifier = "fa fa-briefcase"
-  weight = 5
-
-# Sets Social Media icons to appear and link to your account. Value should be your
-# username unless otherwise noted. These are the icons affected by socialAppearAtTop
-# and socialAppearAtBottom.
-[social]
-  # Coding Communities
-  github           = "keelerm84"
-  gitlab           = ""
-  stackoverflow    = "859409" # User Number
-  bitbucket        = ""
-  jsfiddle         = ""
-  codepen          = ""
-  # Visual Art Communities
-  deviantart       = ""
-  flickr           = ""
-  behance          = ""
-  dribbble         = ""
-  # Publishing Communities
-  wordpress        = ""
-  medium           = ""
-  # Professional/Business Oriented Communities
-  linkedin         = "keelerm84"
-  linkedin_company = ""
-  foursquare       = ""
-  xing             = ""
-  slideshare       = ""
-  # Social Networks
-  facebook         = ""
-  googleplus       = ""
-  reddit           = ""
-  quora            = ""
-  youtube          = "keelerm84ify"
-  vimeo            = ""
-  whatsapp         = "" # WhatsApp Number
-    # WeChat and QQ need testing.
-    wechat         = ""
-    qq             = "" # User ID Number
-  instagram        = ""
-  tumblr           = ""
-  twitter          = "keelerm84"
-  skype            = ""
-  snapchat         = ""
-  pinterest        = ""
-  telegram         = ""
-  vine             = ""
-  googlescholar    = ""
-  orcid            = ""
-  researchgate     = ""
-  # Email
-  email            = ""

@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Utilities"]
 tags = ["utilities", "screen", "automation"]
 date = 2013-01-08T13:38:00+00:00
 description = "Basic scripting of GNU screen with ssh connections"
-featured = "automation-with-gnu-screen-and-ssh/binary-programming.png"
-featuredpath = "/images/blog/"
 title = "Automation with GNU Screen and SSH"
-type = "post"
+type = "blog"
 +++
 
 As a developer, I tend to prefer automation whenever possible. Hours of your

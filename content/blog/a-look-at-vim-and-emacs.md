@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Emacs"]
 tags = ["emacs", "vim"]
 date = 2015-03-29T06:06:55+00:00
 description = "A friendly debate about the merits of the two best editors"
-featured = "a-look-at-vim-and-emacs/vim-and-emacs.jpg"
-featuredpath = "/images/blog/"
 title = "A Look at Vim and Emacs"
-type = "post"
+type = "blog"
 +++
 
 On Thursday, March 26th, 2015 my friend Jacob and I presented to
@@ -23,7 +20,6 @@ The talks are available on YouTube, as are all the previous talked by DevICT.
 
 {{< youtube SaGgc8xnO1U >}}
 
-\
-\
+<br/>
 
 {{< youtube 3Z4xLZot5h4 >}}

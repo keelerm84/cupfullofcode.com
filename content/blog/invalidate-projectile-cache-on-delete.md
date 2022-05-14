@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Emacs"]
 tags = ["projectile", "elisp", "emacs"]
 date = 2014-10-06T21:36:39+00:00
 description = "An exercise in defadvice hooks"
-featured = "invalidate-projectile-cache-on-delete/cache.jpg"
-featuredpath = "/images/blog/"
 title = "Invalidate Projectile Cache on Delete"
-type = "post"
+type = "blog"
 +++
 
 [Projectile](https://github.com/bbatsov/projectile) is a staple of my emacs

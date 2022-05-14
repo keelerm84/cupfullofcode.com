@@ -1,13 +1,10 @@
 +++
-author = "Matthew M. Keeler"
 categories = ["Emacs"]
 tags = ["org-mode", "emacs", "elisp", "snippets"]
 date = 2013-02-26T11:35:00+00:00
 description = "Save yourself keystrokes and headaches"
-featured = "snippet-expansion-with-yasnippet/expansion.jpg"
-featuredpath = "/images/blog/"
 title = "Snippet Expansion with YASnippet"
-type = "post"
+type = "blog"
 +++
 
 Any editor worth its salt has some provision for text snippet
