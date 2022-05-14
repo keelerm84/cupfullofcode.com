@@ -1,7 +1,7 @@
 baseurl = "https://cupfullofcode.com"
 languageCode = "en-us"
 title = "Cup Full of Code"
-theme = "hugo-future-imperfect"
+theme = "fuji"
 preserveTaxonomyNames = false
 paginate = 5
 disqusShortname = "cupfullofcode"
