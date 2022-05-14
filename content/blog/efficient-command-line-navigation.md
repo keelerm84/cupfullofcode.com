@@ -4,7 +4,6 @@ tags = ["utilities", "zsh"]
 date = 2013-07-03T19:36:00+00:00
 description = "Finding the way to a better command line life"
 title = "Efficient Command Line Navigation"
-type = "blog"
 +++
 
 I live on the command line. Between [vim](http://www.vim.org/),

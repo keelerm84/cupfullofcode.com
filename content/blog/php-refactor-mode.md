@@ -4,7 +4,6 @@ tags = ["php", "refactoring", "emacs"]
 date = 2014-09-21T00:00:00+00:00
 description = "Wrapping a command line tool in a convenient emacs package"
 title = "Performing Controlled PHP Refactorings in Emacs"
-type = "blog"
 +++
 
 By day, I work as a PHP developer at

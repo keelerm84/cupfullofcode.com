@@ -4,7 +4,6 @@ tags = ["projectile", "elisp", "emacs"]
 date = 2014-10-06T21:36:39+00:00
 description = "An exercise in defadvice hooks"
 title = "Invalidate Projectile Cache on Delete"
-type = "blog"
 +++
 
 [Projectile](https://github.com/bbatsov/projectile) is a staple of my emacs

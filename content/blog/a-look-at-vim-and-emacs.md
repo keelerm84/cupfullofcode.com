@@ -4,7 +4,6 @@ tags = ["emacs", "vim"]
 date = 2015-03-29T06:06:55+00:00
 description = "A friendly debate about the merits of the two best editors"
 title = "A Look at Vim and Emacs"
-type = "blog"
 +++
 
 On Thursday, March 26th, 2015 my friend Jacob and I presented to

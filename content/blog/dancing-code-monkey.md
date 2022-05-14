@@ -4,7 +4,6 @@ tags = ["emacs", "elisp"]
 date = 2013-01-05T23:09:00+00:00
 description = "A fun learning experience with emacs lisp"
 title = "Dancing Code Monkey"
-type = "blog"
 +++
 
 A few months ago, I started playing around with Emacs.  For roughly six years

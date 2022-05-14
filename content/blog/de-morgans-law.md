@@ -4,7 +4,6 @@ tags = ["logic"]
 date = 2011-09-01T00:00:00+00:00
 description = "Safely simplify complicated negation logic"
 title = "Negation and De Morgan's Law"
-type = "blog"
 +++
 
 Undoubtedly, your grade school grammar teacher has scolded you at one point or

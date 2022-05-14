@@ -4,7 +4,6 @@ tags = ["utilities", "screen", "automation"]
 date = 2013-01-08T13:38:00+00:00
 description = "Basic scripting of GNU screen with ssh connections"
 title = "Automation with GNU Screen and SSH"
-type = "blog"
 +++
 
 As a developer, I tend to prefer automation whenever possible. Hours of your
