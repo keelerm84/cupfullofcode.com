@@ -1,7 +1,7 @@
 +++
 title = "About Me"
 description = "A little background for the curious"
-date = "2022-05-13"
+date = "2011-08-30"
 +++
 
 Living in the Raleigh-Durham area, I work on the SDK squad at
